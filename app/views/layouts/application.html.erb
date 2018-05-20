@@ -10,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'nav' %>
+    <div class="container mt-5">
+      <div class="border rounded p-5">
+        <%= yield %>
+      </div>
+    </div>
+    <%= render 'footer' %>
   </body>
 </html>

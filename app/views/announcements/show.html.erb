@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= @announcement.desc %>
+    <%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+    <%= link_to 'Back', announcements_path %>
+  </div>
+</div>
+
