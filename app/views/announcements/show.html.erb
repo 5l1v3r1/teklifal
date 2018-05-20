@@ -1,10 +1,20 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
-<div class="row">
-  <div class="col-md-6">
+<h3 class="h5 pb-2 border-bottom">TEKLİF İLANI</h3>
+<div class="row py-3">
+  <div class="col-2 offset-2">Anonymous</div>
+  <div class="col-6">
     <%= @announcement.desc %>
     <%= link_to 'Edit', edit_announcement_path(@announcement) %> |
     <%= link_to 'Back', announcements_path %>
   </div>
 </div>
+
+<h3 class="mt-5 h5 pb-2 border-bottom">TEKLİFLER</h3>
+<%= render @announcement.offers %>
+
+<%= render 'offers/form', announcement: @announcement, offer: Offer.new %>
+
 
