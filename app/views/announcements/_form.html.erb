@@ -1,0 +1,22 @@
+<%= form_with(model: announcement, local: true) do |form| %>
+  <% if announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+
+      <ul>
+      <% announcement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :desc %>
+    <%= form.text_area :desc, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>

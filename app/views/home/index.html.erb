@@ -1,47 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" href="#">biteklif</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExample07">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Teklif iste</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Teklif ver</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Kullanici</a>
-        </li>
-      </ul>
+<main role="main">
+  <div class="jumbotron">
+    <div class="col-sm-8 mx-auto">
+      <h1>BİTEKLİF İSTE, BİTEKLİF VER</h1>
+      <p>Santiyeme trafo lazim, nerden alsam,</p>
+      <p>Dukkanim icin web sitesi lazim, kime yaptirsam</p>
+      <p>Fabrikamizi haserelerden korumak icin ilaclatmamiz lazim</p>
+      <p>
+        <a class="btn btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
+      </p>
     </div>
   </div>
-</nav>
-
-<div class="container">
-  <main role="main">
-    <div class="jumbotron">
-      <div class="col-sm-8 mx-auto">
-        <h1>BİTEKLİF İSTE, BİTEKLİF VER</h1>
-        <p>Santiyeme trafo lazim, nerden alsam,</p>
-        <p>Dukkanim icin web sitesi lazim, kime yaptirsam</p>
-        <p>Fabrikamizi haserelerden korumak icin ilaclatmamiz lazim</p>
-        <p>
-          <a class="btn btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
-    </div>
-  </main>
+</main>
 
 
-  <h3>Guncel Teklifler</h3>
-  <table class="table table-hover table-dark">
+<h3>Guncel Teklifler</h3>
+<table class="table table-hover table-dark">
   <thead>
     <tr>
       <th scope="col">Teklif</th>
@@ -50,125 +23,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">Trafo ihtiyaci</th>
-      <td>0 teklif</td>
-      <td>1 gun once</td>
-    </tr>
-    <tr>
-      <th scope="row">Istanbuldan eskisehirde ev tasinmasi icin nakliyat</th>
-      <td>2 teklif</td>
-      <td>28 saat once</td>
-    </tr>
-    <tr>
-      <th scope="row">12 subatta izmirdeyim. kiralik arac lazim.</th>
-      <td>4 teklif</td>
-      <td>2 gun once</td>
-    </tr>
-    <tr>
-      <th scope="row">Araba komple boyacanacak. Kaportaci araniyor.</th>
-      <td>0 teklif</td>
-      <td>1 gun once</td>
-    </tr>
-    <tr>
-      <th scope="row">Acil satilik ev icin tekliflerinizi bekliyorum</th>
-      <td>2 teklif</td>
-      <td>28 saat once</td>
-    </tr>
-    <tr>
-      <th scope="row">20 Gb, 100 GB bandwidth, 1 gb ram hosting lazim</th>
-      <td>4 teklif</td>
-      <td>2 gun once</td>
-    </tr>
-    <tr>
-      <th scope="row">Trafo ihtiyaci</th>
-      <td>0 teklif</td>
-      <td>1 gun once</td>
-    </tr>
-    <tr>
-      <th scope="row">Istanbuldan eskisehirde ev tasinmasi icin nakliyat</th>
-      <td>2 teklif</td>
-      <td>28 saat once</td>
-    </tr>
-    <tr>
-      <th scope="row">12 subatta izmirdeyim. kiralik arac lazim.</th>
-      <td>4 teklif</td>
-      <td>2 gun once</td>
-    </tr>
-    <tr>
-      <th scope="row">Araba komple boyacanacak. Kaportaci araniyor.</th>
-      <td>0 teklif</td>
-      <td>1 gun once</td>
-    </tr>
-    <tr>
-      <th scope="row">Acil satilik ev icin tekliflerinizi bekliyorum</th>
-      <td>2 teklif</td>
-      <td>28 saat once</td>
-    </tr>
-    <tr>
-      <th scope="row">20 Gb, 100 GB bandwidth, 1 gb ram hosting lazim</th>
-      <td>4 teklif</td>
-      <td>2 gun once</td>
-    </tr>
+    <% Announcement.all.order(created_at: :desc).each do |ann| %>
+      <tr>
+        <td><%= link_to ann.desc, ann %></th>
+        <td><%= ann.offers.size %> teklif</td>
+        <td><%= time_ago_in_words ann.created_at %> once</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-</div>
-
-
-    <footer class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-          <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Features</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Cool stuff</a></li>
-            <li><a class="text-muted" href="#">Random feature</a></li>
-            <li><a class="text-muted" href="#">Team feature</a></li>
-            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-            <li><a class="text-muted" href="#">Another one</a></li>
-            <li><a class="text-muted" href="#">Last time</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Resources</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Resource</a></li>
-            <li><a class="text-muted" href="#">Resource name</a></li>
-            <li><a class="text-muted" href="#">Another resource</a></li>
-            <li><a class="text-muted" href="#">Final resource</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Resources</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Business</a></li>
-            <li><a class="text-muted" href="#">Education</a></li>
-            <li><a class="text-muted" href="#">Government</a></li>
-            <li><a class="text-muted" href="#">Gaming</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>About</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Team</a></li>
-            <li><a class="text-muted" href="#">Locations</a></li>
-            <li><a class="text-muted" href="#">Privacy</a></li>
-            <li><a class="text-muted" href="#">Terms</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
 

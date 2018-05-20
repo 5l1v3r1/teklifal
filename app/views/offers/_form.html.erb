@@ -1,0 +1,27 @@
+<div class="row pt-3">
+  <div class="col-2 offset-2">Annoymous</div>
+  <div class="col-6">
+
+    <div class="form-group">
+
+      <%= form_with(model: [(@announcement || announcement), offer], local: true) do |form| %>
+        <% if offer.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+            <ul>
+            <% offer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form.text_area :desc, class: 'form-control' %>
+        <%= form.submit nil, class: 'btn btn-primary' %>
+
+      <% end %>
+    </div>
+      
+  </div>
+</div>
