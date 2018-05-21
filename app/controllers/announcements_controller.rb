@@ -15,10 +15,12 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/new
   def new
     @announcement = Announcement.new
+    3.times { @announcement.attachments.build }
   end
 
   # GET /announcements/1/edit
   def edit
+    3.times { @announcement.attachments.build }
   end
 
   # POST /announcements
@@ -69,6 +71,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:desc)
+      params.require(:announcement).permit(:desc, attachments_attributes: [:id, :file, :_destroy])
     end
 end
