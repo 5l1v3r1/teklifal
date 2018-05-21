@@ -8,6 +8,7 @@ class OffersController < ApplicationController
   end
 
   def edit
+    3.times { @offer.attachments.build }
   end
 
   def create
@@ -41,7 +42,7 @@ class OffersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
-      params.require(:offer).permit(:announcement_id, :desc)
+      params.require(:offer).permit(:announcement_id, :desc, attachments_attributes: [:id, :file, :_destroy])
     end
 
     def set_announcement

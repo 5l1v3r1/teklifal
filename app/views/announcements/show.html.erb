@@ -6,15 +6,7 @@
     <%= link_to 'Edit', edit_announcement_path(@announcement) %> |
     <%= link_to 'Back', announcements_path %>
 
-    <ul class="list-group">
-      <% @announcement.attachments.each do |attachment| %>
-        <li class="list-group-item">
-          <%= link_to attachment.send(:attribute, :file),
-                      attachment.file_url,
-                      target: '_blank' %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render "attachments", attachments: @announcement.attachments %>
   </div>
 </div>
 
