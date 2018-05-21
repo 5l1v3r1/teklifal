@@ -1,7 +1,7 @@
-<div class="form-group">
+<div class="form-group attachment-input">
   <%= form.label :attachments %>
   <%= form.fields_for :attachments do |ff|  %>
-    <div class="mb-1">
+    <div class="mb-1 attachment">
       <% if ff.object.persisted? %>
         <div class="form-control">
           <span><%= link_to ff.object.send(:attribute,:file), ff.object.file_url, target: '_blank' %></span>
