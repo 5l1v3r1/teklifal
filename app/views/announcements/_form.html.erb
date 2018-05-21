@@ -16,6 +16,8 @@
     <%= form.text_area :desc, class: 'form-control' %>
   </div>
 
+  <%= render 'attachment_form_field', form: form %>
+
   <div class="actions">
     <%= form.submit nil, class: "btn btn-primary" %>
   </div>

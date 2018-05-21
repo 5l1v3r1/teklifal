@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <% attachments.each do |attachment| %>
+    <li class="list-group-item">
+      <%= link_to attachment.send(:attribute, :file),
+                  attachment.file_url,
+                  target: '_blank' %>
+    </li>
+  <% end %>
+</ul>

@@ -18,6 +18,10 @@
         <% end %>
 
         <%= form.text_area :desc, class: 'form-control' %>
+
+        <% 3.times { form.object.attachments.build } %>
+        <%= render "announcements/attachment_form_field", form: form %>
+
         <%= form.submit nil, class: 'btn btn-primary' %>
 
       <% end %>
