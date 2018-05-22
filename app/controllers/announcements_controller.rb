@@ -26,7 +26,9 @@ class AnnouncementsController < ApplicationController
   # POST /announcements
   # POST /announcements.json
   def create
-    @announcement = Announcement.new(announcement_params)
+    @announcement = Announcement.new(announcement_params).tap do |ann|
+      ann.user = current_user
+    end
 
     respond_to do |format|
       if @announcement.save

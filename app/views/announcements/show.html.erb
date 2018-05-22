@@ -1,13 +1,6 @@
 <h3 class="h5 pb-2 border-bottom">TEKLİF İLANI</h3>
-<div class="row py-3">
-  <div class="col-2 offset-1">Anonymous</div>
-  <div class="col-8">
-    <%= desc @announcement.desc %>
-    <%= render "attachments", attachments: @announcement.attachments %>
-    <%= link_to 'Edit', edit_announcement_path(@announcement) %> |
-    <%= link_to 'Back', announcements_path %>
-  </div>
-</div>
+
+<%= render @announcement %>
 
 <h3 class="mt-5 h5 pb-2 border-bottom">TEKLİFLER</h3>
 <%= render @announcement.offers %>

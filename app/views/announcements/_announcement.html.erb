@@ -1,0 +1,9 @@
+<div class="row py-3">
+  <div class="col-2 offset-1">Anonymous</div>
+  <div class="col-8">
+    <%= desc announcement.desc %>
+    <%= render "attachments", attachments: announcement.attachments %>
+    <%= link_to 'Edit', edit_announcement_path(announcement) %> |
+    <%= link_to 'Back', announcements_path %>
+  </div>
+</div>

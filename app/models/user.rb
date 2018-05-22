@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  has_many :announcements
+  has_many :offers
+
   def name
     first_name + ' ' + last_name
   end
