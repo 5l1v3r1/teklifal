@@ -18,4 +18,8 @@ class AnnouncementPolicy < ApplicationPolicy
   def update?
     record.owner? signed_user
   end
+
+  def new_offer?
+    !record.offers.exists?(user: signed_user)
+  end
 end

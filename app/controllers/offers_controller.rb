@@ -5,9 +5,11 @@ class OffersController < ApplicationController
   # GET /offers/1
   # GET /offers/1.json
   def show
+    authorize @offer
   end
 
   def edit
+    authorize @offer
     3.times { @offer.attachments.build }
   end
 
@@ -15,6 +17,8 @@ class OffersController < ApplicationController
     @offer = @announcement.offers.build(offer_params).tap do |offer|
       offer.user = current_user
     end
+
+    authorize @offer
 
     if @offer.save
       redirect_to @announcement, notice: 'Offer was successfully created.'
@@ -24,6 +28,8 @@ class OffersController < ApplicationController
   end
 
   def update
+    authorize @offer
+
     if @offer.update(offer_params)
       redirect_to [@announcement, @offer], notice: 'Offer was successfully updated.'
     else
@@ -32,6 +38,7 @@ class OffersController < ApplicationController
   end
 
   def destroy
+    authorize @offer
     @offer.destroy
     redirect_to @announcement, notice: 'Offer was successfully destroyed.'
   end
