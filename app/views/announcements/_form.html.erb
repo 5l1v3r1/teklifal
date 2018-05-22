@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= form.label :desc %>
-    <%= form.text_area :desc, class: 'form-control' %>
+    <%= form.trix_editor :desc %>
   </div>
 
   <%= render 'attachment_form_field', form: form %>

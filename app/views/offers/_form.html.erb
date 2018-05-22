@@ -1,6 +1,6 @@
 <div class="row pt-3">
-  <div class="col-2 offset-2">Annoymous</div>
-  <div class="col-6">
+  <div class="col-2 offset-1">Annoymous</div>
+  <div class="col-8">
 
     <div class="form-group">
 
@@ -17,7 +17,7 @@
           </div>
         <% end %>
 
-        <%= form.text_area :desc, class: 'form-control' %>
+        <%= form.trix_editor :desc %>
 
         <% 3.times { form.object.attachments.build } %>
         <%= render "announcements/attachment_form_field", form: form %>
