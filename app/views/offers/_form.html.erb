@@ -1,5 +1,5 @@
 <div class="row pt-3">
-  <div class="col-2 offset-1">Annoymous</div>
+  <div class="col-2 offset-1"><%= current_user.try(:name) or "Annoymous" %></div>
   <div class="col-8">
 
     <div class="form-group">

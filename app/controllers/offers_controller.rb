@@ -12,7 +12,9 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = @announcement.offers.build(offer_params)
+    @offer = @announcement.offers.build(offer_params).tap do |offer|
+      offer.user = current_user
+    end
 
     if @offer.save
       redirect_to @announcement, notice: 'Offer was successfully created.'
