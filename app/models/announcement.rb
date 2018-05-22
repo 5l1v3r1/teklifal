@@ -4,4 +4,8 @@ class Announcement < ApplicationRecord
   accepts_nested_attributes_for :attachments, allow_destroy: true
   belongs_to :user
 
+  def owner? user
+    self.user == user
+  end
+
 end
