@@ -5,6 +5,9 @@
 <h3 class="mt-5 h5 pb-2 border-bottom">TEKLİFLER</h3>
 <%= render @announcement.offers %>
 
-<%= render 'offers/form', announcement: @announcement, offer: Offer.new %>
+
+<% if policy(@announcement).new_offer? %>
+  <%= render 'offers/form', announcement: @announcement, offer: Offer.new %>
+<% end %>
 
 

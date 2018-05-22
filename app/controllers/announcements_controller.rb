@@ -4,28 +4,33 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
+    authorize Announcement
     @announcements = Announcement.all
   end
 
   # GET /announcements/1
   # GET /announcements/1.json
   def show
+    authorize @announcement
   end
 
   # GET /announcements/new
   def new
+    authorize Announcement
     @announcement = Announcement.new
     3.times { @announcement.attachments.build }
   end
 
   # GET /announcements/1/edit
   def edit
+    authorize @announcement
     3.times { @announcement.attachments.build }
   end
 
   # POST /announcements
   # POST /announcements.json
   def create
+    authorize Announcement
     @announcement = Announcement.new(announcement_params).tap do |ann|
       ann.user = current_user
     end
