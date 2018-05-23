@@ -8,6 +8,11 @@ class OffersController < ApplicationController
     authorize @offer
   end
 
+  def new
+    @offer = @announcement.offers.new
+    authorize @offer
+  end
+
   def edit
     authorize @offer
     3.times { @offer.attachments.build }
@@ -17,10 +22,10 @@ class OffersController < ApplicationController
     @offer = @announcement.offers.build(offer_params).tap do |offer|
       offer.user = current_user
     end
-
     authorize @offer
 
     if @offer.save
+      @offer.publish! if params[:publish]
       redirect_to @announcement, notice: 'Offer was successfully created.'
     else
       render 'announcements/show'
@@ -31,7 +36,8 @@ class OffersController < ApplicationController
     authorize @offer
 
     if @offer.update(offer_params)
-      redirect_to [@announcement, @offer], notice: 'Offer was successfully updated.'
+      @offer.publish! if params[:publish] and @offer.draft?
+      redirect_to @announcement, notice: 'Offer was successfully updated.'
     else
       render 'announcements/show'
     end

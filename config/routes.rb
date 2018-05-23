@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :announcements do
-    resources :offers, except: [:new]
+    resources :offers
   end
   get 'home/index'
   root 'home#index'

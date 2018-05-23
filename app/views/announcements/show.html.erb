@@ -2,12 +2,26 @@
 
 <%= render @announcement %>
 
-<h3 class="mt-5 h5 pb-2 border-bottom">TEKLİFLER</h3>
-<%= render @announcement.offers %>
 
 
-<% if policy(@announcement).new_offer? %>
-  <%= render 'offers/form', announcement: @announcement, offer: Offer.new %>
-<% end %>
+<div class="mt-5 border-bottom">
+  <% if policy(@announcement).new_offer? %>
+    <%= link_to "Teklif Yap",
+                new_announcement_offer_path(@announcement),
+                class: "btn btn-primary float-right"  %>
+  <% elsif user_signed_in? and offer = current_user.offer_for('draft', @announcement) %>
+    <%= link_to "Taslağa Devam Et",
+                [:edit, @announcement, offer],
+                class: "btn btn-warning float-right"  %>
+  <% elsif user_signed_in? and offer = current_user.offer_for('published', @announcement) %>
+    <span class="float-right text-success">
+      Teklif yaptiniz
+      <%= link_to "Teklifi düzenle", [:edit, @announcement, offer] %>
+      <i class="material-icons text-success">done</i>
+    </span>
+  <% end %>
 
+  <h3 class="h5 pt-3">TEKLİFLER</h3>
+</div>
 
+<%= render @announcement.offers.where(state: 'published') %>

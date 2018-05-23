@@ -2,7 +2,7 @@
   <div class="col-2 offset-1"><%= announcement.user.name %></div>
   <div class="col-8">
     <%= desc announcement.desc %>
-    <%= render "attachments", attachments: announcement.attachments %>
+    <%= render "announcements/attachments", attachments: announcement.attachments %>
     <%= link_to 'Edit', edit_announcement_path(announcement) %> |
     <%= link_to 'Back', announcements_path %>
   </div>

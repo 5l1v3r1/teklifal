@@ -22,7 +22,10 @@
         <% 3.times { form.object.attachments.build } %>
         <%= render "announcements/attachment_form_field", form: form %>
 
-        <%= form.submit nil, class: 'btn btn-primary' %>
+        <% unless offer.published? %>
+          <%= form.submit "Taslağı Kaydet", class: 'btn btn-secondary' %>
+        <% end %>
+        <%= form.submit "Yayınla", class: 'btn btn-success', name: 'publish' %>
 
       <% end %>
     </div>
