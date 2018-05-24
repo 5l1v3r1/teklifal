@@ -1,7 +1,14 @@
 <h1>Announcements</h1>
 
-<h2>Yayında olanlar</h2>
-<%= render current_user.announcements.published %>
-
-<h2>Yayın süresi dolanlar</h2>
-<%= render current_user.announcements.unpublished %>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Desc</th>
+    <th>Offer Count</th>
+    <th>Expired At</th>
+    <th>Actions</th>
+  </tr>
+  <%= render partial: 'table_ann',
+             collection: current_user.announcements.order(expired_at: :desc),
+             as: :announcement %>
+</table>

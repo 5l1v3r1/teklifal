@@ -22,4 +22,12 @@ class AnnouncementPolicy < ApplicationPolicy
   def new_offer?
     !record.offers.exists?(user: signed_user)
   end
+
+  def destroy?
+    update?
+  end
+
+  def expire?
+    update?
+  end
 end

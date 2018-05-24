@@ -21,4 +21,8 @@ class Announcement < ApplicationRecord
     # use try for initial nil expired_at value
     expired_at.try :>, Time.now
   end
+
+  def expire!
+    update_attribute :expired_at, Time.now
+  end
 end

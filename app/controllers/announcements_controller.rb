@@ -1,5 +1,5 @@
 class AnnouncementsController < ApplicationController
-  before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  before_action :set_announcement, only: [:show, :edit, :update, :destroy, :expire]
 
   # GET /announcements
   # GET /announcements.json
@@ -35,8 +35,6 @@ class AnnouncementsController < ApplicationController
       ann.user = current_user
     end
 
-    binding.pry
-
     respond_to do |format|
       if @announcement.save
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
@@ -65,11 +63,14 @@ class AnnouncementsController < ApplicationController
   # DELETE /announcements/1
   # DELETE /announcements/1.json
   def destroy
+    authorize @announcement
     @announcement.destroy
-    respond_to do |format|
-      format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to announcements_url, notice: 'Announcement was successfully destroyed.'
+  end
+
+  def expire
+    @announcement.expire!
+    redirect_to announcements_url, notice: 'Announcement was successfully expired.'
   end
 
   private
