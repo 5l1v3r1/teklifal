@@ -4,7 +4,25 @@
   </div>
 <% end %>
 
-<%= page_header "TEKLİF İLANI" %>
+<div class="border-bottom cog">
+  <% if policy(@announcement).edit? %>
+    <div class="dropdown cog-dropdown float-right">
+      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        İşlemler
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <%= link_to 'Düzenle', edit_announcement_path(@announcement), class: "dropdown-item" %>
+          <%= link_to "Yayından Kaldır",
+                      expire_announcement_path(@announcement), 
+                      method: :put,
+                      data: { confirm: "Yayindan kaldirmak istediginize emin misiniz?"},
+                      class: "dropdown-item"  %>
+      </div>
+    </div>
+  <% end %>
+  <h3 class="h5 pt-1">TALEP İLANI</h3>
+</div>
+
 <%= render @announcement %>
 
 

@@ -22,15 +22,25 @@
   <td><%= offer.announcement.offers.count %> offer</td>
   <td><%= time_ago_in_words offer.announcement.updated_at %></td>
   <td>
-    <% if policy(offer).edit? %>
-      <%= link_to "Düzenle", edit_announcement_offer_path(offer.announcement, offer)  %>
-    <% end %>
+    <div class="dropdown">
+      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        İşlemler
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <% if policy(offer).edit? %>
+          <%= link_to "Düzenle",
+            edit_announcement_offer_path(offer.announcement, offer),
+            class: 'dropdown-item'  %>
+        <% end %>
 
-    <% if offer.draft? %>
-      <%= link_to "Kaldir",
-                  [offer.announcement, offer], 
-                  method: :delete,
-                  data: { confirm: "Silmek istediğinize emin misiniz?" } %>
-    <% end %>
+        <% if offer.draft? %>
+          <%= link_to "Kaldir",
+                      [offer.announcement, offer], 
+                      method: :delete,
+                      data: { confirm: "Silmek istediğinize emin misiniz?" },
+                      class: 'dropdown-item' %>
+        <% end %>
+      </div>
+    </div>
   </td>
 </tr>

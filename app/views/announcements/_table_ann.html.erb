@@ -1,6 +1,8 @@
-<tr class="<%= 'table-warning' unless announcement.published? %>">
+<tr class="<%= 'table-secondary' unless announcement.published? %>">
   <td>
-    <% unless announcement.published? %>
+    <% if announcement.published? %>
+      Yayında
+    <% else %>
       Yayında değil
     <% end %>
   </td>
@@ -8,12 +10,21 @@
   <td><%= announcement.offers.count %> offer</td>
   <td><%= time_ago_in_words announcement.expired_at %></td>
   <td>
-    <%= link_to "Düzenle", [:edit, announcement]  %>
-    <% if announcement.published? %>
-      <%= link_to "Yayından Kaldır",
-                  expire_announcement_path(announcement), 
-                  method: :put,
-                  data: { confirm: "Yayindan kaldirmak istediginize emin misiniz?"}  %>
-    <% end %>
+
+    <div class="dropdown">
+      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        İşlemler
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <%= link_to "Düzenle", edit_announcement_path(announcement), class: 'dropdown-item' %>
+        <% if announcement.published? %>
+          <%= link_to "Yayından Kaldır",
+                      expire_announcement_path(announcement), 
+                      method: :put,
+                      data: { confirm: "Yayindan kaldirmak istediginize emin misiniz?"},
+                      class: 'dropdown-item'  %>
+        <% end %>
+      </div>
+    </div>
   </td>
 </tr>
