@@ -13,7 +13,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def create?
-    signed_user and not record.announcement.offers.exists?(user: signed_user)    
+    signed_user and not record.announcement.offers.exists?(user: signed_user) and not (record.announcement.user == signed_user)
   end
 
   def update?
