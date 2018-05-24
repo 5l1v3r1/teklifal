@@ -1,6 +1,11 @@
 class OffersController < ApplicationController
-  before_action :set_announcement
+  before_action :set_announcement, except: :index
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+
+  def index
+    authorize Offer
+    @offers = current_user.offers
+  end
 
   # GET /offers/1
   # GET /offers/1.json

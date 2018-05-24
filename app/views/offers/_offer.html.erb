@@ -11,9 +11,15 @@
       <%= desc offer.desc %>
       <%= time_ago_in_words offer.created_at %>
       <%= render "announcements/attachments", attachments: offer.attachments %>
-      <%= link_to 'Edit', edit_announcement_offer_path(@announcement, offer) %>
-      <%= link_to 'Destroy', [@announcement, offer], method: :delete,
-            data: { confirm: 'Are you sure?' } %>
+
+      <% if policy(offer).edit? %>
+        <%= link_to 'Edit', edit_announcement_offer_path(offer.announcement, offer) %>
+      <% end %>
+
+      <% if policy(offer).destroy? %>
+        <%= link_to 'Destroy', [@announcement, offer], method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
   </div>
 </div>

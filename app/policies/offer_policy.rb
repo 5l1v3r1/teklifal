@@ -21,6 +21,6 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    update?
   end
 end

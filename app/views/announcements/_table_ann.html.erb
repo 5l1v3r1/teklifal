@@ -13,7 +13,7 @@
       <%= link_to "Yayından Kaldır",
                   expire_announcement_path(announcement), 
                   method: :put,
-                  confirm: "Silmek istediginize emin misiniz?"  %>
+                  data: { confirm: "Yayindan kaldirmak istediginize emin misiniz?"}  %>
     <% end %>
   </td>
 </tr>

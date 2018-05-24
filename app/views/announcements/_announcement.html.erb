@@ -8,7 +8,9 @@
     <% else %>
       İlan süresi doldu.
     <% end %>
-    <%= link_to 'Edit', edit_announcement_path(announcement) %> |
-    <%= link_to 'Back', announcements_path %>
+
+    <% if policy(@announcement).edit? %>
+      <%= link_to 'Edit', edit_announcement_path(announcement) %> |
+    <% end %>
   </div>
 </div>

@@ -1,1 +1,21 @@
-<%= render current_user.offers %>
+<h1>My offers</h1>
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Announcement</th>
+    <th>My Offer</th>
+    <th>İlana teklif sayısı</th>
+    <th>Son güncellenme</th>
+    <th>Actions</th>
+  </tr>
+  <%= render partial: 'table_offer',
+             collection: current_user.offers.where(state: 'draft'),
+             as: :offer %>
+  <%= render partial: 'table_offer',
+             collection: current_user.offers.joins(:announcement).where(state: 'published').where('announcements.expired_at > ?', Time.now),
+             as: :offer %>
+  <%= render partial: 'table_offer',
+             collection: current_user.offers.joins(:announcement).where(state: 'published').where('announcements.expired_at < ?', Time.now),
+             as: :offer %>
+</table>

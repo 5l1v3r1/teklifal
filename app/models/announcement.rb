@@ -22,6 +22,10 @@ class Announcement < ApplicationRecord
     expired_at.try :>, Time.now
   end
 
+  def expired?
+    expired_at < Time.now
+  end
+
   def expire!
     update_attribute :expired_at, Time.now
   end

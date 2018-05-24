@@ -24,4 +24,8 @@ class Offer < ApplicationRecord
       errors.add(:base, :number_of_offers_exceeded, message: I18n.t('errors.number_of_offers_exceeded'))
      end
   end
+
+  def active?
+    published? and announcement.published?
+  end
 end

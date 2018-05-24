@@ -69,6 +69,7 @@ class AnnouncementsController < ApplicationController
   end
 
   def expire
+    authorize @announcement
     @announcement.expire!
     redirect_to announcements_url, notice: 'Announcement was successfully expired.'
   end
