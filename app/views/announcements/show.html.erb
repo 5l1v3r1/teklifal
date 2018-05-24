@@ -46,4 +46,5 @@
   <h3 class="h5 pt-3">TEKLİFLER</h3>
 </div>
 
-<%= render @announcement.offers.where(state: 'published') %>
+<%= (render @announcement.offers.where(state: 'published')) or 
+  content_tag(:p, "Hiç teklif yok. İlk teklifi yapan sen ol!", class: "text-center text-muted mt-4") %>
