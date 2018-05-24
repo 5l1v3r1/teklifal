@@ -1,21 +1,42 @@
-<%= page_header "My Offers" %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <h2 class="h4 mt-1 mr-4">Tekliflerim</h2>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Taslak", offers_path(status: :draft), class: "nav-link #{'active' if params[:status] == 'draft'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Yayında olan", offers_path(status: :active), class: "nav-link #{'active' if params[:status] == 'active'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Yayında olmayan", offers_path(status: :expired), class: "nav-link #{'active' if params[:status] == 'expired'}" %>
+  </li>
+</ul>
 
-<table class="table">
-  <tr>
-    <th></th>
-    <th>Announcement</th>
-    <th>My Offer</th>
-    <th>İlana teklif sayısı</th>
-    <th>Son güncellenme</th>
-    <th>Actions</th>
-  </tr>
-  <%= render partial: 'table_offer',
-             collection: current_user.offers.where(state: 'draft'),
-             as: :offer %>
-  <%= render partial: 'table_offer',
-             collection: current_user.offers.joins(:announcement).where(state: 'published').where('announcements.expired_at > ?', Time.now),
-             as: :offer %>
-  <%= render partial: 'table_offer',
-             collection: current_user.offers.joins(:announcement).where(state: 'published').where('announcements.expired_at < ?', Time.now),
-             as: :offer %>
-</table>
+<div class="mt-4">
+  <%#= sub_header @title %>
+
+  <style type="text/css">
+    .orders-table thead th {
+      border: 0
+    }
+  </style>
+
+  <table class="table table-sm orders-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>My Offer</th>
+        <th>Announcement</th>
+        <th>İlana teklif sayısı</th>
+        <th>Son güncellenme</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <%= render partial: 'table_offer',
+               collection: @offers,
+               as: :offer %>
+
+  </table>
+</div>

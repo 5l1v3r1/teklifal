@@ -4,7 +4,17 @@ class OffersController < ApplicationController
 
   def index
     authorize Offer
-    @offers = current_user.offers
+
+    @offers = case params[:status]
+              when 'draft'
+                current_user.offers.where(state: 'draft')
+              when 'active'
+                current_user.offers.joins(:announcement).where(state: 'published').where('announcements.expired_at > ?', Time.now)
+              when 'expired'
+                current_user.offers.joins(:announcement).where(state: 'published').where('announcements.expired_at < ?', Time.now)
+              else
+                redirect_to offers_path(status: :draft)
+              end
   end
 
   # GET /offers/1

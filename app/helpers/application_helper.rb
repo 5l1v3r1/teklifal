@@ -8,4 +8,8 @@ module ApplicationHelper
   def page_header title
     render 'page_header', title: title
   end
+
+  def sub_header title
+    render 'sub_header', title: title
+  end
 end
