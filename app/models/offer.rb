@@ -4,6 +4,7 @@ class Offer < ApplicationRecord
   belongs_to :announcement
   has_many :attachments, as: :attachmentable
   accepts_nested_attributes_for :attachments, allow_destroy: true
+  validates_presence_of :desc, :state, :announcement_id
   validate :validate_user_offer_count
 
   aasm column: 'state' do

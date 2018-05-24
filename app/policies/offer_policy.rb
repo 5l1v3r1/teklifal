@@ -5,7 +5,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.owner?(signed_user) or (record.announcement.user == signed_user)
   end
 
   def new?
