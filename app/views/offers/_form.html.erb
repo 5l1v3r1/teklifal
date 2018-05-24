@@ -1,6 +1,5 @@
 <div class="row pt-3">
-  <div class="col-2 offset-1"><%= current_user.try(:name) or "Annoymous" %></div>
-  <div class="col-8">
+  <div class="col-8 offset-2">
 
     <div class="form-group">
 
@@ -17,7 +16,10 @@
           </div>
         <% end %>
 
-        <%= form.trix_editor :desc %>
+        <div class="form-group">
+          <%= form.label :desc %>
+          <%= form.trix_editor :desc %>
+        </div>
 
         <% 3.times { form.object.attachments.build } %>
         <%= render "announcements/attachment_form_field", form: form %>

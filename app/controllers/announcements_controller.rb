@@ -49,6 +49,7 @@ class AnnouncementsController < ApplicationController
   # PATCH/PUT /announcements/1
   # PATCH/PUT /announcements/1.json
   def update
+    authorize @announcement
     respond_to do |format|
       if @announcement.update(announcement_params)
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
