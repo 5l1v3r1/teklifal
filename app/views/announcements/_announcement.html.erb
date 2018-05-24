@@ -3,6 +3,11 @@
   <div class="col-8">
     <%= desc announcement.desc %>
     <%= render "announcements/attachments", attachments: announcement.attachments %>
+    <% if announcement.published? %>
+      İlan süre <%= time_ago_in_words announcement.expired_at %> kaldı
+    <% else %>
+      İlan süresi doldu.
+    <% end %>
     <%= link_to 'Edit', edit_announcement_path(announcement) %> |
     <%= link_to 'Back', announcements_path %>
   </div>

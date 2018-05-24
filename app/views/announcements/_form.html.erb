@@ -18,6 +18,17 @@
 
   <%= render 'attachment_form_field', form: form %>
 
+  <div class="form-group">
+    <% if form.object.published? %>
+    <% else %>
+      <%= form.label :duration_day %>
+      <%= form.select :duration_day, form.object.class::DURATION_DAYS.collect { |d| ["#{d} gün", d] },
+            {}, class: 'form-control' %>
+
+    <% end %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit nil, class: "btn btn-primary" %>
   </div>

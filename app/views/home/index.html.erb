@@ -93,7 +93,7 @@
     </tr>
   </thead>
   <tbody>
-    <% Announcement.all.order(created_at: :desc).each do |ann| %>
+    <% Announcement.published.order(created_at: :desc).each do |ann| %>
       <tr>
         <td><%= link_to strip_tags(ann.desc), ann %></th>
         <td><%= ann.offers.size %> teklif</td>

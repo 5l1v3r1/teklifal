@@ -35,6 +35,8 @@ class AnnouncementsController < ApplicationController
       ann.user = current_user
     end
 
+    binding.pry
+
     respond_to do |format|
       if @announcement.save
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
@@ -78,6 +80,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:desc, attachments_attributes: [:id, :file, :_destroy])
+      params.require(:announcement).permit(:desc, :duration_day, attachments_attributes: [:id, :file, :_destroy])
     end
 end

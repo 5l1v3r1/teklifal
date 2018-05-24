@@ -1,4 +1,7 @@
 <h1>Announcements</h1>
 
-<%= render current_user.announcements %>
+<h2>Yayında olanlar</h2>
+<%= render current_user.announcements.published %>
 
+<h2>Yayın süresi dolanlar</h2>
+<%= render current_user.announcements.unpublished %>

@@ -1,3 +1,4 @@
 tr:
   errors:
     number_of_offers_exceeded: "Bir ilana birden fazla teklif veremezsiniz. Vermiş olduğunuz teklifi duzenlemeyi deneyin."
+    day: "İlanın yayınlanma süresi [%{days}] günlerinden hariç olamaz."
