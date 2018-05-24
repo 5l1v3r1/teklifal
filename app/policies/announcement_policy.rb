@@ -20,7 +20,9 @@ class AnnouncementPolicy < ApplicationPolicy
   end
 
   def new_offer?
-    !record.offers.exists?(user: signed_user) and not record.user == signed_user
+    !record.offers.exists?(user: signed_user) and
+    record.user != signed_user and
+    record.published?
   end
 
   def destroy?
