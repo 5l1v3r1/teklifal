@@ -43,7 +43,7 @@ class OffersController < ApplicationController
       @offer.publish! if params[:publish]
       redirect_to @announcement, notice: 'Offer was successfully created.'
     else
-      render 'announcements/show'
+      render :new
     end
   end
 
@@ -54,7 +54,7 @@ class OffersController < ApplicationController
       @offer.publish! if params[:publish] and @offer.draft?
       redirect_to @announcement, notice: 'Offer was successfully updated.'
     else
-      render 'announcements/show'
+      render :edit
     end
   end
 

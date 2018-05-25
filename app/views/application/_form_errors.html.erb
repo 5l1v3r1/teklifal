@@ -1,0 +1,8 @@
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">Gönderilemedi! Aşağıdaki hataları düzeltin:</h4>
+  <ul>
+  <% object.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul> 
+</div>

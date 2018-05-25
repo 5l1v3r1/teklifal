@@ -1,14 +1,6 @@
 <%= form_with(model: announcement, local: true) do |form| %>
   <% if announcement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
-
-      <ul>
-      <% announcement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render 'form_errors', object: announcement %>
   <% end %>
 
   <div class="form-group">
