@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  has_many :announcements
-  has_many :offers
+  has_many :announcements, dependent: :destroy
+  has_many :offers, dependent: :destroy
 
   def name
     first_name + ' ' + last_name

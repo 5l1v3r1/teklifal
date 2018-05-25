@@ -1,11 +1,13 @@
 class Announcement < ApplicationRecord
   DURATION_DAYS = [3, 10, 30]
-  has_many :offers
-  has_many :attachments, as: :attachmentable
+  default_scope { where(archived: false) }
+  has_many :offers, dependent: :destroy
+  has_many :attachments, as: :attachmentable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
   belongs_to :user
   scope :published, -> { where('expired_at > ?', Time.now) }
   scope :unpublished, -> { where('expired_at < ?', Time.now) }
+  scope :archived, -> { unscoped.where(archived: true) }
   validates_presence_of :user, :desc, :expired_at, :duration_day
   validates_inclusion_of :duration_day, in: DURATION_DAYS
 
@@ -29,5 +31,9 @@ class Announcement < ApplicationRecord
 
   def expire!
     update_attribute :expired_at, Time.now
+  end
+
+  def archive!
+    update_attribute :archived, true
   end
 end

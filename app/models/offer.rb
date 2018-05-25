@@ -2,7 +2,7 @@ class Offer < ApplicationRecord
   include AASM
   belongs_to :user
   belongs_to :announcement
-  has_many :attachments, as: :attachmentable
+  has_many :attachments, as: :attachmentable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
   validates_presence_of :desc, :state, :announcement_id
   validate :validate_user_offer_count

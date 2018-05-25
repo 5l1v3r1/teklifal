@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_091941) do
+ActiveRecord::Schema.define(version: 2018_05_25_130620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2018_05_24_091941) do
     t.bigint "user_id"
     t.datetime "expired_at"
     t.integer "duration_day"
+    t.boolean "archived", default: false
+    t.index ["archived"], name: "index_announcements_on_archived"
     t.index ["user_id"], name: "index_announcements_on_user_id"
   end
 
