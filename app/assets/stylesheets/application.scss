@@ -28,6 +28,7 @@
   cursor: pointer;
 }
 
-.field_with_errors .trix-content {
+.field_with_errors .trix-content,
+.field_with_errors .form-control {
   border-color: #dc3545;
 }
