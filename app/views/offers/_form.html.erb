@@ -1,9 +1,6 @@
-<div class="row pt-3">
-  <div class="col-8 offset-2">
-
-    <div class="form-group">
-
-      <%= form_with(model: [(@announcement || announcement), offer], local: true) do |form| %>
+<%= form_with(model: [(@announcement || announcement), offer], local: true) do |form| %>
+  <div class="row pt-3">
+    <div class="col-8 offset-2">
         <% if offer.errors.any? %>
           <%= render 'form_errors', object: offer %>
         <% end %>
@@ -16,13 +13,18 @@
         <% 3.times { form.object.attachments.build } %>
         <%= render "announcements/attachment_form_field", form: form %>
 
-        <% unless offer.published? %>
-          <%= form.submit "Taslağı Kaydet", class: 'btn btn-secondary' %>
-        <% end %>
-        <%= form.submit "Yayınla", class: 'btn btn-success', name: 'publish' %>
 
-      <% end %>
-    </div>
       
+    </div>
   </div>
-</div>
+
+  
+  <div class="mt-3 border-top row pt-3">
+    <div class="col-8 offset-2">
+      <% unless offer.published? %>
+        <%= form.submit "Taslağı Kaydet", class: 'btn btn-secondary' %>
+      <% end %>
+      <%= form.submit "Yayınla", class: 'btn btn-success', name: 'publish' %>
+    </div>
+  </div>
+<% end %>
