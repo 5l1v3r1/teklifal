@@ -1,7 +1,7 @@
 class Announcement < ApplicationRecord
   DURATION_DAYS = [3, 10, 30]
-  has_many :offers
-  has_many :attachments, as: :attachmentable
+  has_many :offers, dependent: :destroy
+  has_many :attachments, as: :attachmentable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
   belongs_to :user
   scope :published, -> { where('expired_at > ?', Time.now) }
