@@ -1,27 +1,35 @@
 <%= form_with(model: announcement, local: true) do |form| %>
-  <% if announcement.errors.any? %>
-    <%= render 'form_errors', object: announcement %>
-  <% end %>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <% if announcement.errors.any? %>
+        <%= render 'form_errors', object: announcement %>
+      <% end %>
 
-  <div class="form-group">
-    <%= form.label :desc %>
-    <%= form.trix_editor :desc %>
+      <div class="form-group">
+        <%= form.label :desc %>
+        <%= form.trix_editor :desc %>
+      </div>
+
+      <%= render 'attachment_form_field', form: form %>
+
+      <div class="form-group">
+        <% if form.object.published? %>
+        <% else %>
+          <%= form.label :duration_day %>
+          <%= form.select :duration_day, form.object.class::DURATION_DAYS.collect { |d| ["#{d} gün", d] },
+                {}, class: 'form-control' %>
+
+        <% end %>
+      </div>
+
+
+    </div>
   </div>
 
-  <%= render 'attachment_form_field', form: form %>
 
-  <div class="form-group">
-    <% if form.object.published? %>
-    <% else %>
-      <%= form.label :duration_day %>
-      <%= form.select :duration_day, form.object.class::DURATION_DAYS.collect { |d| ["#{d} gün", d] },
-            {}, class: 'form-control' %>
-
-    <% end %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit nil, class: "btn btn-primary" %>
+  <div class="mt-3 border-top row pt-3">
+    <div class="col-8 offset-2">
+      <%= form.submit nil, class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
