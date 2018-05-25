@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   
   get 'home/index'
   root 'home#index'
+
+  namespace :administration do
+    get "/" => "base#show"
+    # resources :nodes, only: [:index, :destroy]
+  end
 end
