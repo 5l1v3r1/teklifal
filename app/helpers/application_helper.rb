@@ -12,4 +12,11 @@ module ApplicationHelper
   def sub_header title
     render 'sub_header', title: title
   end
+
+  def nav_link(title, path, options = {})
+    classes = ["nav-link"]
+    classes << "active" if current_page?(path)
+    options.merge!(class: classes.join(" "))
+    link_to title, path, options
+  end
 end
