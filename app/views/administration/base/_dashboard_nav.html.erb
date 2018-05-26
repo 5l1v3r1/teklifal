@@ -14,4 +14,10 @@
       <%= Offer.publishing.count %>
     </span>
   <% end %>
+  <%= dashboard_nav_link administration_users_path do %>
+    Kullanıcılar
+    <span class="badge badge-primary badge-pill">
+      <%= User.count %>
+    </span>
+  <% end %>
 </div>

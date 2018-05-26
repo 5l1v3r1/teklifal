@@ -1,0 +1,42 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Ad</th>
+      <th>Soyad</th>
+      <th>Email</th>
+      <th>Giriş sayısı</th>
+      <th>Son giriş</th>
+      <th>İlan sayısı</th>
+      <th>Teklif sayısı</th>
+      <th>Role</th>
+      <th>İşlemler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= "##{user.id}"  %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.sign_in_count %></td>
+        <td><%= time_ago_in_words(user.current_sign_in_at) %> önce</td>
+        <td><%= user.announcements.count %></td>
+        <td><%= user.offers.count %></td>
+        <td><%= user.role %></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              İşlemler
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Göster</a>
+            </div>
+          </div>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
