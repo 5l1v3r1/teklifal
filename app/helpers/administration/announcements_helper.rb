@@ -1,0 +1,2 @@
+module Administration::AnnouncementsHelper
+end

@@ -1,0 +1,51 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>İlan</th>
+      <th>Kullanıcı</th>
+      <th>Yayın süresi</th>
+      <th>Durum</th>
+      <th>Taslak Teklif Sayısı</th>
+      <th>Yayındaki Teklif Sayısı</th>
+      <th>Sona erme süresi</th>
+      <th>Arşiv</th>
+      <th>İşlemler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @announcements.each do |ann| %>
+      <tr>
+        <td><%= ann.id %></td>      
+        <td><%= link_to truncate(strip_tags(ann.desc), length: 20), ann %></td>
+        <td><%= ann.user.name %></td>
+        <td><%= ann.duration_day %></td>
+        <td><%= ann.published? ? "Yayında" : "Süresi dolmuş" %></td>
+        <td><%= ann.offers.state('draft').count %></td>
+        <td><%= ann.offers.state('published').count %></td>
+        <td class="<%= ann.expired? ? "table-danger" : "table-success" %>">
+          <%= time_ago_in_words ann.expired_at %> önce
+        </td>
+        <td><%= "Arşiv" if ann.archived? %></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              İşlemler
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <%= link_to "Düzenle", edit_announcement_path(ann), class: 'dropdown-item' %>
+              <% if ann.published? %>
+                <%= link_to "Yayından Kaldır",
+                            expire_announcement_path(ann),
+                            method: :put,
+                            data: { confirm: "Yayindan kaldirmak istediginize emin misiniz?"},
+                            class: 'dropdown-item'  %>
+              <% end %>
+            </div>
+          </div>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

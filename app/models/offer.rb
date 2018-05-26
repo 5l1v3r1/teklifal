@@ -6,6 +6,7 @@ class Offer < ApplicationRecord
   accepts_nested_attributes_for :attachments, allow_destroy: true
   validates_presence_of :desc, :state, :announcement_id
   validate :validate_user_offer_count
+  scope :state, ->(state) { where(state: state) }
 
   aasm column: 'state' do
     state :draft, initial: true

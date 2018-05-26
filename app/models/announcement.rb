@@ -34,6 +34,7 @@ class Announcement < ApplicationRecord
   end
 
   def archive!
+    expire!
     update_attribute :archived, true
   end
 end
