@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   namespace :administration do
     get "/" => "base#show"
     resources :announcements, only: [:index]
+    resources :offers, only: [:index]
   end
 end

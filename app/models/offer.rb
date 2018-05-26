@@ -7,6 +7,7 @@ class Offer < ApplicationRecord
   validates_presence_of :desc, :state, :announcement_id
   validate :validate_user_offer_count
   scope :state, ->(state) { where(state: state) }
+  scope :publishing, -> { joins(:announcement).where("announcements.expired_at > ?", Time.now) }
 
   aasm column: 'state' do
     state :draft, initial: true
