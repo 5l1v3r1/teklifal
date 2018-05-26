@@ -1,11 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render 'announcements/announcement_card', announcement: @announcement %>
 
-<p>
-  <strong>Announcement:</strong>
-  <%= @offer.announcement %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @offer.desc %>
-</p>
+<%= page_header "Benim Teklifim" %>
+<%= render @offer %>
