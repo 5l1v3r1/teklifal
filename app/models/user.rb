@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def offer_for state, announcement
     announcement.offers.find_by state: state, user: self
   end
+
+  def manager?
+    moderator? or superadmin?
+  end
 end

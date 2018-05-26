@@ -16,7 +16,8 @@ class AnnouncementPolicy < ApplicationPolicy
   end
 
   def update?
-    record.owner? signed_user
+    (signed_user and signed_user.manager?) or
+    record.owner?(signed_user)
   end
 
   def new_offer?

@@ -5,7 +5,9 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def show?
-    record.owner?(signed_user) or (record.announcement.user == signed_user)
+    signed_user.manager? or 
+    record.owner?(signed_user) or
+    (record.announcement.user == signed_user)
   end
 
   def new?
@@ -13,11 +15,19 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def create?
-    signed_user and not record.announcement.offers.exists?(user: signed_user) and not (record.announcement.user == signed_user)
+    (signed_user and signed_user.manager?) or
+    ( 
+      signed_user and not record.announcement.offers.exists?(user: signed_user) and not 
+      (record.announcement.user == signed_user)
+    )
   end
 
   def update?
-    record.owner? signed_user
+    signed_user and
+    (
+      signed_user.manager? or
+      record.owner?(signed_user)
+    )
   end
 
   def edit?
