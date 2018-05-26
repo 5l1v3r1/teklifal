@@ -1,39 +1,33 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy, :expire]
 
-  # GET /announcements
-  # GET /announcements.json
   def index
     authorize Announcement
     @announcements = Announcement.all
   end
 
-  # GET /announcements/1
-  # GET /announcements/1.json
+
   def show
     authorize @announcement
   end
 
-  # GET /announcements/new
   def new
     authorize Announcement
     @announcement = Announcement.new
     3.times { @announcement.attachments.build }
   end
 
-  # GET /announcements/1/edit
   def edit
     authorize @announcement
     3.times { @announcement.attachments.build }
   end
 
-  # POST /announcements
-  # POST /announcements.json
   def create
     authorize Announcement
     @announcement = Announcement.new(announcement_params).tap do |ann|
       ann.user = current_user
     end
+    3.times { @announcement.attachments.build }
 
     respond_to do |format|
       if @announcement.save
@@ -46,10 +40,9 @@ class AnnouncementsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /announcements/1
-  # PATCH/PUT /announcements/1.json
   def update
     authorize @announcement
+    3.times { @announcement.attachments.build }
     respond_to do |format|
       if @announcement.update(announcement_params)
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
@@ -61,8 +54,7 @@ class AnnouncementsController < ApplicationController
     end
   end
 
-  # DELETE /announcements/1
-  # DELETE /announcements/1.json
+
   def destroy
     authorize @announcement
     @announcement.destroy
@@ -76,12 +68,10 @@ class AnnouncementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_announcement
       @announcement = Announcement.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
       params.require(:announcement).permit(:desc, :duration_day, attachments_attributes: [:id, :file, :_destroy])
     end
