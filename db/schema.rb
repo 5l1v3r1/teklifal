@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_27_101724) do
+ActiveRecord::Schema.define(version: 2018_05_27_124726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 2018_05_27_101724) do
     t.integer "duration_day"
     t.boolean "archived", default: false
     t.string "title"
+    t.string "content_type"
+    t.bigint "content_id"
     t.index ["archived"], name: "index_announcements_on_archived"
+    t.index ["content_type", "content_id"], name: "index_announcements_on_content_type_and_content_id"
     t.index ["user_id"], name: "index_announcements_on_user_id"
   end
 
@@ -35,6 +38,12 @@ ActiveRecord::Schema.define(version: 2018_05_27_101724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attachmentable_type", "attachmentable_id"], name: "index_attachments_on_attachmentable_type_and_attachmentable_id"
+  end
+
+  create_table "car_announcements", force: :cascade do |t|
+    t.string "make"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "offers", force: :cascade do |t|

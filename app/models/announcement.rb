@@ -10,6 +10,8 @@ class Announcement < ApplicationRecord
   scope :archived, -> { unscoped.where(archived: true) }
   validates_presence_of :user, :title, :desc, :expired_at, :duration_day
   validates_inclusion_of :duration_day, in: DURATION_DAYS
+  belongs_to :content, polymorphic: true, dependent: :destroy, optional: true, dependent: :destroy
+  accepts_nested_attributes_for :content, allow_destroy: true
 
   def owner? user
     self.user == user
@@ -36,5 +38,9 @@ class Announcement < ApplicationRecord
   def archive!
     expire!
     update_attribute :archived, true
+  end
+
+  def content_type_name
+    content_type.underscore if content_type
   end
 end

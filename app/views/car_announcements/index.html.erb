@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Car Announcements</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Make</th>
+      <th>Offers Count</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cas.each do |ca| %>
+      <tr>
+        <td><%= ca.announcement.title %></td>
+        <td><%= ca.make %></td>
+        <td><%= ca.announcement.offers.count %></td>
+        <td><%= link_to 'Show', ca %></td>
+        <td><%= link_to 'Edit', edit_car_announcement_path(ca) %></td>
+        <td><%= link_to 'Destroy', ca, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Car Announcement', new_car_announcement_path %>

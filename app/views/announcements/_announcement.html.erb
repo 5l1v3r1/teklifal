@@ -1,6 +1,10 @@
 <div class="row py-3">
   <div class="col-2 offset-1"><%= announcement.user.name %></div>
   <div class="col-8">
+    <% if announcement.content %>
+      <%= render announcement.content %>
+    <% end %>
+
     <%= desc announcement.desc %>
     <%= render "announcements/attachments", attachments: announcement.attachments %>
     <% if announcement.published? %>

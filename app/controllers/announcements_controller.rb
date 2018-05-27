@@ -18,6 +18,9 @@ class AnnouncementsController < ApplicationController
   end
 
   def edit
+    if @announcement.content
+      redirect_to send(:"edit_#{@announcement.content_type_name}_path", @announcement.content)
+    end
     authorize @announcement
     3.times { @announcement.attachments.build }
   end
@@ -73,6 +76,6 @@ class AnnouncementsController < ApplicationController
     end
 
     def announcement_params
-      params.require(:announcement).permit(:desc, :duration_day, attachments_attributes: [:id, :file, :_destroy])
+      params.require(:announcement).permit(:title, :desc, :duration_day, attachments_attributes: [:id, :file, :_destroy])
     end
 end

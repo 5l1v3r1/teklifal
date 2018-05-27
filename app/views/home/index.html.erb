@@ -18,7 +18,10 @@
     <div class="card mb-4">
       <div class="card-body text-center">
         <%= image_tag "car-dark.png", class: 'w-100 mb-3' %>
-        <p class="card-text">Yeni araba almak icin <strong>234</strong> bayiden <a href="#">teklif al</a></p>
+        <p class="card-text">
+          Yeni araba almak icin <strong>234</strong> bayiden
+          <%= link_to "teklif al", car_new_announcement_path %>
+        </p>
       </div>
     </div>
   </div>

@@ -1,0 +1,17 @@
+<div class="form-group">
+  <%= form.label :desc %>
+  <%= form.trix_editor :desc %>
+</div>
+
+<%= render 'announcements/attachment_form_field', form: form %>
+
+<div class="form-group">
+  <%= form.label :duration_day %>
+  <% if form.object.persisted? and form.object.published? %>
+    <%= form.text_field :duration_day, class: "form-control", readonly: true  %>
+  <% else %>
+    <%= form.select :duration_day, form.object.class::DURATION_DAYS.collect { |d| ["#{d} gün", d] },
+          {}, class: 'form-control' %>
+
+  <% end %>
+</div>

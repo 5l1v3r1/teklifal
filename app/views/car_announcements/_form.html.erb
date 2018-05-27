@@ -1,0 +1,24 @@
+<%= form_with(model: ca, local: true) do |form| %>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <%= render 'form_errors', object: form.object %>
+
+
+      <%= form.fields_for :announcement do |af| %>
+        <%= render 'announcements/title_field', form: af %>
+      <% end %>
+
+
+      <div class="form-group">
+        <%= form.label :make %>
+        <%= form.select :make, form.object.class::BRANDS, {include_blank: true}, {class: 'form-control'} %>
+      </div>
+
+      <%= form.fields_for :announcement do |af| %>
+        <%= render 'announcements/fields_for_announcement', form: af %>
+      <% end %>
+
+      <%= form.submit nil, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
