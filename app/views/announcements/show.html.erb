@@ -4,9 +4,16 @@
   </div>
 <% end %>
 
-<div class="border-bottom cog">
+<div class="border-bottom d-flex">
+  <h3 class="h5 pt-1">TALEP İLANI</h3>
+  <% unless @announcement.expired? %>
+    <div class="ml-3">
+      <span class="badge badge-success">Teklifler toplanıyor</span>
+    </div>
+  <% end %>
+
   <% if policy(@announcement).edit? %>
-    <div class="dropdown cog-dropdown float-right">
+    <div class="dropdown ml-auto">
       <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         İşlemler
       </button>
@@ -20,7 +27,6 @@
       </div>
     </div>
   <% end %>
-  <h3 class="h5 pt-1">TALEP İLANI</h3>
 </div>
 
 <%= render @announcement %>
