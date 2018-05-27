@@ -76,6 +76,6 @@ class OffersController < ApplicationController
     end
 
     def set_announcement
-      @announcement = Announcement.find(params[:announcement_id])
+      @announcement = Announcement.unscoped.find(params[:announcement_id])
     end
 end

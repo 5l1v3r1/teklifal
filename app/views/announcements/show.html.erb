@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="border-bottom d-flex">
-  <h3 class="h5 pt-1">TALEP İLANI</h3>
+  <h3 class="h5 pt-1"><%= @announcement.title %></h3>
   <% unless @announcement.expired? %>
     <div class="ml-3">
       <span class="badge badge-success">Teklifler toplanıyor</span>

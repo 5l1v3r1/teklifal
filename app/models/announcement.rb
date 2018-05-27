@@ -8,7 +8,7 @@ class Announcement < ApplicationRecord
   scope :published, -> { where('expired_at > ?', Time.now) }
   scope :unpublished, -> { where('expired_at < ?', Time.now) }
   scope :archived, -> { unscoped.where(archived: true) }
-  validates_presence_of :user, :desc, :expired_at, :duration_day
+  validates_presence_of :user, :title, :desc, :expired_at, :duration_day
   validates_inclusion_of :duration_day, in: DURATION_DAYS
 
   def owner? user

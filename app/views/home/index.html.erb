@@ -83,19 +83,21 @@
 
 
 
-<h3 class="mt-5">Guncel Teklifler</h3>
+<h3 class="mt-5">Güncel İlanlar</h3>
 <table class="table table-hover table-dark">
   <thead>
     <tr>
-      <th scope="col">Teklif</th>
+      <th scope="col">Ilan</th>
+      <th scope="col">Ekleyen</th>
       <th scope="col">Teklif sayisi</th>
-      <th scope="col">Teklif zamani</th>
+      <th scope="col">Eklenme zamani</th>
     </tr>
   </thead>
   <tbody>
     <% Announcement.published.order(created_at: :desc).each do |ann| %>
       <tr>
-        <td><%= link_to strip_tags(ann.desc), ann %></th>
+        <td><%= link_to ann.title, ann %></th>
+        <td><%= ann.user.name %></th>
         <td><%= ann.offers.size %> teklif</td>
         <td><%= time_ago_in_words ann.created_at %> once</td>
       </tr>

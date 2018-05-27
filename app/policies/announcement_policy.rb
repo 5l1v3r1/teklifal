@@ -1,4 +1,8 @@
 class AnnouncementPolicy < ApplicationPolicy
+  def show?
+    true
+  end
+
   def index?
     signed_user
   end

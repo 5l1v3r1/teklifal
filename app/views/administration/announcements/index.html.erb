@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>İlan</th>
+      <th>Başlık</th>
       <th>Kullanıcı</th>
       <th>Yayın süresi</th>
       <th>Durum</th>
@@ -17,7 +17,7 @@
     <% @announcements.each do |ann| %>
       <tr>
         <td><%= ann.id %></td>      
-        <td><%= link_to truncate(strip_tags(ann.desc), length: 20), ann %></td>
+        <td><%= link_to ann.title, ann %></td>
         <td><%= ann.user.name %></td>
         <td><%= ann.duration_day %></td>
         <td><%= ann.published? ? "Yayında" : "Süresi dolmuş" %></td>

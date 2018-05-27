@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>İlan No</th>
+      <th>İlan</th>
       <th>Kullanıcı</th>
       <th>İlan durumu</th>
       <th>Teklif durumu</th>
@@ -14,7 +14,7 @@
     <% @offers.each do |offer| %>
       <tr>
         <td><%= link_to "##{offer.id}", [offer.announcement, offer]  %></td>
-        <td><%= link_to "##{offer.announcement.id}", offer.announcement %></td>
+        <td><%= link_to offer.announcement.title, offer.announcement %></td>
         <td><%= offer.user.name %></td>
 
         <% css = if offer.announcement.expired?

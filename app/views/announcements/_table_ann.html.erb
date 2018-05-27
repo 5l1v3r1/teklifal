@@ -6,7 +6,7 @@
       Yayında değil
     <% end %>
   </td>
-  <td><%= link_to truncate(strip_tags(announcement.desc), length: 40), announcement %></td>
+  <td><%= link_to announcement.title, announcement %></td>
   <td><%= announcement.offers.count %> offer</td>
   <td><%= time_ago_in_words announcement.expired_at %></td>
   <td>
