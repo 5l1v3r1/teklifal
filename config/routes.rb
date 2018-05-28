@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :offers, only: :index
   
   get 'home/index'
+  get 'home/pro'
   root 'home#index'
 
   namespace :administration do
