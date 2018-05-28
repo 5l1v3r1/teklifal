@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :announcements, dependent: :destroy
   has_many :offers, dependent: :destroy
 
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :phone
+  validates_format_of :phone, with: /\A5[0-9]{9}\z/
 
   enum role: {
     registered: 0,

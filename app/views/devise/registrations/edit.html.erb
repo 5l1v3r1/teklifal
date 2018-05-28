@@ -3,6 +3,19 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="form-row">
+    <div class="form-group col-6">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control', autofocus: true %>
+    </div>
+
+    <div class="form-group col-6">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+  </div>
+
+
   <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
@@ -12,6 +25,17 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+  <div class="form-group">
+    <%= f.label :phone %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">+90</div>
+      </div>
+      <%= f.telephone_field :phone, class: 'form-control', maxlength: 10, minlength: 10 %>  
+    </div>
+    <small class="form-text text-muted">Lütfen cep telefon numaranızı 10 basamaklı olarak giriniz. Başında 0 kullanmayınız.</small>
+
+  </div>
   <div class="form-group">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
