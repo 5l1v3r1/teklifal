@@ -13,8 +13,16 @@
   <% end %>
 
   <% if policy(@announcement).edit? %>
-    <div class="dropdown ml-auto">
-      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="dropdown ml-auto make-something">
+      <button class="btn btn-sm btn-primary dropdown-toggle"
+        id="actions-button"
+        type="button"
+        data-toggle="dropdown"
+        data-trigger="manual"
+        aria-haspopup="true"
+        aria-expanded="false"
+        data-toggle="popover"
+        data-content="İlanınızı buradan yönetebilirsiniz">
         İşlemler
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">

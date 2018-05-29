@@ -18,3 +18,15 @@
 //= require bootstrap-sprockets
 //= require trix
 //= require_tree .
+
+$(function () {
+  var actionPopover = $('#actions-button').popover('show');
+
+  $('#actions-button').click(function() {
+    actionPopover.popover('hide')
+  })
+
+  setTimeout(function() {
+    actionPopover.popover('hide')
+  }, 3000)
+})
