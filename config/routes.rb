@@ -1,4 +1,11 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+
+  authenticate :user, lambda { |u| u.manager? } do
+    mount Sidekiq::Web => 'administration/sidekiq'
+  end
+
   resources :car_announcements, except: [:show]
   devise_for :users
 

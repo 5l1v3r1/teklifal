@@ -40,7 +40,11 @@ class OffersController < ApplicationController
     authorize @offer
 
     if @offer.save
-      @offer.publish! if params[:publish]
+      if params[:publish]
+        @offer.publish!
+        UserMailer.with(offer: @offer).new_offer.deliver_later
+      end
+
       redirect_to @announcement, notice: 'Offer was successfully created.'
     else
       render :new
@@ -51,7 +55,11 @@ class OffersController < ApplicationController
     authorize @offer
 
     if @offer.update(offer_params)
-      @offer.publish! if params[:publish] and @offer.draft?
+      if params[:publish] && @offer.draft?
+        @offer.publish!
+        UserMailer.with(offer: @offer).new_offer.deliver_later
+      end
+
       redirect_to @announcement, notice: 'Offer was successfully updated.'
     else
       render :edit
