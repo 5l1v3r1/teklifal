@@ -1,9 +1,5 @@
 class OfferPolicy < ApplicationPolicy
 
-  def index?
-    signed_user
-  end
-
   def show?
     signed_user.manager? or 
     record.owner?(signed_user) or

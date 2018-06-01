@@ -3,13 +3,13 @@
     <h2 class="h4 mt-1 mr-4">Tekliflerim</h2>
   </li>
   <li class="nav-item">
-    <%= link_to "Taslak", offers_path(status: :draft), class: "nav-link #{'active' if params[:status] == 'draft'}" %>
+    <%= link_to "Taslak", my_offers_path(status: :draft), class: "nav-link #{'active' if params[:status] == 'draft'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Yayında olan", offers_path(status: :active), class: "nav-link #{'active' if params[:status] == 'active'}" %>
+    <%= link_to "Yayında olan", my_offers_path(status: :active), class: "nav-link #{'active' if params[:status] == 'active'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Yayında olmayan", offers_path(status: :expired), class: "nav-link #{'active' if params[:status] == 'expired'}" %>
+    <%= link_to "Yayında olmayan", my_offers_path(status: :expired), class: "nav-link #{'active' if params[:status] == 'expired'}" %>
   </li>
 </ul>
 

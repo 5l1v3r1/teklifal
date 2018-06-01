@@ -9,6 +9,6 @@
     <th>Actions</th>
   </tr>
   <%= render partial: 'table_ann',
-             collection: current_user.announcements.order(expired_at: :desc),
+             collection: @announcements,
              as: :announcement %>
 </table>

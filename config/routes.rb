@@ -2,6 +2,8 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
 
+  get 'my/announcements', to: "user#announcements"
+  get 'my/offers', to: "user#offers"
   authenticate :user, lambda { |u| u.manager? } do
     mount Sidekiq::Web => 'administration/sidekiq'
   end

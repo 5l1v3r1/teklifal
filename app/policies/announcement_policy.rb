@@ -3,10 +3,6 @@ class AnnouncementPolicy < ApplicationPolicy
     true
   end
 
-  def index?
-    signed_user
-  end
-
   def new?
     create?
   end
