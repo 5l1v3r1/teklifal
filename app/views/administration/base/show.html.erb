@@ -1,23 +1,36 @@
-<div class="row">
-  <div class="col-3">
-    <div class="card">
-      <div class="card-header">
-        Kalan SMS
-      </div>
-      <div class="card-body">
-        <h3 class="display-1 card-title text-center">
-          <% case balance = Sms.balance.to_i %>
-          <% when 0..500 %>
-            <span class="text-danger"><%= balance %></span>
-          <% else %>
-            <span class="text-success"><%= balance %></span>
-          <% end %>
-        </h3>
-        <p class="card-text">
-          Yüklemek için
-          <a href="https://www.iletimerkezi.com">iletimerkezi.com</a>
-        </p>
-      </div>
+<div class="d-flex">
+  <div class="card mr-3">
+    <div class="card-header">
+      Kalan SMS
+    </div>
+    <div class="card-body">
+      <h3 class="display-1 card-title text-center">
+        <% case balance = Sms.balance.to_i %>
+        <% when 0..500 %>
+          <span class="text-danger"><%= balance %></span>
+        <% else %>
+          <span class="text-success"><%= balance %></span>
+        <% end %>
+      </h3>
+      <p class="card-text">
+        Yüklemek için
+        <a href="https://www.iletimerkezi.com">iletimerkezi.com</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="card mr-3">
+    <div class="card-header">
+      Sidekiq
+    </div>
+    <div class="card-body">
+      <h3 class="h3 card-title text-center">
+        <%= `systemctl is-active sidekiq`.to_s %> /
+        <%= `systemctl is-enabled sidekiq`.to_s %>
+      </h3>
+      <p class="card-text">
+        <%= link_to "Sidekiq Web UI", sidekiq_web_path %>
+      </p>
     </div>
   </div>
 </div>
