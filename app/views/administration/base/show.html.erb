@@ -1,1 +1,23 @@
-show.html.erb
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-header">
+        Kalan SMS
+      </div>
+      <div class="card-body">
+        <h3 class="display-1 card-title text-center">
+          <% case balance = Sms.balance.to_i %>
+          <% when 0..500 %>
+            <span class="text-danger"><%= balance %></span>
+          <% else %>
+            <span class="text-success"><%= balance %></span>
+          <% end %>
+        </h3>
+        <p class="card-text">
+          Yüklemek için
+          <a href="https://www.iletimerkezi.com">iletimerkezi.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

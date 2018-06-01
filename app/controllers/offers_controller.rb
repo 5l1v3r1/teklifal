@@ -1,3 +1,5 @@
+require 'sms'
+
 class OffersController < ApplicationController
   before_action :set_announcement, except: :index
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
@@ -43,6 +45,7 @@ class OffersController < ApplicationController
       if params[:publish]
         @offer.publish!
         UserMailer.with(offer: @offer).new_offer.deliver_later
+        Sms.send_sms to: @announcement.user.phone, message: "Yeni teklifiniz var."
       end
 
       redirect_to @announcement, notice: 'Offer was successfully created.'
@@ -58,6 +61,7 @@ class OffersController < ApplicationController
       if params[:publish] && @offer.draft?
         @offer.publish!
         UserMailer.with(offer: @offer).new_offer.deliver_later
+        Sms.send_sms to: @announcement.user.phone, message: "Yeni teklifiniz var."
       end
 
       redirect_to @announcement, notice: 'Offer was successfully updated.'
