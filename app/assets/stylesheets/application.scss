@@ -29,3 +29,7 @@ trix-editor {
 trix-editor:focus {
   @extend .form-control:focus
 }
+
+trix-toolbar {
+  display: none
+}
