@@ -1,0 +1,41 @@
+<%= form_with(model: content, local: true) do |form| %>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <%= render 'form_errors', object: form.object %>
+
+      <%= form.fields_for :announcement do |af| %>
+        <%= render 'announcements/title_field', form: af %>
+      <% end %>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <%= form.label :pick_up_location %>
+          <%= form.text_field :pick_up_location, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col">
+          <%= form.label :drop_off_location %>
+          <%= form.text_field :drop_off_location, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <%= form.label :pick_up_time %>
+          <%= form.text_field :pick_up_time, class: 'form-control flatpickr' %>
+        </div>
+
+        <div class="form-group col">
+          <%= form.label :drop_off_time %>
+          <%= form.text_field :drop_off_time, class: 'form-control flatpickr' %>
+        </div>
+      </div>
+
+      <%= form.fields_for :announcement do |af| %>
+        <%= render 'announcements/fields_for_announcement', form: af %>
+      <% end %>
+
+      <%= form.submit nil, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

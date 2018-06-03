@@ -17,6 +17,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require trix
+//= require flatpickr
 //= require_tree .
 
 $(function () {
@@ -29,4 +30,5 @@ $(function () {
   setTimeout(function() {
     actionPopover.popover('hide')
   }, 3000)
+
 })

@@ -3,7 +3,8 @@ class Announcement < ApplicationRecord
   default_scope { where(archived: false) }
   has_many :offers, dependent: :destroy
   has_many :attachments, as: :attachmentable, dependent: :destroy
-  accepts_nested_attributes_for :attachments, allow_destroy: true
+  accepts_nested_attributes_for :attachments, allow_destroy: true,
+    reject_if: ->(attrs){ attrs[:file].blank? } 
   belongs_to :user
   scope :published, -> { where('expired_at > ?', Time.now) }
   scope :unpublished, -> { where('expired_at < ?', Time.now) }
