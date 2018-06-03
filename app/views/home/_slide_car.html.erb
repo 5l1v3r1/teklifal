@@ -1,0 +1,57 @@
+<div class="jumbotron mb-0 position-relative">
+  <%= video_tag "araba-anlasmasi.mp4", autoplay: true, muted: true, loop: true,
+        class: 'background-video w-100' %>
+
+  <style type="text/css">
+    .jumbotron {
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .background-video {
+      position:absolute;
+      top:50%;
+      left:50%;
+      min-width:100%;
+      min-height:100%;
+      width:auto;
+      height:auto;
+      z-index:-100;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      background: url(../images/clouds.jpg) no-repeat;
+      background-size: cover;
+    }
+  </style>
+
+  <div class="row">
+    <div class="col-8 text-white">
+      <h1>Araba alırken;</h1>
+      <h2>bayilerden teklif alın</h2>
+      <p>Size bayilerin yaptıkları teklifleri değerlendirin.</p>
+      <p>Alırken kazanın.</p>
+    </div>
+
+    <div class="col-4">
+      <div class="card" style="background-color:rgba(255, 255, 255, 0.6);">
+        <div class="card-body">
+          <div class="form-group">
+            <label>Marka</label>
+            <%= select_tag :make,
+              options_from_collection_for_select(CarAnnouncement::BRANDS, :to_s, :to_s),
+              class: "form-control",
+              include_blank: true %>
+          </div>
+          <div class="form-group">
+            <label>Talep</label>
+            <%= text_area_tag :desc, nil, class: 'form-control' %>
+          </div>
+          <button class="btn btn-primary w-100">Teklif Al</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
