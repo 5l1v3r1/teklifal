@@ -1,0 +1,43 @@
+<h1>Car Rental Announcements</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Pick Up Location</th>
+      <th>Drop Off Location</th>
+      <th>Pick Up Time</th>
+      <th>Drop Off Time</th>
+      <th>Offers Count</th>
+      <td>İşlemler</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contents.each do |content| %>
+      <tr>
+        <td><%= content.announcement.title %></td>
+        <td><%= content.pick_up_location %></td>
+        <td>
+          <% if content.different_location %>
+            <%= content.drop_off_location %>
+          <% else %>
+            Ayni yer
+          <% end %>
+        </td>
+        <td><%= time_tag content.pick_up_time %></td>
+        <td><%= time_tag content.drop_off_time %></td>
+        <td><%= content.announcement.offers.count %></td>
+        <td>
+          <%= link_to 'Show', content %>
+          <%= link_to 'Edit', edit_car_rental_announcement_path(content) %>
+          <%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Car Announcement', new_car_announcement_path %>

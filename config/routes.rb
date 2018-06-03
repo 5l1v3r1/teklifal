@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   end
 
   resources :car_announcements, except: [:show]
+  resources :car_rental_announcements, except: [:show]
   devise_for :users
 
   resources :announcements do
     put :expire, on: :member
     resources :offers, except: :index
     get 'car', on: :new, to: "car_announcements#new"
+    get 'car_rental', on: :new, to: "car_rental_announcements#new"
   end
 
   resources :offers, only: :index

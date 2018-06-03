@@ -17,7 +17,6 @@ class CarAnnouncementsController < ApplicationController
   end
 
   def create
-    binding.pry
     @ca = CarAnnouncement.new(ca_params)
     @ca.assign_attributes ca_params
     @ca.announcement.user = current_user
