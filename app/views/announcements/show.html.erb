@@ -1,6 +1,6 @@
 <% unless @announcement.published? %>
   <div class="alert alert-warning" role="alert">
-    İlanın yayın süresi doldu. Tekliflere kapalı.
+    <%= t '.expired' %>
   </div>
 <% end %>
 
@@ -8,7 +8,7 @@
   <h3 class="h5 pt-1"><%= @announcement.title %></h3>
   <% unless @announcement.expired? %>
     <div class="ml-3">
-      <span class="badge badge-success">Teklifler toplanıyor</span>
+      <span class="badge badge-success"><%= t '.waiting_for_offers' %></span>
     </div>
   <% end %>
 
@@ -22,15 +22,15 @@
         aria-haspopup="true"
         aria-expanded="false"
         data-toggle="popover"
-        data-content="İlanınızı buradan yönetebilirsiniz">
-        İşlemler
+        data-content="<%= t '.actions_popover_content' %>">
+        <%= t 'common.actions' %>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-          <%= link_to 'Düzenle', edit_announcement_path(@announcement), class: "dropdown-item" %>
-          <%= link_to "Yayından Kaldır",
+          <%= link_to t('common.edit'), edit_announcement_path(@announcement), class: "dropdown-item" %>
+          <%= link_to t('announcements.expire'),
                       expire_announcement_path(@announcement), 
                       method: :put,
-                      data: { confirm: "Yayindan kaldirmak istediginize emin misiniz?"},
+                      data: { confirm: t('announcements.expire_are_you_sure')},
                       class: "dropdown-item"  %>
       </div>
     </div>
@@ -42,23 +42,23 @@
 
 <div class="mt-5 border-bottom">
   <% if policy(@announcement).new_offer? %>
-    <%= link_to "Teklif Yap",
+    <%= link_to t('offers.make_an_offer'),
                 new_announcement_offer_path(@announcement),
                 class: "btn btn-primary float-right"  %>
   <% elsif user_signed_in? and offer = current_user.offer_for('draft', @announcement) %>
-    <%= link_to "Taslağa Devam Et",
+    <%= link_to t('offers.continue_to_the_draft'),
                 [:edit, @announcement, offer],
                 class: "btn btn-warning float-right"  %>
   <% elsif user_signed_in? and offer = current_user.offer_for('published', @announcement) %>
     <span class="float-right text-success">
-      Teklif yaptiniz
-      <%= link_to "Teklifi düzenle", [:edit, @announcement, offer] %>
+      <%= t 'offer.already_offer' %>
+      <%= link_to t('offers.edit'), [:edit, @announcement, offer] %>
       <i class="material-icons text-success">done</i>
     </span>
   <% end %>
 
-  <h3 class="h5 pt-3">TEKLİFLER</h3>
+  <h3 class="h5 pt-3"><%= t "offers.offers" %></h3>
 </div>
 
 <%= (render @announcement.offers.where(state: 'published')) or 
-  content_tag(:p, "Hiç teklif yok. İlk teklifi yapan sen ol!", class: "text-center text-muted mt-4") %>
+  content_tag(:p, t('offers.no_offer'), class: "text-center text-muted mt-4") %>

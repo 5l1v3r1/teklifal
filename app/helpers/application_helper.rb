@@ -19,4 +19,9 @@ module ApplicationHelper
     options.merge!(class: classes.join(" "))
     link_to title, path, options
   end
+
+  def humanize_attribute object, attribute
+    object = object.class.name.underscore unless object.kind_of? Symbol
+    I18n.t("activerecord.attributes.#{object}.#{attribute}")
+  end
 end

@@ -1,17 +1,17 @@
 <dl>
-  <dt>Alış Yeri</dt>
+  <dt><%= humanize_attribute car_rental_announcement, :pick_up_location %></dt>
   <dd><%= car_rental_announcement.pick_up_location %></dd>
 
-  <dt>İade Yeri</dt>
-  <% if car_rental_announcement.different_location %>
+  <dt><%= humanize_attribute car_rental_announcement, :drop_off_location %></dt>
+  <% if car_rental_announcement.different_location? %>
     <dd><%= car_rental_announcement.drop_off_location %></dd>
   <% else %>
-    <dd>Alış yeri ile aynı</dd>
+    <dd><%= t "car_rental_announcements.same_location" %></dd>
   <% end %>
 
-  <dt>Alış Tarihi</dt>
+  <dt><%= humanize_attribute car_rental_announcement, :pick_up_time %></dt>
   <dd><%= l car_rental_announcement.pick_up_time, format: :long %></dd>
 
-  <dt>İade Tarihi</dt>
+  <dt><%= humanize_attribute car_rental_announcement, :drop_off_time %></dt>
   <dd><%= l car_rental_announcement.drop_off_time, format: :long %></dd>
 </dl>

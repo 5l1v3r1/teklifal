@@ -1,12 +1,12 @@
-<%= page_header "My Announcements" %>
+<%= page_header t("announcements.my_announcements") %>
 
 <table class="table">
   <tr>
     <th></th>
-    <th>Desc</th>
-    <th>Offer Count</th>
-    <th>Expired At</th>
-    <th>Actions</th>
+    <th><%= humanize_attribute :announcement, :desc %></th>
+    <th><%= t "offers.count" %></th>
+    <th><%= humanize_attribute :announcement, :expired_at %></th>
+    <th><%= t "common.actions"  %></th>
   </tr>
   <%= render partial: 'table_ann',
              collection: @announcements,

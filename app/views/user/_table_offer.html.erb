@@ -10,11 +10,11 @@
 <tr class="<%= trclass %>">
   <td>
     <% if offer.draft? %>
-      Taslak
+      <%= t "offers.draft" %>
     <% elsif offer.announcement.expired? %>
-      İlan süresi sona erdi
+      <%= t "announcements.duration_day.expired" %>
     <% elsif offer.active? %>
-      Aktif
+      <%= t "offers.active" %>
     <% end %>
   </td>
   <td><%= link_to "##{offer.id}", [offer.announcement, offer] %></td>
@@ -24,20 +24,20 @@
   <td>
     <div class="dropdown">
       <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        İşlemler
+        <%= t "common.actions" %>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <% if policy(offer).edit? %>
-          <%= link_to "Düzenle",
+          <%= link_to t("common.edit"),
             edit_announcement_offer_path(offer.announcement, offer),
             class: 'dropdown-item'  %>
         <% end %>
 
         <% if offer.draft? %>
-          <%= link_to "Kaldir",
+          <%= link_to t("common.destroy"),
                       [offer.announcement, offer], 
                       method: :delete,
-                      data: { confirm: "Silmek istediğinize emin misiniz?" },
+                      data: { confirm: t("offers.destroy_are_you_sure") },
                       class: 'dropdown-item' %>
         <% end %>
       </div>

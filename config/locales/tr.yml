@@ -2,3 +2,144 @@ tr:
   errors:
     number_of_offers_exceeded: "Bir ilana birden fazla teklif veremezsiniz. Vermiş olduğunuz teklifi duzenlemeyi deneyin."
     day: "İlanın yayınlanma süresi [%{days}] günlerinden hariç olamaz."
+    messages:
+      taken: "daha önce alındı."
+      blank: "boş bırakılamaz."
+
+  helpers:
+    select:
+      prompt: "Lütfen seçiniz"
+    submit:
+      submit: "Gönder"
+      create: "Oluştur"
+      update: "Güncelle"
+      user:
+        create: "Giriş yap"
+      node_filter:
+        submit: "Filtrele"
+      offer:
+        create: "Taslağı kaydet"
+
+  time:
+    today: "Bugün"
+    ago: "%{time} önce"
+    formats:
+      summary: "%e %b %y"
+      time: "%H:%M"
+      generic: '%e %b %Y, %A'
+      w3c: "%Y-%m-%dT%H:%M:%S+00:00"
+
+  activerecord:
+    errors:
+      models:
+        node:
+          blank: "alanı gerekli."
+    attributes:
+      announcement:
+        title: "İlan Başlığı"
+        desc: "Açıklama"
+        duration_day: "Yayında kalma süresi"
+        attachments: "Ekleri"
+        expired_at: "İlan sonlanma zamanı"
+      user:
+        first_name: "Ad"
+        last_name: "Soyad"
+        email: "Email"
+        password: "Parola"
+        password_confirmation: "Parola tekrar"
+        current_password: "Şimdiki parola"
+      attachment:
+        _destroy: "Sil"
+        file: "Dosya"
+      car_announcement:
+        make: "Marka"
+      car_rental_announcement:
+        pick_up_location: "Alış yeri"
+        drop_off_location: "Teslim yeri"
+        pick_up_time: "Alış zamanı"
+        drop_off_time: "Teslim zamanı"
+      offer:
+        desc: "Teklifiniz"
+        attachments: "Ekleri"
+
+  common:
+    show: "Göster"
+    edit: "Düzenle"
+    destroy: "Sil"
+    delete: "Sil"
+    actions: "İşlemler"
+    site_name: "Teklif"
+    new_announcement: "Teklif iste"
+    subscriptions: "Abonelik"
+    destroy_are_you_sure: "Silmek istediğinize emin misiniz?"
+    are_you_sure: "Bu işlemi yapmak istediğinize emin misiniz?"
+
+  forms:
+    errors: "Gönderilemedi! Aşağıdaki hataları düzeltin:"
+
+  announcements:
+    edit:
+      title: "İlanı düzenle"
+    new:
+      title: "Yeni ilan ekle"
+    show:
+      expired: "İlanın yayın süresi doldu. Tekliflere kapalı."
+      waiting_for_offers: "Teklifler toplanıyor"
+      actions_popover_content: "İlanınızı buradan yönetebilirsiniz."
+    duration_day:
+      expired: "İlan süresi doldu."
+      continuing: "İlanın bitmesine %{time} kaldı."
+    expire: "Yayından kaldır"
+    expire_are_you_sure: "Yayından kaldırmak istediğinize emin misiniz?"
+    my_announcements: "İlanlarım"
+    publishing: "Yayında"
+    unpublished: "Yayında değil"
+    not_publishing: "Yayında olmayan"
+    announcement: "Talep ilanı"
+
+  offers:
+    make_an_offer: "Teklif yap"
+    draft: "Taslak"
+    continue_to_the_draft: "Taslağa devam et"
+    active: "Aktif"
+    already_offer: "Teklif yaptınız"
+    edit: "Teklifi düzenle"
+    offers: "TEKLİFLER"
+    no_offers: "Hiç teklif yok. İlk teklifi yapan sen ol!"
+    my_offer: "Benim teklifim"
+    my_offers: "Tekliflerim"
+    count: "Teklif sayısı"
+    publish: "Teklifi yayınla"
+    last_update: "Son güncelleme"
+    destroy_are_you_sure: "Teklifi silmek istediğinize emin misiniz?"
+    new:
+      title: "Teklif yap"
+    edit:
+      title: "Teklifinizi düzenleyin"
+    show:
+      title: "Teklif"
+
+  users:
+    my_registration: "Üyelik bilgilerim"
+    sign_in: "Giriş yap"
+    sign_out: "Çıkış"
+
+  car_announcements:
+    new_car_announcement: "Sıfır araba talep ilanı oluştur"
+    make: "Marka"
+    edit:
+      title: "Sıfır araba ilanını düzenle"
+    index:
+      title: "Sıfır araba talepleri"
+    new:
+      title: "Sıfır araba teklifi al"
+
+  car_rental_announcements:
+    new_car_rental_announcement: "Kiralık araba talep ilanı oluştur"
+    same_location: "Alış yeri ile aynı"
+    edit:
+      title: "Araba kiralama talebini düzenle"
+    new:
+      title: "Yeni araba kiralama talebi oluştur"
+    index:
+      title: "Araba kiralama talep ilanları"

@@ -14,12 +14,12 @@
         <%= render "announcements/attachments", attachments: offer.attachments %>
 
         <% if policy(offer).edit? %>
-          <%= link_to 'Edit', edit_announcement_offer_path(offer.announcement, offer) %>
+          <%= link_to t("common.edit"), edit_announcement_offer_path(offer.announcement, offer) %>
         <% end %>
 
         <% if policy(offer).destroy? %>
-          <%= link_to 'Destroy', [@announcement, offer], method: :delete,
-                data: { confirm: 'Are you sure?' } %>
+          <%= link_to t("common.destroy"), [@announcement, offer], method: :delete,
+                data: { confirm: t('offers.destroy_are_you_sure') } %>
         <% end %>
       </div>
     </div>

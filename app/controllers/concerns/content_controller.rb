@@ -4,6 +4,10 @@ class ContentController < ApplicationController
   before_action :authorize_content, only: [:edit, :update]
   before_action :authorize_content_resource, only: [:new, :create]
 
+  def index
+    @contents = content_resource.all
+  end
+
   def new
     @content = content_resource.new
     @ann = @content.build_announcement user: current_user

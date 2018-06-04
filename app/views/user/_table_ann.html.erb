@@ -1,9 +1,9 @@
 <tr class="<%= 'table-secondary' unless announcement.published? %>">
   <td>
     <% if announcement.published? %>
-      Yayında
+      <%= t "announcements.publishing" %>
     <% else %>
-      Yayında değil
+      <%= t "announcements.unpublished" %>
     <% end %>
   </td>
   <td><%= link_to announcement.title, announcement %></td>
@@ -13,15 +13,15 @@
 
     <div class="dropdown">
       <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        İşlemler
+        <%= t "common.actions" %>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <%= link_to "Düzenle", edit_announcement_path(announcement), class: 'dropdown-item' %>
+        <%= link_to t("common.edit"), edit_announcement_path(announcement), class: 'dropdown-item' %>
         <% if announcement.published? %>
-          <%= link_to "Yayından Kaldır",
+          <%= link_to t("announcements.expire"),
                       expire_announcement_path(announcement), 
                       method: :put,
-                      data: { confirm: "Yayindan kaldirmak istediginize emin misiniz?"},
+                      data: { confirm: t("announcements.expire_are_you_sure")},
                       class: 'dropdown-item'  %>
         <% end %>
       </div>

@@ -8,13 +8,13 @@
     <%= desc announcement.desc %>
     <%= render "announcements/attachments", attachments: announcement.attachments %>
     <% if announcement.published? %>
-      İlan süre <%= time_ago_in_words announcement.expired_at %> kaldı
+      <%= t 'announcements.duration_day.continuing', time: time_ago_in_words(announcement.expired_at) %>
     <% else %>
-      İlan süresi doldu.
+      <%= t 'announcements.duration_day.expired' %>
     <% end %>
 
     <% if policy(@announcement).edit? %>
-      <%= link_to 'Edit', edit_announcement_path(announcement) %> |
+      <%= link_to t('common.edit'), edit_announcement_path(announcement) %> |
     <% end %>
   </div>
 
