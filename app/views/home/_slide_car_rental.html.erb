@@ -1,5 +1,14 @@
-<div class="jumbotron mb-0 position-relative" style="background-color: rgba(0, 0, 0, 0.8);">
-  <%= image_tag "car-rental.jpg", class: 'background-video w-100' %>
+<div class="jumbotron mb-0 position-relative" id="car-rental-slide">
+  <style type="text/css">
+    #car-rental-slide {
+      background-image: 
+        linear-gradient(
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0.8)
+        ),
+        url(<%= asset_path "car-rental.jpg" %>);
+    }
+  </style>
 
   <div class="row">
     <div class="col-7 text-white">

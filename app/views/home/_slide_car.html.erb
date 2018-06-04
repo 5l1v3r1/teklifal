@@ -1,28 +1,17 @@
-<div class="jumbotron mb-0 position-relative">
-  <%= video_tag "araba-anlasmasi.mp4", autoplay: true, muted: true, loop: true,
-        class: 'background-video w-100' %>
-
+<div class="jumbotron mb-0 position-relative" id="new-car-slide">
   <style type="text/css">
     .jumbotron {
-      overflow: hidden;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-size: cover;
+      background-position: center center;
     }
 
-    .background-video {
-      position:absolute;
-      top:50%;
-      left:50%;
-      min-width:100%;
-      min-height:100%;
-      width:auto;
-      height:auto;
-      z-index:-100;
-      -ms-transform: translateX(-50%) translateY(-50%);
-      -moz-transform: translateX(-50%) translateY(-50%);
-      -webkit-transform: translateX(-50%) translateY(-50%);
-      transform: translateX(-50%) translateY(-50%);
-      background: url(../images/clouds.jpg) no-repeat;
-      background-size: cover;
+    #new-car-slide {
+      background-image: 
+        linear-gradient(
+          rgba(0, 0, 0, 0.8), 
+          rgba(0, 0, 0, 0.8)
+        ),
+        url(<%= asset_path "new-car.jpg" %>);
     }
   </style>
 
