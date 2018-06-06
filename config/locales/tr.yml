@@ -100,6 +100,7 @@ tr:
   offers:
     make_an_offer: "Teklif yap"
     draft: "Taslak"
+    draft_message: "Taslak olarak kaydettiğiniz teklife daha sonra devam edebilirsiniz. Ancak teklifi yayınlamadan ilan sahibi teklifinizi göremeyecek."
     continue_to_the_draft: "Taslağa devam et"
     active: "Aktif"
     already_offer: "Teklif yaptınız"
