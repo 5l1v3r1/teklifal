@@ -106,7 +106,7 @@ tr:
     already_offer: "Teklif yaptınız"
     edit: "Teklifi düzenle"
     offers: "TEKLİFLER"
-    no_offers: "Hiç teklif yok. İlk teklifi yapan sen ol!"
+    no_offer: "Hiç teklif yok. İlk teklifi yapan sen ol!"
     my_offer: "Benim teklifim"
     my_offers: "Tekliflerim"
     count: "Teklif sayısı"

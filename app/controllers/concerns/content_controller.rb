@@ -20,12 +20,12 @@ class ContentController < ApplicationController
 
     @content.assign_attributes content_params
     @content.announcement.user = current_user
-    # 3.times { @content.announcement.attachments.new }
     # @content.announcement.content_type = content_resource
 
     if @content.save
       redirect_to @content.announcement
     else
+      3.times { @content.announcement.attachments.new }
       render action: :new
     end
   end
@@ -37,6 +37,7 @@ class ContentController < ApplicationController
     if @content.update(content_params)
       redirect_to @content.announcement
     else
+      3.times { @content.announcement.attachments.new }
       render action: :edit
     end
   end

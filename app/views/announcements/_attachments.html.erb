@@ -1,9 +1,12 @@
-<ul class="list-group">
-  <% attachments.each do |attachment| %>
-    <li class="list-group-item">
-      <%= link_to attachment.send(:attribute, :file),
-                  attachment.file_url,
-                  target: '_blank' %>
-    </li>
-  <% end %>
-</ul>
+<% if attachments.count > 0 %>
+  <ul class="list-group attachments my-3">
+    <% attachments.each do |attachment| %>
+      <li class="list-group-item d-flex">
+        <%= link_to attachment.send(:attribute, :file),
+                    attachment.file_url,
+                    target: '_blank' %>
+        <i class="mi md-18 ml-auto">attachment</i>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

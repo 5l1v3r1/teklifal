@@ -24,30 +24,24 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.new(announcement_params).tap do |ann|
       ann.user = current_user
     end
-    3.times { @announcement.attachments.build }
 
-    respond_to do |format|
-      if @announcement.save
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-        format.json { render :show, status: :created, location: @announcement }
-      else
-        format.html { render :new }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
+    if @announcement.save
+      redirect_to @announcement, notice: 'Announcement was successfully created.'
+    else
+      if @announcement.attachments.size < 3
+        3.times { @announcement.attachments.build }
       end
+      render :new
     end
   end
 
   def update
     authorize @announcement
-    3.times { @announcement.attachments.build }
-    respond_to do |format|
-      if @announcement.update(announcement_params)
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
-        format.json { render :show, status: :ok, location: @announcement }
-      else
-        format.html { render :edit }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
-      end
+    if @announcement.update(announcement_params)
+      redirect_to @announcement, notice: 'Announcement was successfully updated.'
+    else
+      3.times { @announcement.attachments.build }
+      render :edit
     end
   end
 
