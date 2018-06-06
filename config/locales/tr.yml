@@ -96,6 +96,7 @@ tr:
     unpublished: "Yayında değil"
     not_publishing: "Yayında olmayan"
     announcement: "Talep ilanı"
+    duration_day: "%{day} gün"
 
   offers:
     make_an_offer: "Teklif yap"
