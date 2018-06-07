@@ -1,3 +1,74 @@
-<%= page_header t '.title' %>
+<%= page_header t(".title") %>
 
-<%= render 'form', announcement: @announcement %>
+<div class="row new-announcement-links mb-4">
+  
+  <div class="col-3 d-flex">
+    <%= link_to car_new_announcement_path,
+                class: "card",
+                data: {
+                  toggle: "tooltip",
+                  title: "Sıfır araba alırken bayi bayi dolaşmanıza gerek yok. Buradan tek bir ilanınız 10'larca bayiye ulaşır. Onlar size teklif yapar.",
+                  placement: "right"
+                }  do %>
+      <div class="card-body">
+        <%= image_tag "car-dark.png", class: 'w-100 mb-3' %>
+        <h5 class="card-title text-center">Araba</h5>
+        <p class="card-text text-center">
+          Yeni araba almak için 356 bayiden teklif al
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-3 d-flex">
+    <%= link_to nil, class: "card" do %>
+      <div class="card-body text-center">
+        <%= image_tag "home.png", class: 'w-100 mb-3' %>
+        <h5 class="card-title">Gayrimenkul</h5>
+        <p class="card-text"> 
+          Elinizdeki gayrimenlulü hızlı bir şekilde nakite dönüştürün
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-3 d-flex">
+    <%= link_to nil, class: "card" do %>
+      <div class="card-body text-center">
+        <%= image_tag "household-appliances.png", class: 'w-100 mb-3' %>
+        <h5 class="card-title">Beyaz eşya</h5>
+        <p class="card-text"> 
+          Beyaz eşya teklifleri alın. Alırken kazanın.
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-3 d-flex">
+    <%= link_to car_rental_new_announcement_path, class: "card" do %>
+      <div class="card-body text-center">
+        <%= image_tag "rent-a-car.png", class: 'w-100 mb-3' %>
+        <h5 class="card-title">Kiralık araba</h5>
+        <p class="card-text"> 
+          Araba kiralarken rent-a-car'lar size teklif yapsın.
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row new-announcement-links">
+  
+  <div class="col-3">
+    <%= link_to car_new_announcement_path, class: "card" do %>
+      <div class="card-body">
+        <%= image_tag "car-dark.png", class: 'w-100 mb-3' %>
+        <h5 class="card-title text-center">Yeni araba talebi</h5>
+        <p class="card-text text-center">
+          Yeni araba almak için 356 bayiden teklif al
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+</div>

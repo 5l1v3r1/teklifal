@@ -7,6 +7,10 @@ class AnnouncementsController < ApplicationController
 
   def new
     authorize Announcement
+  end
+
+  def plain
+    authorize Announcement
     @announcement = Announcement.new
     3.times { @announcement.attachments.build }
   end

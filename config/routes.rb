@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     put :expire, on: :member
     resources :offers, except: :index
     get 'car', on: :new, to: "car_announcements#new"
+    get 'plain', on: :new
     get 'car_rental', on: :new, to: "car_rental_announcements#new"
   end
 

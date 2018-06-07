@@ -78,10 +78,12 @@ tr:
     errors: "Gönderilemedi! Aşağıdaki hataları düzeltin:"
 
   announcements:
+    plain:
+      title: "Yeni ilan"
     edit:
       title: "İlanı düzenle"
     new:
-      title: "Yeni ilan ekle"
+      title: "İlan oluştur"
     show:
       expired: "İlanın yayın süresi doldu. Tekliflere kapalı."
       waiting_for_offers: "Teklifler toplanıyor"

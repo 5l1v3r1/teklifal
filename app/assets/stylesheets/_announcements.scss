@@ -1,0 +1,8 @@
+.new-announcement-links a.card {
+  color: $gray-900;
+}
+
+.new-announcement-links .card:hover {
+  @extend .border-primary;
+  text-decoration: none;
+}
