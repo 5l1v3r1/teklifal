@@ -2,6 +2,7 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
 
+  resources :subscribers, only: [:new, :create, :edit, :update, :destroy]
   get 'my/announcements', to: "user#announcements"
   get 'my/offers', to: "user#offers"
   authenticate :user, lambda { |u| u.manager? } do

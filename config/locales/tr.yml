@@ -61,6 +61,9 @@ tr:
       offer:
         desc: "Teklifiniz"
         attachments: "Ekleri"
+      subscriber:
+        title: "Başlık"
+        type: "Abone tipi"
 
   common:
     show: "Göster"
@@ -147,3 +150,12 @@ tr:
       title: "Yeni araba kiralama talebi oluştur"
     index:
       title: "Araba kiralama talep ilanları"
+
+  subscribers:
+    new:
+      title: "Abone ol"
+    edit:
+      title: "Aboneliğimi düzenle"
+    types:
+      person: "Şahıs"
+      firm: "Firma"
