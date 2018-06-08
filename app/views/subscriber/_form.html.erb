@@ -1,4 +1,4 @@
-<%= form_with(model: subscriber, local: true) do |form| %>
+<%= form_with(model: subscriber, url: subscriber_path, local: true) do |form| %>
   <div class="row">
     <div class="offset-2 col-8">
       <%= render "form_errors", object: subscriber %>
@@ -10,10 +10,10 @@
 
       <div class="form-group">
         <%= form.label :type %>
-        <%= form.select :type, 
-                        form.object.class.types.collect { |type|
+        <%= form.select :subscriber_type, 
+                        form.object.class.subscriber_types.collect { |type|
                           [ t("subscribers.types.#{type.first}"),
-                            type.last ]
+                            type.first ]
                         },
                         {}, {class: "form-control"} %>
       </div>

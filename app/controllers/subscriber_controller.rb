@@ -1,4 +1,4 @@
-class SubscribersController < ApplicationController
+class SubscriberController < ApplicationController
   before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,7 +12,11 @@ class SubscribersController < ApplicationController
 
   def new
     authorize Subscriber
-    @subscriber = Subscriber.new
+    if @subscriber = current_user.subscriber
+      redirect_to edit_subscriber_path, alert: "You have already a subscriber account. You can now edit it."
+    else
+      @subscriber = Subscriber.new
+    end
   end
 
   def edit
@@ -25,15 +29,16 @@ class SubscribersController < ApplicationController
     @subscriber.owner = current_user
 
     if @subscriber.save
-      redirect_to @subscriber, notice: 'Subscriber was successfully created.'
+      redirect_to edit_subscriber_path, notice: 'Subscriber was successfully created.'
     else
       render :new
     end
   end
 
   def update
+    authorize @subscriber
     if @subscriber.update(subscriber_params)
-      redirect_to @subscriber, notice: 'Subscriber was successfully updated.'
+      redirect_to edit_subscriber_path, notice: 'Subscriber was successfully updated.'
     else
       render :edit
     end
@@ -46,10 +51,10 @@ class SubscribersController < ApplicationController
 
   private
     def set_subscriber
-      @subscriber = Subscriber.find(params[:id])
+      @subscriber = current_user.subscriber
     end
 
     def subscriber_params
-      params.require(:subscriber).permit(:title, :type, :owner_id)
+      params.require(:subscriber).permit(:title, :subscriber_type)
     end
 end

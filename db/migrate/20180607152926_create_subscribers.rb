@@ -2,7 +2,7 @@ class CreateSubscribers < ActiveRecord::Migration[5.2]
   def change
     create_table :subscribers do |t|
       t.string :title
-      t.integer :type
+      t.integer :subscriber_type
       t.integer :owner_id
 
       t.timestamps

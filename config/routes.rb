@@ -2,9 +2,15 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
 
-  resources :subscribers, only: [:new, :create, :edit, :update, :destroy]
-  get 'my/announcements', to: "user#announcements"
-  get 'my/offers', to: "user#offers"
+  resources :user, path: "my", only: [] do
+    collection do
+      get 'offers'
+      # get 'my/subscription', to: "user#subscription"
+      get 'announcements'
+      resource :subscriber, only: [:new, :create, :edit, :update, :destroy], controller: :subscriber
+    end
+  end
+  
   authenticate :user, lambda { |u| u.manager? } do
     mount Sidekiq::Web => 'administration/sidekiq'
   end

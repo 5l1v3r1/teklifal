@@ -18,6 +18,10 @@ class UserController < ApplicationController
               end
   end
 
+  def subscription
+    @subscriber = current_user.subscriber
+  end
+
   private
 
   def authorize_user

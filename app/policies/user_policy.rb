@@ -6,4 +6,8 @@ class UserPolicy < ApplicationPolicy
   def announcements?
     signed_user == record
   end
+
+  def subscription?
+    signed_user.subscriber
+  end
 end

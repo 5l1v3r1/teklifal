@@ -130,6 +130,7 @@ tr:
     my_registration: "Üyelik bilgilerim"
     sign_in: "Giriş yap"
     sign_out: "Çıkış"
+    edit_my_subscription: "Aboneliğimi düzenle"
 
   car_announcements:
     new_car_announcement: "Sıfır araba talep ilanı oluştur"
@@ -151,7 +152,7 @@ tr:
     index:
       title: "Araba kiralama talep ilanları"
 
-  subscribers:
+  subscriber:
     new:
       title: "Abone ol"
     edit:

@@ -1,10 +1,11 @@
 class SubscriberPolicy < ApplicationPolicy
   def new?
-    create?
+    signed_user
   end
 
   def create?
-    signed_user
+    signed_user and
+    !signed_user.subscriber
   end
 
   def edit?
