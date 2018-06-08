@@ -15,6 +15,15 @@
 
       <%= render 'attachment_form_field', form: form %>
 
+      <% if current_user.manager? %>
+        <div class="form-group">
+          <%= form.label :supervisor_id %>
+          <%= form.select :supervisor_id,
+            User.where(role: :moderator).collect { |user| [user.name, user.id] },
+            {include_blank: true}, {class: "form-control"} %>
+        </div>
+      <% end %>
+
       <div class="form-group">
         <%= form.label :duration_day %>
         <% if form.object.persisted? and form.object.published? %>

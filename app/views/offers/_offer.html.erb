@@ -1,7 +1,7 @@
 <% if policy(offer).show? %>
   <div class="border-bottom">
     <div class="row py-3 cog">
-      <div class="col-2 offset-1">
+      <div class="col-3 text_right">
         <% if offer.owner? current_user  %>
           <span class="text-success"><%= offer.user.name %></span>
         <% else %>

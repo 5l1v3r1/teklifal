@@ -1,5 +1,5 @@
 <div class="row py-3">
-  <div class="col-2 offset-1"><%= announcement.user.name %></div>
+  <div class="col-3 text-right"><%= announcement.user.name %></div>
   <div class="col-8">
     <% if announcement.content %>
       <%= render announcement.content %>
@@ -7,15 +7,41 @@
 
     <%= desc announcement.desc %>
     <%= render "announcements/attachments", attachments: announcement.attachments %>
-    <% if announcement.published? %>
-      <%= t 'announcements.duration_day.continuing', time: time_ago_in_words(announcement.expired_at) %>
-    <% else %>
-      <%= t 'announcements.duration_day.expired' %>
-    <% end %>
 
-    <% if policy(@announcement).edit? %>
-      <%= link_to t('common.edit'), edit_announcement_path(announcement) %> |
-    <% end %>
+    <div class="d-flex mt-3 text-muted border-top justify-content-end">
+
+      <div class="px-2 pt-2 border-left">
+        <div><%= t "common.contact" %></div>
+        <div>
+          <%= link_to t("announcements.ask_a_question_to_owner"), "#" %>          
+        </div>
+      </div>
+      
+      <div class="px-2 pt-2 border-left">
+        <div><strong><%= t "announcements.listing_date" %></strong></div>
+        <div><%= t "announcements.created_at", ago: time_ago_in_words(announcement.created_at) %></div>
+      </div>
+
+      <div class="px-2 pt-2 border-left">
+        <div><strong><%= t "announcements.status" %></strong></div>
+        <div>
+          <% unless @announcement.expired? %>
+            <span class="text-success">
+              <%= t 'announcements.statuses.waiting_for_offers' %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="px-2 pt-2 border-left">
+        <div><strong><%= t "announcements.remaining_time" %></strong></div>
+        <% if announcement.published? %>
+          <%= t 'announcements.duration_day.continuing', time: time_ago_in_words(announcement.expired_at) %>    
+        <% else %>
+          <%= t 'announcements.duration_day.expired' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
 </div>

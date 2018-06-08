@@ -6,6 +6,7 @@ class Announcement < ApplicationRecord
   accepts_nested_attributes_for :attachments, allow_destroy: true,
     reject_if: ->(attrs){ attrs[:file].blank? } 
   belongs_to :user
+  belongs_to :supervisor, class_name: "User"
   scope :published, -> { where('expired_at > ?', Time.now) }
   scope :unpublished, -> { where('expired_at < ?', Time.now) }
   scope :archived, -> { unscoped.where(archived: true) }

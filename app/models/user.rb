@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :announcements, dependent: :destroy
   has_one :subscriber, foreign_key: :owner_id, inverse_of: :owner
   has_many :offers, through: :subscriber, dependent: :destroy
+  has_many :supervised_announcements, foreign_key: :supervisor_id, inverse_of: :supervisor
 
   validates_presence_of :first_name, :last_name, :phone
   validates_format_of :phone, with: /\A5[0-9]{9}\z/

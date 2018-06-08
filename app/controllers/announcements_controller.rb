@@ -68,6 +68,6 @@ class AnnouncementsController < ApplicationController
     end
 
     def announcement_params
-      params.require(:announcement).permit(:title, :desc, :duration_day, attachments_attributes: [:id, :file, :_destroy])
+      params.require(:announcement).permit(:title, :desc, :supervisor_id, :duration_day, attachments_attributes: [:id, :file, :_destroy])
     end
 end

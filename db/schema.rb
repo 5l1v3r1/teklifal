@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_162756) do
+ActiveRecord::Schema.define(version: 2018_06_08_010820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_06_07_162756) do
     t.string "title"
     t.string "content_type"
     t.bigint "content_id"
+    t.integer "supervisor_id"
     t.index ["archived"], name: "index_announcements_on_archived"
     t.index ["content_type", "content_id"], name: "index_announcements_on_content_type_and_content_id"
     t.index ["user_id"], name: "index_announcements_on_user_id"

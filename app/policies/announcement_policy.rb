@@ -7,6 +7,10 @@ class AnnouncementPolicy < ApplicationPolicy
     create?
   end
 
+  def plain?
+    create?
+  end
+
   def create?
     signed_user
   end

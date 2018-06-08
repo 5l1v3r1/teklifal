@@ -39,6 +39,7 @@ tr:
         title: "İlan Başlığı"
         desc: "Açıklama"
         duration_day: "Yayında kalma süresi"
+        supervisor_id: "Müşteri temsilcisi"
         attachments: "Ekleri"
         expired_at: "İlan sonlanma zamanı"
       user:
@@ -76,6 +77,7 @@ tr:
     subscriptions: "Abonelik"
     destroy_are_you_sure: "Silmek istediğinize emin misiniz?"
     are_you_sure: "Bu işlemi yapmak istediğinize emin misiniz?"
+    contact: "İletişim"
 
   forms:
     errors: "Gönderilemedi! Aşağıdaki hataları düzeltin:"
@@ -89,11 +91,10 @@ tr:
       title: "İlan oluştur"
     show:
       expired: "İlanın yayın süresi doldu. Tekliflere kapalı."
-      waiting_for_offers: "Teklifler toplanıyor"
       actions_popover_content: "İlanınızı buradan yönetebilirsiniz."
     duration_day:
       expired: "İlan süresi doldu."
-      continuing: "İlanın bitmesine %{time} kaldı."
+      continuing: "%{time} kaldı."
     expire: "Yayından kaldır"
     expire_are_you_sure: "Yayından kaldırmak istediğinize emin misiniz?"
     my_announcements: "İlanlarım"
@@ -101,7 +102,15 @@ tr:
     unpublished: "Yayında değil"
     not_publishing: "Yayında olmayan"
     announcement: "Talep ilanı"
-    duration_day: "%{day} gün"
+    supervisor: "Müşteri ilişkileri uzmanı"
+    listing_date: "İlan tarihi"
+    created_at: "%{ago} önce eklendi"
+    remaining_time: "Kalan süre"
+    status: "Durum"
+    statuses:
+      waiting_for_offers: "Teklifler toplanıyor"
+    ask_a_question_to_owner: "İlan sahibine soru sor"
+    get_help: "Yardım al"
 
   offers:
     make_an_offer: "Teklif yap"

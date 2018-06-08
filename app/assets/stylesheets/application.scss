@@ -34,3 +34,10 @@ trix-editor {
 trix-editor:focus {
   @extend .form-control:focus
 }
+
+.dot {
+  @extend .rounded-circle;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+}
