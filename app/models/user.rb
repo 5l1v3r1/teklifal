@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :announcements, dependent: :destroy
-  has_many :offers, dependent: :destroy
+  has_one :subscriber, foreign_key: :owner_id, inverse_of: :owner
+  has_many :offers, through: :subscriber, dependent: :destroy
 
   validates_presence_of :first_name, :last_name, :phone
   validates_format_of :phone, with: /\A5[0-9]{9}\z/
@@ -25,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def offer_for state, announcement
-    announcement.offers.find_by state: state, user: self
+    announcement.offers.find_by state: state, subscriber: subscriber
   end
 
   def manager?

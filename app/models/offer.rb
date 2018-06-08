@@ -1,10 +1,11 @@
 class Offer < ApplicationRecord
   include AASM
-  belongs_to :user
+  belongs_to :subscriber
+  delegate :user, to: :subscriber
   belongs_to :announcement
   has_many :attachments, as: :attachmentable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
-  validates_presence_of :desc, :state, :announcement_id
+  validates_presence_of :desc, :state, :announcement_id, :subscriber
   validate :validate_user_offer_count
   scope :state, ->(state) { where(state: state) }
   scope :publishing, -> { joins(:announcement).where("announcements.expired_at > ?", Time.now) }
@@ -19,7 +20,7 @@ class Offer < ApplicationRecord
   end
 
   def owner? user
-    self.user == user
+    self.subscriber.owner? user if self.subscriber
   end
 
   def validate_user_offer_count
