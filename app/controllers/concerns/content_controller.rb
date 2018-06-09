@@ -20,6 +20,7 @@ class ContentController < ApplicationController
 
     @content.assign_attributes content_params
     @content.announcement.user = current_user
+    # @content.announcement.supervisor = User.lazy
     # @content.announcement.content_type = content_resource
 
     if @content.save

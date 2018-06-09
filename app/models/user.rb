@@ -7,7 +7,10 @@ class User < ApplicationRecord
   has_many :announcements, dependent: :destroy
   has_one :subscriber, foreign_key: :owner_id, inverse_of: :owner
   has_many :offers, through: :subscriber, dependent: :destroy
-  has_many :supervised_announcements, foreign_key: :supervisor_id, inverse_of: :supervisor
+  has_many :supervised_announcements,
+            foreign_key: :supervisor_id,
+            inverse_of: :supervisor,
+            class_name: "Announcement"
 
   validates_presence_of :first_name, :last_name, :phone
   validates_format_of :phone, with: /\A5[0-9]{9}\z/
@@ -32,5 +35,13 @@ class User < ApplicationRecord
 
   def manager?
     moderator? or superadmin?
+  end
+
+  def self.lazy
+    moderator_ids = select(:id).where(role: :moderator).pluck(:id)
+    supervisor_group = Announcement.supervisors.count
+    supervisor_ids = supervisor_group.keys
+    user_id = ((moderator_ids-supervisor_ids).try(:first) or supervisor_ids.first)
+    find user_id
   end
 end

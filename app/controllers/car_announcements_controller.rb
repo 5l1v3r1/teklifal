@@ -20,7 +20,9 @@ class CarAnnouncementsController < ApplicationController
     @ca = CarAnnouncement.new(ca_params)
     @ca.assign_attributes ca_params
     @ca.announcement.user = current_user
+    # @ca.announcement.supervisor = User.lazy
     # @ann = @ca.build_announcement user: current_user
+    binding.pry
 
     if @ca.save
       redirect_to @ca.announcement, notice: 'Car announcement was successfully created.'
