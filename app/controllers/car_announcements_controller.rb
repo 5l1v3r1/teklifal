@@ -8,8 +8,10 @@ class CarAnnouncementsController < ApplicationController
   end
 
   def new
-    @ca = CarAnnouncement.new
-    @ann = @ca.build_announcement user: current_user
+    @ca = CarAnnouncement.new(params[:car_announcement] && ca_params)
+    @ann = @ca.announcement || @ca.build_announcement
+    @ann.user = current_user
+
     3.times { @ann.attachments.new }
   end
 
