@@ -1,13 +1,14 @@
 class CarAnnouncementsController < ApplicationController
   # ca = car_announcement
-  skip_after_action :verify_authorized
   before_action :set_ca, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize CarAnnouncement
     @cas = CarAnnouncement.all
   end
 
   def new
+    authorize CarAnnouncement
     @ca = CarAnnouncement.new(params[:car_announcement] && ca_params)
     @ann = @ca.announcement || @ca.build_announcement
     @ann.user = current_user
@@ -16,15 +17,16 @@ class CarAnnouncementsController < ApplicationController
   end
 
   def edit
+    authorize @ca
   end
 
   def create
+    authorize CarAnnouncement
     @ca = CarAnnouncement.new(ca_params)
     @ca.assign_attributes ca_params
     @ca.announcement.user = current_user
     # @ca.announcement.supervisor = User.lazy
     # @ann = @ca.build_announcement user: current_user
-    binding.pry
 
     if @ca.save
       redirect_to @ca.announcement, notice: 'Car announcement was successfully created.'
@@ -34,6 +36,8 @@ class CarAnnouncementsController < ApplicationController
   end
 
   def update
+    authorize @ca
+
     if @ca.update(ca_params)
       redirect_to @ca.announcement, notice: 'Car announcement was successfully updated.'
     else
@@ -42,7 +46,8 @@ class CarAnnouncementsController < ApplicationController
   end
 
   def destroy
-    @car_announcement.destroy
+    authorize @ca
+    @ca.destroy
     redirect_to car_announcements_url, notice: 'Car announcement was successfully destroyed.'
   end
 
