@@ -1,3 +1,7 @@
+<% if params[:ann_created] and session[:created_announcement] %>
+  <%= render "announcements/stepper", step: :user %>
+<% end %>
+
 <%= render "auth_nav", title: "Log in" %>
 
 <div class="col-6 offset-3">
@@ -27,6 +31,10 @@
         <%= f.label :remember_me, class: 'form-check-label' %>
       </div>
     <% end -%>
+
+    <% if params[:ann_created] %>
+      <%= f.hidden_field :signed_in_from_new_announcement, value: true  %>
+    <% end %>
 
     <div class="form-group">
       <%= f.submit "Log in", class: 'btn btn-primary' %>

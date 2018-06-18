@@ -1,3 +1,7 @@
+<% if @announcement.user.nil? and session[:created_announcement] %>
+  <%= render "stepper", step: :announcement %>
+<% end %>
+
 <%= page_header t('.title') %>
 
 <%= render 'form', announcement: @announcement %>

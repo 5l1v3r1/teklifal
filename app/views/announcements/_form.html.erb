@@ -15,7 +15,7 @@
 
       <%= render 'attachment_form_field', form: form %>
 
-      <% if current_user.manager? %>
+      <% if current_user && current_user.manager? %>
         <div class="form-group">
           <%= form.label :supervisor_id %>
           <%= form.select :supervisor_id,

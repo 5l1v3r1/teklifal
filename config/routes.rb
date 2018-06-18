@@ -17,7 +17,10 @@ Rails.application.routes.draw do
 
   resources :car_announcements, except: [:show]
   resources :car_rental_announcements, except: [:show]
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'sessions',
+    registrations: 'registrations'
+  }
 
   resources :announcements do
     put :expire, on: :member

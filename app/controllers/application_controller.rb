@@ -11,12 +11,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    keys = [:first_name, :last_name, :phone, :avatar, :remove_avatar]
+    keys = [:first_name, :last_name, :phone, :avatar, :remove_avatar, :signed_in_from_new_announcement]
 
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:signed_in_from_new_announcement])
     devise_parameter_sanitizer.permit(:sign_up, keys: keys)
     devise_parameter_sanitizer.permit(:account_update, keys: keys)
   end
-  
+
   private
 
   def user_not_authorized

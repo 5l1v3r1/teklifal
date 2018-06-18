@@ -2,24 +2,28 @@ class Announcement < ApplicationRecord
   DURATION_DAYS = [3, 10, 30]
 
   # Scopes
-  default_scope { where(archived: false) }
+  default_scope { where(archived: false).where.not(user: nil) }
   scope :published, -> { where('expired_at > ?', Time.now) }
   scope :unpublished, -> { where('expired_at < ?', Time.now) }
   scope :archived, -> { unscoped.where(archived: true) }
-  scope :supervisors, -> { published.group(:supervisor_id).order("count_all asc") }
+  scope :supervisors, -> { published.
+    where.not(supervisor_id: nil).
+    group(:supervisor_id).
+    order("count_all asc")
+  }
 
   # Associations
   has_many :offers, dependent: :destroy
   has_many :attachments, as: :attachmentable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true,
     reject_if: ->(attrs){ attrs[:file].blank? } 
-  belongs_to :user
-  belongs_to :supervisor, class_name: "User", validate: false
+  belongs_to :user, required: false
+  belongs_to :supervisor, class_name: "User", required: false
   belongs_to :content, polymorphic: true, dependent: :destroy, optional: true, dependent: :destroy
   accepts_nested_attributes_for :content, allow_destroy: true
 
   # Validates  
-  validates_presence_of :user, :title, :desc, :expired_at, :duration_day
+  validates_presence_of :title, :desc, :expired_at, :duration_day
   validates_inclusion_of :duration_day, in: DURATION_DAYS
   before_validation :set_supervisor, on: :create
 
@@ -57,6 +61,6 @@ class Announcement < ApplicationRecord
   private
 
   def set_supervisor
-    supervisor = User.lazy
+    self.supervisor = User.lazy
   end
 end

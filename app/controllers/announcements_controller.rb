@@ -11,8 +11,18 @@ class AnnouncementsController < ApplicationController
 
   def plain
     authorize Announcement
-    @announcement = Announcement.new
-    3.times { @announcement.attachments.build }
+    if !user_signed_in? and session[:created_announcement]
+      @announcement = Announcement.unscoped.find(session[:created_announcement])
+      if params[:reset]
+        @announcement.destroy
+        session.delete(:created_announcement)
+        @announcement = Announcement.new
+        3.times { @announcement.attachments.build } 
+      end
+    else
+      @announcement = Announcement.new
+      3.times { @announcement.attachments.build }
+    end
   end
 
   def edit
@@ -25,12 +35,18 @@ class AnnouncementsController < ApplicationController
 
   def create
     authorize Announcement
+
     @announcement = Announcement.new(announcement_params).tap do |ann|
-      ann.user = current_user
+      ann.user = current_user if user_signed_in?
     end
 
     if @announcement.save
-      redirect_to @announcement, notice: 'Announcement was successfully created.'
+      if user_signed_in?
+        redirect_to @announcement, notice: 'Announcement was successfully created.'
+      else
+        session[:created_announcement] = @announcement.id
+        redirect_to new_user_registration_path(ann_created: :true)
+      end
     else
       if @announcement.attachments.size < 3
         3.times { @announcement.attachments.build }
@@ -42,7 +58,11 @@ class AnnouncementsController < ApplicationController
   def update
     authorize @announcement
     if @announcement.update(announcement_params)
-      redirect_to @announcement, notice: 'Announcement was successfully updated.'
+      if user_signed_in?
+        redirect_to @announcement, notice: 'Announcement was successfully updated.'
+      else
+        redirect_to new_user_registration_path(ann_created: :true)
+      end
     else
       3.times { @announcement.attachments.build }
       render :edit

@@ -1,0 +1,32 @@
+<div  class="modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+      data-show="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5>
+          Daha once eklemeye calistiginiz ilana devam etmek ister misiniz?
+        </h5>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Sifirdan basla", "?reset=true", class: "btn btn-secondary"  %>
+        <%= link_to "?continuing_edit=true", class: "btn btn-success d-flex" do %>
+          Düzenlemeye Devam et
+          <i class="mi ml-3">keyboard_arrow_right</i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('.modal').modal({
+      show: true,
+
+    })
+  })
+</script>

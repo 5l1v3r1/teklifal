@@ -1,3 +1,12 @@
+<%= session[:created_announcement] %>
+<% unless user_signed_in? %>
+  <%= render "stepper", step: :announcement %>
+<% end %>
+
 <%= page_header t '.title' %>
 
 <%= render 'form', announcement: @announcement %>
+
+<% if session[:created_announcement] and !user_signed_in? and !params[:continuing_edit] %>
+  <%= render "modal" %>
+<% end %>

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :signed_in_from_new_announcement
+
   mount_uploader :avatar, AvatarUploader
 
   has_many :announcements, dependent: :destroy
