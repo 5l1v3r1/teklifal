@@ -46,6 +46,7 @@ tr:
       updated: "Hesabınız başarılı bir şekilde güncellendi."
     sessions:
       signed_in: "Başarılı giriş."
+      created_announcement_and_signed_in: "Başarılı giriş. İlanınız yayınlandı ve teklifler toplanmaya başladı."
       signed_out: "Başarılı çıkış."
       already_signed_out: "Başarılı çıkış."
     unlocks:

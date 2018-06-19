@@ -6,14 +6,13 @@ class SessionsController < Devise::SessionsController
       instance_eval { def after_sign_in_path_for(resource)
           @ann
       end }
-    else
-      instance_eval { def after_sign_in_path_for(resource)
-        new_user_session_path(ann_created: true)
-      end }
     end
 
     super
 
-    associate_orphan_announcement_to_user(@ann) if @ann
+    if @ann
+      set_flash_message!(:notice, :created_announcement_and_signed_in)
+      associate_orphan_announcement_to_user(@ann)
+    end
   end
 end
