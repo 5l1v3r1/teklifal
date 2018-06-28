@@ -5,10 +5,19 @@
 <% end %>
 
 <div class="border-bottom d-flex">
-  <h3 class="h5 pt-1"><%= @announcement.title %></h3>
+  <h3 class="h5 pt-1">
+    <%= @announcement.title %>
+  </h3>
+  <div class="ml-3 mt-1">
+    <% if @announcement.expired? %>
+      <span class="dot bg-secondary" data-toggle="tooltip" title="<%= t "announcements.duration_day.expired" %>"></span>
+    <% else %>
+      <span class="dot bg-success" data-toggle="tooltip" title="<%= t "announcements.statuses.waiting_for_offers" %>"></span>      
+    <% end %>
+  </div>
 
   <% if policy(@announcement).edit? %>
-    <div class="dropdown ml-auto make-something">
+    <div class="dropdown ml-auto">
       <button class="btn btn-sm btn-primary dropdown-toggle"
         id="actions-button"
         type="button"
