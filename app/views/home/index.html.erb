@@ -1,3 +1,9 @@
+<%= content_for :foot do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initMap&language=tr&region=TR",
+        async: true,
+        defer: true %>
+<% end %>
+
 <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

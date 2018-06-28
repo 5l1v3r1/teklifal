@@ -1,12 +1,3 @@
-$(function() {
-  $('#dropOffField').hide();
-
-  $('#differentLocation').click(function() {
-    console.log(this.checked)
-    $("#dropOffField").toggle(this.checked);
-  });
-})
-
 function offsetCenter(map, offsetx, offsety) {
   var scale = Math.pow(2, map.getZoom());
 
@@ -103,8 +94,8 @@ function initMap() {
     });
   }
 
-  var inputPickUp = document.getElementById('pick_up_location');
-  var inputDropOff = document.getElementById('drop_off_location');
+  var inputPickUp = document.getElementById('car_rental_announcement_pick_up_location');
+  var inputDropOff = document.getElementById('car_rental_announcement_drop_off_location');
 
   setMapFromInput(inputPickUp, 'pick_up_location');
   setMapFromInput(inputDropOff, 'drop_off_location');

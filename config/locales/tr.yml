@@ -59,6 +59,7 @@ tr:
         drop_off_location: "Teslim yeri"
         pick_up_time: "Alış zamanı"
         drop_off_time: "Teslim zamanı"
+        different_location: "Farklı bir yerde teslim et"
       offer:
         desc: "Teklifiniz"
         attachments: "Ekleri"
