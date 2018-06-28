@@ -12,14 +12,14 @@
   </thead>
 
   <tbody>
-    <% @cas.each do |ca| %>
+    <% @contents.each do |content| %>
       <tr>
-        <td><%= ca.announcement.title %></td>
-        <td><%= ca.make %></td>
-        <td><%= ca.announcement.offers.count %></td>
-        <td><%= link_to t('common.show'), ca %></td>
-        <td><%= link_to t('common.edit'), edit_car_announcement_path(ca) %></td>
-        <td><%= link_to t('common.destroy'), ca, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= content.announcement.title %></td>
+        <td><%= content.make %></td>
+        <td><%= content.announcement.offers.count %></td>
+        <td><%= link_to t('common.show'), content %></td>
+        <td><%= link_to t('common.edit'), edit_car_announcement_path(content) %></td>
+        <td><%= link_to t('common.destroy'), content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
