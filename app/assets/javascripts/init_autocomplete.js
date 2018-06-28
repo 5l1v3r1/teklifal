@@ -9,5 +9,9 @@ function autocompleteFor(input) {
         event.preventDefault(); 
     }
   });
-  var autocomplete = new google.maps.places.Autocomplete(input);
+  var bounds = new google.maps.LatLngBounds();
+  bounds.extend(new google.maps.LatLng(38.969892, 38.311895))
+  var autocomplete = new google.maps.places.Autocomplete(input, {
+    bounds: bounds
+  });
 }
