@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   validates_presence_of :first_name, :last_name, :phone
   validates_format_of :phone, with: /\A5[0-9]{9}\z/
+  validates_uniqueness_of :phone
 
   enum role: {
     registered: 0,
