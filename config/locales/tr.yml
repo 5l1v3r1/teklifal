@@ -32,8 +32,10 @@ tr:
   activerecord:
     errors:
       models:
-        node:
-          blank: "alanı gerekli."
+        car_rental_announcement:
+          attributes:
+            drop_off_time:
+              smaller_than_pick_up_time: "alış zamanından sonra olması lazım."
     attributes:
       announcement:
         title: "İlan Başlığı"
