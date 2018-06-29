@@ -32,6 +32,9 @@ class ContentController < ApplicationController
   end
 
   def edit
+    if @content.announcement.attachments.size == 0
+      @content.announcement.attachments.new
+    end
   end
 
   def update
