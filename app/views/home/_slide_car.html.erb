@@ -17,10 +17,14 @@
 
   <div class="row">
     <div class="col-8 text-white">
-      <h1>Araba alırken;</h1>
-      <h2>bayilerden teklif alın</h2>
-      <p>Size bayilerin yaptıkları teklifleri değerlendirin.</p>
-      <p>Alırken kazanın.</p>
+      <p class="h1 mb-0">0 km araba alırken;</p>
+      <p class="h2 mb-3">bayilerden teklif alın</p>
+      <p> Bayilerin size özel yaptıkları teklifleri değerlendirin. <br>
+          Alırken kazanın.</p>
+      <p class="font-italic small mt-5 d-flex align-items-center text-warning">
+        <i class="mi mr-1">access_time</i>
+        <span>Form doldurmak yaklaşık 2 dk. sürer</span>
+      </p>
     </div>
 
     <div class="col-4">
@@ -46,7 +50,7 @@
               <% end %>
             </div>
 
-            <%= f.submit "Teklif al", class: "btn btn-success w-100" %>
+            <%= f.submit "Hemen talep gönder", class: "btn btn-success w-100" %>
           <% end %>
         </div>
       </div>
