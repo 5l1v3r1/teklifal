@@ -8,14 +8,17 @@
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
+      <%= render 'slide_everything' %>
+    </div>
+    <div class="carousel-item">
       <%= render 'slide_car' %>
     </div>
     <div class="carousel-item">
       <%= render "car_rental_form" %>
-      <%#= render 'slide_car_rental' %>
     </div>
   </div>
 </div>
@@ -26,7 +29,7 @@
       <div class="card-body text-center">
         <%= image_tag "car-dark.png", class: 'w-100 mb-3' %>
         <p class="card-text">
-          Yeni araba almak icin <strong>234</strong> bayiden
+          Yeni araba almak icin <strong>234</strong> bayiden sana özel
           <%= link_to "teklif al", car_new_announcement_path %>
         </p>
       </div>
@@ -36,7 +39,7 @@
     <div class="card mb-4">
       <div class="card-body text-center">
         <%= image_tag "home.png", class: 'w-100 mb-3' %>
-        <p class="card-text">Arabanı satmak için <strong>304</strong> oto galeriden <a href="#">teklif al</a></p>
+        <p class="card-text">Arabanı satmak için <strong>304</strong> oto galeriden sana özel <a href="#">teklif al</a></p>
       </div>
     </div>
   </div>
@@ -44,7 +47,7 @@
     <div class="card mb-4">
       <div class="card-body text-center">
         <%= image_tag "household-appliances.png", class: 'w-100 mb-3' %>
-        <p class="card-text">Yeni ev eşyası almak için <strong>234</strong> satıcıdan <a href="#">teklif al</a></p>
+        <p class="card-text">Yeni ev eşyası almak için <strong>234</strong> satıcıdan sana özel <a href="#">teklif al</a></p>
       </div>
     </div>
   </div>
@@ -52,7 +55,7 @@
     <div class="card mb-4">
       <div class="card-body text-center">
         <%= image_tag "rent-a-car.png", class: 'w-100 mb-3' %>
-        <p class="card-text">Araba kiralama firmalarından <%= link_to "teklif al", car_rental_new_announcement_path %></p>
+        <p class="card-text">Araba kiralama firmalarından sana özel <%= link_to "teklif al", car_rental_new_announcement_path %></p>
       </div>
     </div>
   </div>
