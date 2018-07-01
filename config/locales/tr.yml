@@ -81,6 +81,10 @@ tr:
     destroy_are_you_sure: "Silmek istediğinize emin misiniz?"
     are_you_sure: "Bu işlemi yapmak istediğinize emin misiniz?"
     contact: "İletişim"
+    car: "Araba"
+    car_rental: "Araba Kiralama"
+    office_supplies: "Ofis Sarf Malzemesi"
+      
 
   forms:
     errors: "Gönderilemedi! Aşağıdaki hataları düzeltin:"

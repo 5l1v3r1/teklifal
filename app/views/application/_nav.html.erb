@@ -8,7 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarsExample07">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <%= link_to t('common.new_announcement'), new_announcement_path, class: "nav-link" %>
+          <%= link_to t('common.car'), new_car_announcement_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t('common.car_rental'), new_car_rental_announcement_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t('common.office_supplies'), plain_new_announcement_path, class: "nav-link" %>
         </li>
       </ul>
 
