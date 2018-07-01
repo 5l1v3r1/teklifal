@@ -5,6 +5,14 @@ module ApplicationHelper
       attributes: %w(href)
   end
 
+  def full_title page_title
+    page_title.empty? ? t('common.site_name') : "#{page_title} - #{t('common.site_name')}".html_safe
+  end
+
+  def title title
+    provide :title, title
+  end
+
   def page_header title
     render 'page_header', title: title
   end

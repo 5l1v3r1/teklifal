@@ -1,3 +1,5 @@
+<%= title "Log in" %>
+
 <% if params[:ann_created] and session[:created_announcement] %>
   <%= render "announcements/stepper", step: :user %>
 <% end %>
