@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require trix
 //= require flatpickr
+//= require typed
 //= require_tree .
 
 $(function () {

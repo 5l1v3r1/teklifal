@@ -45,7 +45,7 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
     </div>
 
-    <% if params[:ann_created] or params[:user][:signed_in_from_new_announcement] %>
+    <% if params[:ann_created] or (params[:user] and params[:user][:signed_in_from_new_announcement]) %>
       <%= f.hidden_field :signed_in_from_new_announcement, value: true %>
     <% end %>
 
