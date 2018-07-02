@@ -1,0 +1,26 @@
+
+
+<table class="table">
+  <thead>
+    <th>No</th> 
+    <th>Başlık</th>
+    <th>Durum</th>
+  </thead>
+
+  <tbody>
+    <% @announcements.each do |ann| %>
+      <tr>
+        <td>
+          <%= ann.id %>
+        </td>
+        <td>
+          <%= link_to ann.title, ann %>
+        </td>
+        <td>
+          <%= ann.status %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>

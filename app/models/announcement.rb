@@ -58,6 +58,16 @@ class Announcement < ApplicationRecord
     content_type.underscore if content_type
   end
 
+  def status
+    if archived?
+      :archived
+    elsif published?
+      :published
+    elsif expired?
+      :expired
+    end
+  end
+
   private
 
   def set_supervisor

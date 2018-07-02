@@ -1,6 +1,11 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy, :expire]
 
+  def index
+    authorize Announcement
+    @announcements = Announcement.unscoped.all
+  end
+
   def show
     authorize @announcement
   end
