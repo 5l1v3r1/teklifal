@@ -1,7 +1,17 @@
 <%= content_for :foot do %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initMap&language=tr&region=TR",
+  <%#= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initMap&language=tr&region=TR",
         async: true,
         defer: true %>
+  <%= javascript_tag defer: true, async: true do %>
+    if(window.google){
+      initMap();
+    } else{
+      $.ajax('https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initMap&language=tr&region=TR', {
+        crossDomain: true,
+        dataType: 'script'
+      });
+    }
+  <% end %>
 <% end %>
 
 <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
