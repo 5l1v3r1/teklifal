@@ -5,7 +5,7 @@ class ContentPolicy < ApplicationPolicy
   end
 
   def create?
-    signed_user
+    true
   end
 
   def edit?
