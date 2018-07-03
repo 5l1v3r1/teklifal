@@ -41,6 +41,12 @@ function initMap() {
   });
 
   function setMapFromInput(element, destination) {
+    google.maps.event.addDomListener(element, 'keydown', function(event) { 
+      if (event.keyCode === 13) { 
+          event.preventDefault(); 
+      }
+    });
+
     var input = element;
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
