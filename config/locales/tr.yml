@@ -36,6 +36,10 @@ tr:
           attributes:
             drop_off_time:
               smaller_than_pick_up_time: "alış zamanından sonra olması lazım."
+        user:
+          attributes:
+            phone:
+              taken: "daha önce alındı. <a href='/users/sign_in'>Giriş yapın</a>"
     attributes:
       announcement:
         title: "İlan Başlığı"
@@ -47,6 +51,7 @@ tr:
       user:
         first_name: "Ad"
         last_name: "Soyad"
+        phone: "Cep telefonu"
         email: "Email"
         password: "Parola"
         password_confirmation: "Parola tekrar"
