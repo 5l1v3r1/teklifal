@@ -1,15 +1,17 @@
 <%= title t("announcements.my_announcements") %>
 <%= page_header t("announcements.my_announcements") %>
 
-<table class="table">
-  <tr>
-    <th></th>
-    <th><%= humanize_attribute :announcement, :desc %></th>
-    <th><%= t "offers.count" %></th>
-    <th><%= humanize_attribute :announcement, :expired_at %></th>
-    <th><%= t "common.actions"  %></th>
-  </tr>
-  <%= render partial: 'table_ann',
-             collection: @announcements,
-             as: :announcement %>
-</table>
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th></th>
+      <th><%= humanize_attribute :announcement, :desc %></th>
+      <th><%= t "offers.count" %></th>
+      <th><%= humanize_attribute :announcement, :expired_at %></th>
+      <th><%= t "common.actions"  %></th>
+    </tr>
+    <%= render partial: 'table_ann',
+               collection: @announcements,
+               as: :announcement %>
+  </table>
+</div>

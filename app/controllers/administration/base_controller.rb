@@ -1,3 +1,5 @@
+require './lib/sms'
+
 module Administration
   class BaseController < ApplicationController
     layout "administration"

@@ -22,23 +22,26 @@
     .orders-table thead th {
       border: 0
     }
+
   </style>
 
-  <table class="table table-sm orders-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th><%= t "offers.my_offer" %></th>
-        <th><%= t "announcements.announcement" %></th>
-        <th><%= t "offer.count" %></th>
-        <th><%= t "offers.last_update" %></th>
-        <th><%= t "common.actions" %></th>
-      </tr>
-    </thead>
+  <div class="table-responsive">
+    <table class="table table-sm orders-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= t "offers.my_offer" %></th>
+          <th><%= t "announcements.announcement" %></th>
+          <th><%= t "offer.count" %></th>
+          <th><%= t "offers.last_update" %></th>
+          <th><%= t "common.actions" %></th>
+        </tr>
+      </thead>
 
-    <%= render partial: 'table_offer',
-               collection: @offers,
-               as: :offer %>
+      <%= render partial: 'table_offer',
+                 collection: @offers,
+                 as: :offer %>
 
-  </table>
+    </table>
+  </div>
 </div>

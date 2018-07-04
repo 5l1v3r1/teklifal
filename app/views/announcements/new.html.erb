@@ -1,9 +1,9 @@
 <%= title t(".title") %>
 <%= page_header t(".title") %>
 
-<div class="row new-announcement-links mb-4">
+<div class="row new-announcement-links">
   
-  <div class="col-3 d-flex">
+  <div class="col-6 col-md-4 col-lg-3 d-flex mb-3">
     <%= link_to car_new_announcement_path,
                 class: "card",
                 data: {
@@ -21,7 +21,7 @@
     <% end %>
   </div>
 
-  <div class="col-3 d-flex">
+  <div class="col-6 col-md-4 col-lg-3 d-flex mb-3">
     <%= link_to nil, class: "card" do %>
       <div class="card-body text-center">
         <%= image_tag "home.png", class: 'w-100 mb-3' %>
@@ -33,7 +33,7 @@
     <% end %>
   </div>
 
-  <div class="col-3 d-flex">
+  <div class="col-6 col-md-4 col-lg-3 d-flex mb-3">
     <%= link_to nil, class: "card" do %>
       <div class="card-body text-center">
         <%= image_tag "household-appliances.png", class: 'w-100 mb-3' %>
@@ -45,7 +45,7 @@
     <% end %>
   </div>
 
-  <div class="col-3 d-flex">
+  <div class="col-6 col-md-4 col-lg-3 d-flex mb-3">
     <%= link_to car_rental_new_announcement_path, class: "card" do %>
       <div class="card-body text-center">
         <%= image_tag "rent-a-car.png", class: 'w-100 mb-3' %>
@@ -56,11 +56,8 @@
       </div>
     <% end %>
   </div>
-</div>
 
-<div class="row new-announcement-links">
-  
-  <div class="col-3">
+  <div class="col-6 col-md-4 col-lg-3 d-flex mb-3">
     <%= link_to plain_new_announcement_path, class: "card" do %>
       <div class="card-body">
         <%= image_tag "car-dark.png", class: 'w-100 mb-3' %>
