@@ -3,8 +3,11 @@
 <%= render 'notice_alert' %>
 
 <div class="container mt-5">
-  <div class="border-0 border-md rounded p-0 p-md-5">
-    <%= yield %>
+  <div class="border-0 border-md rounded">
+    <%= yield :container_top %>
+    <div class="p-0 p-md-5">
+      <%= yield %>
+    </div>
   </div>
 </div>
 

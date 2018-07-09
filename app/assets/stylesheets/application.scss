@@ -45,3 +45,31 @@ trix-editor:focus {
   width: 10px;
   height: 10px;
 }
+
+.top-image {
+  @extend .m-1, .rounded-top;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.top-image.new-car {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)
+    ),
+    asset-url('new-car.jpg');
+}
+
+.top-image.car-rental {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)
+    ),
+    asset-url('car-rental.jpg');
+}
+
+.top-image.plain {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)
+    ),
+    asset-url('hand-shake-istanbul.jpg');
+}
