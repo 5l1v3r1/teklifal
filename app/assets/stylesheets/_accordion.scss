@@ -1,0 +1,43 @@
+.accordion {
+  width: 100%;
+  display: flex;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+  }
+}
+
+.accordion .item {
+  flex: 1;
+  transition: all 500ms ease;
+  overflow: hidden;
+  display: flex;
+  align-content: stretch;
+}
+
+.accordion .item-body {
+  width: 1110px;
+  flex-shrink: 0;
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  } 
+}
+
+.accordion:hover .item {
+  width: 0;
+  flex: initial;
+
+  @include media-breakpoint-down(sm) {
+    width: auto;
+  }
+}
+
+.accordion:hover .item:hover {
+  width: auto;
+  flex: 2;
+
+  @include media-breakpoint-down(sm) {
+    flex: 1;
+  }
+}
