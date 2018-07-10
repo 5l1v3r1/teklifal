@@ -4,6 +4,7 @@ lock "~> 3.11.0"
 set :user, 'deploy'
 set :application, "biteklif"
 set :rails_env, 'production'
+set :branch, "deploy"
 set :repo_url, "git@github.com:cihad/biteklif.git"
 set :deploy_to, "/home/deploy/apps/biteklif"
 
