@@ -49,6 +49,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'mina', '~> 1.2'
+  gem 'mina-sidekiq', '~> 1'
+  gem 'mina-puma', '~> 1.1', require: false
+  gem 'mina-nginx'
 end
 
 
