@@ -13,7 +13,7 @@ append :linked_files, "config/master.key", "config/puma.rb"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads'
 
 set :config_example_suffix, '.example'
-set :config_files, %w{cnofig/master.key}
+set :config_files, %w{config/master.key}
 set :puma_conf, "#{shared_path}/config/puma.rb"
 set :migration_role, :app
 set :assets_manifests, ['app/assets/config/manifest.js']
