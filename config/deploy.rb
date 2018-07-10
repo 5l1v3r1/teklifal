@@ -7,12 +7,13 @@ set :rails_env, 'production'
 set :branch, "deploy"
 set :repo_url, "git@github.com:cihad/biteklif.git"
 set :deploy_to, "/home/deploy/apps/biteklif"
+set :pty, true
 
 append :linked_files, "config/master.key", "config/puma.rb"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads'
 
 set :config_example_suffix, '.example'
-set :config_files, %w{config/master.key}
+set :config_files, %w{cnofig/master.key}
 set :puma_conf, "#{shared_path}/config/puma.rb"
 set :migration_role, :app
 set :assets_manifests, ['app/assets/config/manifest.js']
