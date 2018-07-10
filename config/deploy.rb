@@ -1,94 +1,81 @@
-require 'mina/rails'
-require 'mina/git'
-require 'mina/chruby'
-require 'mina_sidekiq/tasks'
-require 'mina/puma'
-require 'mina/nginx'
-# require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
-# require 'mina/rvm'    # for rvm support. (https://rvm.io)
+# config valid for current version and patch releases of Capistrano
+lock "~> 3.11.0"
 
-# Basic settings:
-#   domain       - The hostname to SSH to.
-#   deploy_to    - Path to deploy into.
-#   repository   - Git repo to clone from. (needed by mina/git)
-#   branch       - Branch name to deploy. (needed by mina/git)
+set :application, "biteklif"
+set :repo_url, "git@github.com:cihad/biteklif.git"
 
-set :application_name, 'biteklif'
-set :domain, '46.101.223.225'
-set :deploy_to, '/home/deploy/apps/biteklif'
-set :repository, 'git@github.com:cihad/biteklif.git'
-set :branch, 'develop'
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Optional settings:
-set :user, 'deploy'          # Username in the server to SSH to.
-#   set :port, '30000'           # SSH port number.
-#   set :forward_agent, true     # SSH forward_agent.
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, "/home/deploy/biteklif"
 
-# Shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
-# Some plugins already add folders to shared_dirs like `mina/rails` add `public/assets`, `vendor/bundle` and many more
-# run `mina -d` to see all folders and files already included in `shared_dirs` and `shared_files`
-set :shared_dirs, fetch(:shared_dirs, []).push('public/assets')
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/master.key')
+# Default value for :format is :airbrussh.
+# set :format, :airbrussh
 
-# nginx
-set :nginx_socket_path, '/tmp/unicorn.biteklif_production.sock'
+# You can configure the Airbrussh format using :format_options.
+# These are the defaults.
+# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
-# This task is the environment that is loaded for all remote run commands, such as
-# `mina deploy` or `mina rake`.
-task :remote_environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-  # invoke :'rbenv:load'
-  invoke :chruby, "ruby-2.5.1-p57"
+# Default value for :pty is false
+# set :pty, true
 
-  # For those using RVM, use this to load an RVM version@gemset.
-  # invoke :'rvm:use', 'ruby-1.9.3-p125@default'
-end
+# Default value for :linked_files is []
+append :linked_files, "config/master.key"
 
-# Put any custom commands you need to run at setup
-# All paths in `shared_dirs` and `shared_paths` will be created on their own.
-task :setup do
-  # command %{rbenv install 2.3.0 --skip-existing}
-  command %(mkdir -p "#{fetch(:deploy_to)}/shared/pids/")
-  command %(mkdir -p "#{fetch(:deploy_to)}/shared/log/")
-  # Puma needs a place to store its pid file and socket file.
-  queue! %(mkdir -p "#{deploy_to}/shared/tmp/sockets")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/sockets")
-  queue! %(mkdir -p "#{deploy_to}/shared/tmp/pids")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/pids")
+# Default value for linked_dirs is []
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads'
 
-  invoke :'nginx:setup'
-end
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-desc "Deploys the current version to the server."
-task :deploy do
-  # uncomment this line to make sure you pushed your local branch to the remote origin
-  invoke :'git:ensure_pushed'
-  deploy do
-    # Put things that will set up an empty directory into a fully set-up
-    # instance of your project.
-    invoke :'git:clone'
-    invoke :'sidekiq:quiet'
-    invoke :'deploy:link_shared_paths'
-    invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
-    invoke :'deploy:cleanup'
+# Default value for local_user is ENV['USER']
+# set :local_user, -> { `git config user.name`.chomp }
 
-    on :launch do
-      in_path(fetch(:current_path)) do
-        command %{mkdir -p tmp/}
-        command %{touch tmp/restart.txt}
-        invoke :'sidekiq:restart'
-        invoke :'puma:phased_restart'
-      end
-    end
-  end
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 
-  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
-  # run(:local){ say 'done' }
-end
+# Uncomment the following to require manually verifying the host key before first deploy.
+# set :ssh_options, verify_host_key: :secure
 
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - https://github.com/mina-deploy/mina/tree/master/docs
+# Rails spesific settings
+# If the environment differs from the stage name
+set :rails_env, 'production'
+
+# Defaults to :db role
+set :migration_role, :app
+
+# Defaults to the primary :db server
+# set :migration_servers, -> { primary(fetch(:migration_role)) }
+
+# Defaults to false
+# Skip migration if files in db/migrate were not modified
+set :conditionally_migrate, true
+
+# Defaults to [:web]
+# set :assets_roles, [:web, :app]
+
+# Defaults to 'assets'
+# This should match config.assets.prefix in your rails config/application.rb
+# set :assets_prefix, 'prepackaged-assets'
+
+# Defaults to ["/path/to/release_path/public/#{fetch(:assets_prefix)}/.sprockets-manifest*", "/path/to/release_path/public/#{fetch(:assets_prefix)}/manifest*.*"]
+# This should match config.assets.manifest in your rails config/application.rb
+set :assets_manifests, ['app/assets/config/manifest.js']
+
+# RAILS_GROUPS env value for the assets:precompile task. Default to nil.
+# set :rails_assets_groups, :assets
+
+# If you need to touch public/images, public/javascripts, and public/stylesheets on each deploy
+# set :normalize_asset_timestamps, %w{public/images public/javascripts public/stylesheets}
+
+# Defaults to nil (no asset cleanup is performed)
+# If you use Rails 4+ and you'd like to clean up old assets after each deploy,
+# set this to the number of versions to keep
+set :keep_assets, 2
+
+
+
+# NGINX
+set :nginx_domains, "46.101.223.225"
+set :app_server_socket, "#{shared_path}/tmp/sockets/#{fetch :application}.sock"
