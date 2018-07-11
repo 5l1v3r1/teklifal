@@ -3,7 +3,7 @@ lock "~> 3.11.0"
 
 set :user, 'deployer'
 set :application, "biteklif"
-set :branch, "deploy"
+set :branch, "develop"
 set :repo_url, "git@github.com:cihad/biteklif.git"
 set :deploy_to, "/home/deployer/apps/biteklif"
 set :pty, true
