@@ -13,7 +13,7 @@ set :rails_env, 'production'
 set :migration_role, :app
 set :assets_manifests, ['app/assets/config/manifest.js']
 set :keep_assets, 2
-append :linked_files, "config/master.key", "config/puma.rb"
+append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads'
 
 # https://github.com/capistrano/chruby#usage
@@ -23,7 +23,6 @@ set :chruby_ruby, "ruby-2.5.1"
 set :puma_conf, "#{shared_path}/config/puma.rb"
 
 # https://github.com/platanus/capistrano3-nginx#usage
-set :nginx_domains, "46.101.223.225"
 set :app_server_socket, "#{shared_path}/tmp/sockets/#{fetch :application}.sock"
 
 namespace :deploy do
