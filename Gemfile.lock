@@ -87,8 +87,6 @@ GEM
       capistrano-bundler (~> 1.1)
     capistrano-rails-db (0.0.2)
       capistrano-rails (~> 1.1)
-    capistrano-upload-config (0.8.2)
-      capistrano (>= 3.0)
     capistrano3-nginx (2.1.6)
       capistrano (>= 3.0.0)
     capistrano3-puma (3.1.1)
@@ -349,7 +347,6 @@ DEPENDENCIES
   capistrano-chruby
   capistrano-rails (~> 1.4)
   capistrano-rails-db
-  capistrano-upload-config
   capistrano3-nginx (~> 2.0)
   capistrano3-puma (~> 3.1)
   carrierwave (~> 1.0)

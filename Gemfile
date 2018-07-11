@@ -55,6 +55,7 @@ group :development do
   gem 'capistrano3-nginx', '~> 2.0'
   gem 'capistrano3-puma', '~> 3.1'
   gem 'capistrano-rails-db'
+  gem 'sshkit-sudo'
 end
 
 

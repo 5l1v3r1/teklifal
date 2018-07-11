@@ -1,3 +1,4 @@
+require_relative 'config/application'
 require 'capistrano/setup'
 require "capistrano/scm/git"
 require 'capistrano/deploy'
@@ -7,7 +8,7 @@ require 'capistrano/puma/nginx'
 require "capistrano/chruby"
 require 'capistrano/rails'
 require 'capistrano/rails/db'
-require 'capistrano/rails/console'
+require 'sshkit/sudo'
 
 install_plugin Capistrano::SCM::Git
 install_plugin Capistrano::Puma  # Default puma tasks

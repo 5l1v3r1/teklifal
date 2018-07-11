@@ -1,11 +1,11 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
-set :user, 'deploy'
+set :user, 'deployer'
 set :application, "biteklif"
 set :branch, "deploy"
 set :repo_url, "git@github.com:cihad/biteklif.git"
-set :deploy_to, "/home/deploy/apps/biteklif"
+set :deploy_to, "/home/deployer/apps/biteklif"
 set :pty, true
 
 # https://github.com/capistrano/rails#usage
