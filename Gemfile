@@ -52,7 +52,7 @@ group :development do
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano-chruby'
-  gem 'capistrano3-nginx', '~> 2.0'
+  gem 'capistrano3-nginx', github: "treenewbee/capistrano3-nginx"
   gem 'capistrano3-puma', '~> 3.1'
   gem 'capistrano-rails-db'
   gem 'sshkit-sudo'
