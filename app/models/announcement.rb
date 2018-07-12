@@ -19,7 +19,7 @@ class Announcement < ApplicationRecord
     reject_if: ->(attrs){ attrs[:file].blank? } 
   belongs_to :user, required: false
   belongs_to :supervisor, class_name: "User", required: false
-  belongs_to :content, polymorphic: true, dependent: :destroy, optional: true, dependent: :destroy
+  belongs_to :content, polymorphic: true, dependent: :destroy, optional: true
   accepts_nested_attributes_for :content, allow_destroy: true
 
   # Validates  
