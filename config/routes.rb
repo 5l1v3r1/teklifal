@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :car_announcements, except: [:show]
+  resources :household_appliances_announcements, except: [:show]
   resources :car_rental_announcements, except: [:show]
   devise_for :users, controllers: {
     sessions: 'sessions',

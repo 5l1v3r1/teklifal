@@ -61,6 +61,8 @@ tr:
         file: "Dosya"
       car_announcement:
         make: "Marka"
+      household_appliances_announcement:
+        make: "Marka"
       car_rental_announcement:
         pick_up_location: "Alış yeri"
         drop_off_location: "Teslim yeri"
@@ -87,9 +89,9 @@ tr:
     are_you_sure: "Bu işlemi yapmak istediğinize emin misiniz?"
     contact: "İletişim"
     car: "Araba"
-    car_rental: "Araba Kiralama"
-    office_supplies: "Ofis Sarf Malzemesi"
-      
+    car_rental: "Araba kiralama"
+    office_supplies: "Ofis sarf malzemesi"
+    household_appliances: "Beyaz eşya & Ev aletleri"
 
   forms:
     errors: "Gönderilemedi! Aşağıdaki hataları düzeltin:"
@@ -162,6 +164,16 @@ tr:
       title: "Sıfır araba talepleri"
     new:
       title: "Sıfır araba teklifi al"
+
+  household_appliances_announcements:
+    new_household_appliances_announcement: "Yeni beyaz eşya/ev aletleri talep ilanı oluştur"
+    make: "Marka"
+    edit:
+      title: "Beyaz eşya & Ev aletleri ilanını düzenle"
+    index:
+      title: "Beyaz eşya & Ev aletleri talepleri"
+    new:
+      title: "Beyaz eşya & Ev aletleri teklifi al"
 
   car_rental_announcements:
     new_car_rental_announcement: "Kiralık araba talep ilanı oluştur"

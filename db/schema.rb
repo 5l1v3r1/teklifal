@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_09_104634) do
+ActiveRecord::Schema.define(version: 2018_07_13_155531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 2018_06_09_104634) do
     t.boolean "different_location"
     t.datetime "pick_up_time"
     t.datetime "drop_off_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "household_appliances_announcements", force: :cascade do |t|
+    t.string "make"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
