@@ -5,13 +5,13 @@
     <h2 class="h4 mt-1 mr-4"><%= t "offers.my_offers" %></h2>
   </li>
   <li class="nav-item">
-    <%= link_to t("offers.draft"), my_offers_path(status: :draft), class: "nav-link #{'active' if params[:status] == 'draft'}" %>
+    <%= link_to t("offers.draft"), offers_user_index_path(status: :draft), class: "nav-link #{'active' if params[:status] == 'draft'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to t("announcements.publishing"), my_offers_path(status: :active), class: "nav-link #{'active' if params[:status] == 'active'}" %>
+    <%= link_to t("announcements.publishing"), offers_user_index_path(status: :active), class: "nav-link #{'active' if params[:status] == 'active'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to t("announcements.not_publishing"), my_offers_path(status: :expired), class: "nav-link #{'active' if params[:status] == 'expired'}" %>
+    <%= link_to t("announcements.not_publishing"), offers_user_index_path(status: :expired), class: "nav-link #{'active' if params[:status] == 'expired'}" %>
   </li>
 </ul>
 

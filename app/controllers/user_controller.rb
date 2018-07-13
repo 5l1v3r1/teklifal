@@ -14,7 +14,7 @@ class UserController < ApplicationController
               when 'expired'
                 current_user.offers.joins(:announcement).where(state: 'published').where('announcements.expired_at < ?', Time.now)
               else
-                redirect_to my_offers_path(status: :draft)
+                redirect_to offers_user_index_path(status: :draft)
               end
   end
 
