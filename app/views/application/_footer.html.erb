@@ -7,14 +7,12 @@
       <div class="col-6 col-md">
         <h5>teklif.com</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="#">Hakkımızda</a></li>
-          <li><a class="text-muted" href="#">Blog</a></li>
-          <li><a class="text-muted" href="#">İnsan Kaynakları</a></li>
-          <li><a class="text-muted" href="#">İletişim</a></li>
+          <li><%= link_to "Hakkımızda", page_path("about"), class: "text-muted" %></li>
+          <li><%= link_to "Açık Pozisyonlar", page_path("open-positions"), class: "text-muted" %></li>
+          <li><%= link_to "İletişim", page_path("contact"), class: "text-muted" %></li>
           <li><a class="text-muted" href="#">Gizlilik Politikası</a></li>
-          <li><a class="text-muted" href="#">Yardım</a></li>
-          <li><a class="text-muted" href="#">Last time</a></li>
-        </ul>
+          <li><%= link_to "Yardım", page_path("help"), class: "text-muted" %></li>
+          </ul>
       </div>
       <div class="col-6 col-md">
         <h5>Profesyonel Aboneler</h5>
