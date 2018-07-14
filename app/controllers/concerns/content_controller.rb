@@ -9,9 +9,24 @@ class ContentController < ApplicationController
   end
 
   def new
-    @content = content_resource.new
-    @ann = @content.build_announcement user: current_user
-    3.times { @ann.attachments.new }
+    if  !user_signed_in? and
+        session[:created_announcement] and
+        ann = Announcement.unscoped.find(session[:created_announcement]) and
+        ann.content and
+        ann.content.class == content_resource
+      @content = ann.content
+      if params[:reset]
+        ann.destroy
+        session.delete(:created_announcement)
+        @content = content_resource.new
+        @ann = @content.build_announcement
+        3.times { @ann.attachments.build }
+      end
+    else
+      @content = content_resource.new
+      @ann = @content.build_announcement user: current_user
+      3.times { @ann.attachments.new }
+    end
   end
 
   def create
@@ -19,14 +34,21 @@ class ContentController < ApplicationController
     # @content.build_announcement(user: current_user)
 
     @content.assign_attributes content_params
-    @content.announcement.user = current_user
+    @content.announcement.user = current_user if user_signed_in?
     # @content.announcement.supervisor = User.lazy
     # @content.announcement.content_type = content_resource
 
     if @content.save
-      redirect_to @content.announcement
+      if user_signed_in?
+        redirect_to @content.announcement
+      else
+        session[:created_announcement] = @content.announcement.id
+        redirect_to new_user_registration_path(ann_created: :true)
+      end
     else
-      3.times { @content.announcement.attachments.new }
+      if @content.announcement.attachments.size < 3
+        3.times { @content.announcement.attachments.build }
+      end
       render action: :new
     end
   end
@@ -39,7 +61,11 @@ class ContentController < ApplicationController
 
   def update
     if @content.update(content_params)
-      redirect_to @content.announcement
+      if user_signed_in?
+        redirect_to @content.announcement, notice: 'Announcement was successfully updated.'
+      else
+        redirect_to new_user_registration_path(ann_created: :true)
+      end
     else
       3.times { @content.announcement.attachments.new }
       render action: :edit
@@ -62,7 +88,7 @@ class ContentController < ApplicationController
   end
 
   def authorize_content
-    authorize @content      
+    authorize @content
   end
 
   def authorize_content_resource
