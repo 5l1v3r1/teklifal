@@ -1,7 +1,7 @@
 class DashboardPolicy < ApplicationPolicy
 
   def show?
-    signed_user.manager?
+    signed_user.try :manager?
   end
 
 end
