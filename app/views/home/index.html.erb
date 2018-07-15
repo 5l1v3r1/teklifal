@@ -14,11 +14,13 @@
   <% end %>
 <% end %>
 
-<div class="accordion mt-5">
-  <%= render "slide_everything_1" %>
-  <%= render "slide_car_1" %>
-  <%#= render "slide_car_rental_1" %>
-  <%= render "car_rental_form_1" %>
+<div class="container">
+  <div class="accordion mt-5">
+    <%= render "slide_everything_1" %>
+    <%= render "slide_car_1" %>
+    <%#= render "slide_car_rental_1" %>
+    <%= render "car_rental_form_1" %>
+  </div>  
 </div>
 
 
@@ -42,87 +44,117 @@
   </div>
 </div> -->
 
-<div class="row mt-5">
-  <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-body text-center">
-        <%= image_tag "car-dark.png", class: 'w-100 mb-3' %>
-        <p class="card-text">
-          Yeni araba almak icin <strong>234</strong> bayiden sana özel
-          <%= link_to "teklif al", car_new_announcement_path %>
-        </p>
+<div class="container">
+  
+  <div class="row mt-5">
+    <div class="col-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <%= image_tag "car-dark.png", class: 'w-100 mb-3' %>
+          <p class="card-text">
+            Yeni araba almak icin <strong>234</strong> bayiden sana özel
+            <%= link_to "teklif al", car_new_announcement_path %>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-body text-center">
-        <%= image_tag "home.png", class: 'w-100 mb-3' %>
-        <p class="card-text">Arabanı satmak için <strong>304</strong> oto galeriden sana özel <a href="#">teklif al</a></p>
+    <div class="col-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <%= image_tag "home.png", class: 'w-100 mb-3' %>
+          <p class="card-text">Arabanı satmak için <strong>304</strong> oto galeriden sana özel <a href="#">teklif al</a></p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-body text-center">
-        <%= image_tag "household-appliances.png", class: 'w-100 mb-3' %>
-        <p class="card-text">Yeni ev eşyası almak için <strong>234</strong> satıcıdan sana özel <a href="#">teklif al</a></p>
+    <div class="col-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <%= image_tag "household-appliances.png", class: 'w-100 mb-3' %>
+          <p class="card-text">Yeni ev eşyası almak için <strong>234</strong> satıcıdan sana özel <a href="#">teklif al</a></p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-body text-center">
-        <%= image_tag "rent-a-car.png", class: 'w-100 mb-3' %>
-        <p class="card-text">Araba kiralama firmalarından sana özel <%= link_to "teklif al", car_rental_new_announcement_path %></p>
+    <div class="col-3">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <%= image_tag "rent-a-car.png", class: 'w-100 mb-3' %>
+          <p class="card-text">Araba kiralama firmalarından sana özel <%= link_to "teklif al", car_rental_new_announcement_path %></p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<h3 class="mt-5 mb-3 h6">NASIL ÇALIŞIR?</h3>
-<div class="card-group card-stepper">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">1</h5>
-      <p class="card-text">Ücretsiz ilan ver. Teklifleri bekle.</p>
+<div class="container mb-5">
+  <h3 class="mt-5 mb-3 h6">NASIL ÇALIŞIR?</h3>
+  <div class="card-group card-stepper">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">1</h5>
+        <p class="card-text">Ücretsiz ilan ver. Teklifleri bekle.</p>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">2</h5>
-      <p class="card-text">Aboneler teklif yapsın.</p>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">2</h5>
+        <p class="card-text">Aboneler teklif yapsın.</p>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">3</h5>
-      <p class="card-text">İstediğin teklifi değerlendir.</p>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">3</h5>
+        <p class="card-text">İstediğin teklifi değerlendir.</p>
+      </div>
     </div>
-  </div>
+  </div>  
 </div>
+<!-- 
 
-
-
-<h3 class="mt-5">Güncel İlanlar</h3>
-<table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Ilan</th>
-      <th scope="col">Ekleyen</th>
-      <th scope="col">Teklif sayisi</th>
-      <th scope="col">Eklenme zamani</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% Announcement.published.order(created_at: :desc).each do |ann| %>
+<div class="container">
+  <h3 class="mt-5">Güncel İlanlar</h3>
+  <table class="table table-hover table-dark">
+    <thead>
       <tr>
-        <td><%= link_to ann.title, ann %></th>
-        <td><%= ann.user.name %></th>
-        <td><%= ann.offers.size %> teklif</td>
-        <td><%= time_ago_in_words ann.created_at %> once</td>
+        <th scope="col">Ilan</th>
+        <th scope="col">Ekleyen</th>
+        <th scope="col">Teklif sayisi</th>
+        <th scope="col">Eklenme zamani</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% Announcement.published.order(created_at: :desc).each do |ann| %>
+        <tr>
+          <td><%= link_to ann.title, ann %></th>
+          <td><%= ann.user.name %></th>
+          <td><%= ann.offers.size %> teklif</td>
+          <td><%= time_ago_in_words ann.created_at %> once</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
+ -->
+
+<div class="container">
+  <div class="rounded mobile-app">
+    <div class="row">
+      <div class="col p-5 text-white d-flex flex-column">
+        <h2 class="h3">Mobil Uygulama</h2>
+        <p style="flex: 1 0 auto">Artık teklif sitemizi yanınızda taşıyın.</p>
+
+        <div class="d-flex">
+          <%= link_to page_path("android"), class:"mr-3" do %>
+            <%= image_tag "play-badge.png", class: "img-fluid" %>
+          <% end %>
+          <%= link_to page_path("ios") do %>
+            <%= image_tag "app-store-badge.svg", class: "img-fluid" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col pt-5">
+        <%= image_tag "hand-phone.png", class: "img-fluid d-block", style: "width: 50%; margin: auto" %>
+      </div>
+    </div>
+  </div>
+</div>

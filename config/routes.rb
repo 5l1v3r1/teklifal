@@ -2,6 +2,8 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
 
+  get "/pages/*id" => 'pages#show', as: :page, format: false
+
   resources :user, path: "my", only: [] do
     collection do
       get 'offers'
