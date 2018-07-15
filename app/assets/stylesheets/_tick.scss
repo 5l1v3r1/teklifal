@@ -1,0 +1,35 @@
+#news-ticker ul { 
+  display: inline-block;
+  position: relative;
+  font-weight: bold;
+}
+
+#news-ticker li {
+  position: absolute;
+  left: 0;
+  width: 0;
+  overflow: hidden;
+  height: 1em;
+  word-wrap: break-word;  
+  opacity: 0
+}
+
+#news-ticker li.tick {
+  -webkit-animation: tick 5s linear;
+}
+
+@-webkit-keyframes tick {
+  0% {
+    width: 0;
+  }
+  5% {
+      opacity: 1;
+  } 
+  90% {
+    width: 550px;
+    opacity: 1;
+  }
+  100% {
+     opacity: 0
+  }
+}

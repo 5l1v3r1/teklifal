@@ -14,11 +14,21 @@
     <div class="jumbotron">
       <div class="col-sm-8 mx-auto">
         <h1>Pazarınızı büyültüyoruz</h1>
-        <p>Firmanız artık
-          <span class="text-primary">
-            <strong id="typed"></strong>
-          </span>
-        </p>
+        <!-- http://jsfiddle.net/3smGz/3/ -->
+        <div id="news-ticker">
+          <span>Firmanız artık</span>
+          <ul>
+            <li>
+              <a href="#">kolay ulaşılabilir olacak.</a>
+            </li>
+            <li>
+              <a href="#">daha profesyonel görünecek.</a>
+            </li>
+            <li>
+              <a href="#">daha yenilikçi olacak.</a>
+            </li>
+          </ul>
+        </div>
         <p>
           <%= link_to new_subscriber_path, class: "btn btn-success" do %>
             BAŞLA
