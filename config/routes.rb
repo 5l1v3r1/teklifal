@@ -29,9 +29,12 @@ Rails.application.routes.draw do
   resources :announcements do
     put :expire, on: :member
     resources :offers, except: :index
+
+    # Anasayfadaki formdan gelen verileri ContentsController'da
+    # alabilmek icin get ve post eklendi
     match 'car' => "car_announcements#new", on: :new, via: [:get, :post]
+    match 'car_rental' => "car_rental_announcements#new", on: :new, via: [:get, :post]
     get 'plain', on: :new, to: "plain_announcements#new"
-    get 'car_rental', on: :new, to: "car_rental_announcements#new"
   end
 
   resources :offers, only: :index
