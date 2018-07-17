@@ -2,10 +2,10 @@
 lock "~> 3.11.0"
 
 set :user, 'deployer'
-set :application, "biteklif"
+set :application, "teklifal"
 set :branch, "develop"
-set :repo_url, "git@github.com:cihad/biteklif.git"
-set :deploy_to, "/home/deployer/apps/biteklif"
+set :repo_url, "git@github.com:cihad/teklifal.git"
+set :deploy_to, "/home/deployer/apps/teklifal"
 set :pty, true
 
 # https://github.com/capistrano/rails#usage
