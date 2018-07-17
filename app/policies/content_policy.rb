@@ -38,7 +38,7 @@ class ContentPolicy < ApplicationPolicy
       ]
     }
 
-    if record.new_record?
+    if record.is_a?(ActiveRecord::Base) and record.new_record?
       announcement_attrs[:announcement_attributes] << :duration_day
     end
 

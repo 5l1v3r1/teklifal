@@ -122,7 +122,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Announcement.published.order(created_at: :desc).each do |ann| %>
+      <% Announcement.with_user_present.not_archived.published.order(created_at: :desc).each do |ann| %>
         <tr>
           <td><%= link_to ann.title, ann %></th>
           <td><%= ann.user.name %></th>

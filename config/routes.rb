@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :car_announcements, except: [:show]
+  resources :plain_announcements, except: [:show]
   resources :household_appliances_announcements, except: [:show]
   resources :car_rental_announcements, except: [:show]
   devise_for :users, controllers: {
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
     put :expire, on: :member
     resources :offers, except: :index
     match 'car' => "car_announcements#new", on: :new, via: [:get, :post]
-    get 'plain', on: :new
+    get 'plain', on: :new, to: "plain_announcements#new"
     get 'car_rental', on: :new, to: "car_rental_announcements#new"
   end
 

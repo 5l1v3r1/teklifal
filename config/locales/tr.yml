@@ -175,6 +175,15 @@ tr:
     new:
       title: "Beyaz eşya & Ev aletleri teklifi al"
 
+  plain_announcements:
+    new_plain_announcement: "Yeni talep ilanı oluştur"
+    edit:
+      title: "Talep ilanını düzenle"
+    index:
+      title: "Talepler"
+    new:
+      title: "Teklif al"
+
   car_rental_announcements:
     new_car_rental_announcement: "Kiralık araba talep ilanı oluştur"
     same_location: "Alış yeri ile aynı"

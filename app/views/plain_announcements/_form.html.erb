@@ -3,17 +3,11 @@
     <div class="col-12 col-lg-8 offset-lg-2">
       <%= render 'form_errors', object: form.object %>
 
-      <%= form.fields_for :announcement do |af| %>
+      <%= form.fields_for :announcement, form.object.announcement do |af| %>
         <%= render 'announcements/title_field', form: af %>
       <% end %>
 
-
-      <div class="form-group">
-        <%= form.label :make %>
-        <%= form.select :make, form.object.class::BRANDS, {include_blank: true}, {class: 'form-control'} %>
-      </div>
-
-      <%= form.fields_for :announcement do |af| %>
+      <%= form.fields_for :announcement, form.object.announcement do |af| %>
         <%= render 'announcements/fields_for_announcement', form: af %>
       <% end %>
 

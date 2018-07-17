@@ -13,3 +13,7 @@
 
 
 <%= render 'form', content: @content %>
+
+<% if ask_to_continue? %>
+  <%= render "announcements/modal" %>
+<% end %>

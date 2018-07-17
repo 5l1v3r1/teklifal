@@ -2,10 +2,11 @@ class Announcement < ApplicationRecord
   DURATION_DAYS = [3, 10, 30]
 
   # Scopes
-  default_scope { where(archived: false).where.not(user: nil) }
+  scope :with_user_present, -> { where.not(user: nil) }
   scope :published, -> { where('expired_at > ?', Time.now) }
   scope :unpublished, -> { where('expired_at < ?', Time.now) }
   scope :archived, -> { unscoped.where(archived: true) }
+  scope :not_archived, -> { where(archived: false) }
   scope :supervisors, -> { published.
     where.not(supervisor_id: nil).
     group(:supervisor_id).
@@ -26,6 +27,14 @@ class Announcement < ApplicationRecord
   validates_presence_of :title, :desc, :expired_at, :duration_day
   validates_inclusion_of :duration_day, in: DURATION_DAYS
   before_validation :set_supervisor, on: :create
+
+  def content_type
+    super or "PlainAnnouncement"
+  end
+
+  def content
+    super or PlainAnnouncement.new(announcement_id: id)
+  end
 
   def owner? user
     self.user == user

@@ -11,9 +11,9 @@ class ContentController < ApplicationController
   def new
     if  !user_signed_in? and
         session[:created_announcement] and
-        ann = Announcement.unscoped.find(session[:created_announcement]) and
+        ann = Announcement.find_by(id: session[:created_announcement]) and
         ann.content and
-        ann.content.class == content_resource
+        ann.content_type == content_resource.to_s
       @content = ann.content
       if params[:reset]
         ann.destroy
@@ -24,19 +24,20 @@ class ContentController < ApplicationController
       end
     else
       @content = content_resource.new
-      @ann = @content.build_announcement user: current_user
+      if params.has_key?(content_param_name)
+        @content.assign_attributes content_params
+      end
+      @content.build_announcement unless @content.announcement
+      @ann = @content.announcement
+      @ann.user = current_user
       3.times { @ann.attachments.new }
     end
   end
 
   def create
     @content = content_resource.new
-    # @content.build_announcement(user: current_user)
-
     @content.assign_attributes content_params
     @content.announcement.user = current_user if user_signed_in?
-    # @content.announcement.supervisor = User.lazy
-    # @content.announcement.content_type = content_resource
 
     if @content.save
       if user_signed_in?
@@ -75,12 +76,16 @@ class ContentController < ApplicationController
   private
 
   def set_content
-    @content = content_resource.find(params[:id])  
+    @content = content_resource.find(params[:id])
   end
 
   def content_params
-    params.require(content_resource.to_s.underscore.to_sym).
+    params.require(content_param_name).
            permit(*policy(@content || content_resource).permitted_attributes)
+  end
+
+  def content_param_name
+    content_resource.to_s.underscore.to_sym
   end
 
   def content_resource
@@ -93,6 +98,26 @@ class ContentController < ApplicationController
 
   def authorize_content_resource
     authorize content_resource
+  end
+
+  def is_user_coming_from_homepage_form?
+    params.has_key? content_param_name
+  end
+
+  def has_a_anonymous_announcement?
+    anonymous_user? and session[:created_announcement]
+  end
+
+  helper_method :created_announcement, :ask_to_continue?
+  def created_announcement
+    Announcement.find_by(id: session[:created_announcement])
+  end
+
+  def ask_to_continue?
+    session[:created_announcement] and
+    anonymous_user? and
+    !params[:continuing_edit] and
+    created_announcement.content_type == content_resource.to_s
   end
 
 end
