@@ -30,5 +30,10 @@ module Teklifal
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.assets.paths << "#{Rails.root}/app/assets/videos"
+
+    config.action_dispatch.default_headers.tap do |headers|
+      headers['X-Frame-Options'] = "ALLOW-FROM https://www.facebook.com"
+      headers['Content-Security-Policy'] = "frame-ancestors  https://www.facebook.com"
+    end
   end
 end
