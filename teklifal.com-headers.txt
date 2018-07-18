@@ -1,0 +1,22 @@
+# teklifal.com simdiki 18.07.2018
+HTTP/1.1 200 OK
+Server: nginx/1.14.0
+Date: Wed, 18 Jul 2018 11:57:35 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Download-Options: noopen
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: strict-origin-when-cross-origin
+ETag: W/"d252de8cb3bceb8d7715864a5376be21"
+Cache-Control: max-age=0, private, must-revalidate
+Set-Cookie: _teklifal_session=lh%2Fd9gF8%2BloCXC3gBe4L12KYaDtafGQagXYwfiSkpbcB5O1gRw2U%2FQ4XgpU9s5VY420CvV4ankTkESL%2F5udL2V5deJDwyO3YawKz6JV7c3%2FSLUO7PozVKra3CU0D2ECF8Rpc1rYelX9LiAaKKbOYFBiEaVSN0iSGAxkw0j7LD%2FFGL9HtxDI6Np5wKmphweB36JwHWqHS4%2FSf6Gh2w4CnxIAzEgbP3fJvhB0Y--7ZKuFBa2IHYncUJQ--84ArqpsrIHJ%2FLSyRyHR3JA%3D%3D; path=/; HttpOnly
+X-Request-Id: c7cea0a1-eceb-4b58-b33d-4716c7ed518c
+X-Runtime: 0.172304
+Content-Encoding: gzip
+
+
+Content-Security-Policy: default-src 'self' https:; font-src 'self' https: data:; img-src 'self' https: data:; object-src 'none'; script-src https:; style-src 'self' https: 'unsafe-inline'
