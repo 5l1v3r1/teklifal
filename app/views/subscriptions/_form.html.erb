@@ -1,0 +1,23 @@
+<%= form_with(model: subscription,
+              scope: :subscription,
+              url: subscriptions_path,
+              local: true) do |form| %>
+  <div class="row">
+    <div class="col-12 col-lg-8 offset-lg-2">
+      <%= render "form_errors", object: subscription %>
+
+      <%= form.hidden_field :type %>
+
+      <%= form.fields_for :filter, OpenStruct.new(form.object.filter) do |ff| %>
+        <%= render "#{form.object.type.tableize}/fields", form: ff  %>
+      <% end %>
+
+    </div>
+  </div>  
+
+  <div class="mt-3 border-top row pt-3">
+    <div class="col-8 offset-2">
+      <%= form.submit nil, class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

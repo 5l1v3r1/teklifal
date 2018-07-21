@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_13_155531) do
+ActiveRecord::Schema.define(version: 2018_07_19_212650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 2018_07_13_155531) do
     t.index ["owner_id"], name: "index_subscribers_on_owner_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "subscriber_id"
+    t.string "type"
+    t.jsonb "filter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscriber_id"], name: "index_subscriptions_on_subscriber_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -108,4 +117,5 @@ ActiveRecord::Schema.define(version: 2018_07_13_155531) do
   add_foreign_key "announcements", "users"
   add_foreign_key "offers", "announcements"
   add_foreign_key "offers", "subscribers"
+  add_foreign_key "subscriptions", "subscribers"
 end

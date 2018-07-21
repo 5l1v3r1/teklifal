@@ -29,6 +29,7 @@ gem 'iletimerkezisms', '~> 1.1'
 gem 'mini_magick', '~> 4.8'
 gem 'faraday', '~> 0.15.2'
 gem 'high_voltage', '~> 3.1'
+gem 'faker', '~> 1.9'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

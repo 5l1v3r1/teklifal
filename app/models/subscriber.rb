@@ -2,6 +2,7 @@ class Subscriber < ApplicationRecord
 
   belongs_to :owner, class_name: "User"
   has_many :offers
+  has_many :subscriptions, dependent: :destroy
   enum subscriber_type: [:person, :firm]
   validates_presence_of :owner, :subscriber_type
 

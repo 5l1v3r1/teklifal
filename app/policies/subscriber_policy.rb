@@ -1,4 +1,8 @@
 class SubscriberPolicy < ApplicationPolicy
+  def index?
+    true
+  end
+
   def new?
     signed_user
   end

@@ -15,6 +15,7 @@ class User < ApplicationRecord
             foreign_key: :supervisor_id,
             inverse_of: :supervisor,
             class_name: "Announcement"
+  delegate :subscriptions, to: :subscriber
 
   validates_presence_of :first_name, :last_name, :phone
   validates_format_of :phone, with: /\A5[0-9]{9}\z/

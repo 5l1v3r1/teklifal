@@ -3,7 +3,7 @@ class SubscriberController < ApplicationController
 
   def index
     authorize Subscriber
-    @subscribers = Subscriber.all
+    @subscribers = Subscriber.last(1)
   end
 
   def show
