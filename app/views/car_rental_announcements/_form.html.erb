@@ -37,6 +37,9 @@
           <%= form.text_field :pick_up_location, class: 'form-control' %>
         </div>
 
+        <%= form.hidden_field :latitude %>
+        <%= form.hidden_field :longitude %>
+
         <div class="form-group col" id="dropOffField">
           <%= form.label :drop_off_location %>
           <%= form.text_field :drop_off_location, class: 'form-control' %>

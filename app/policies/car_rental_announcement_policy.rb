@@ -4,6 +4,8 @@ class CarRentalAnnouncementPolicy < ContentPolicy
 
   def content_attributes
     @content_attributes ||= [ :pick_up_location,
+      :latitude,
+      :longitude,
       :drop_off_location,
       :different_location,
       :pick_up_time,
