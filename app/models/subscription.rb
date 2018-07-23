@@ -4,4 +4,8 @@ class Subscription < ApplicationRecord
   def owner? user
     self.user == user
   end
+
+  def filter
+    OpenStruct.new(super || {})
+  end
 end

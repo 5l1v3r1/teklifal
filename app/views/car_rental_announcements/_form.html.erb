@@ -2,67 +2,53 @@
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initAutocomplete&language=tr&region=TR",
         async: true,
         defer: true %>
-  <%#= javascript_tag defer: true, async: true do %>
-    <!-- if(window.google){
-      initMap();
-    } else{
-      $.ajax('https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initAutocomplete&language=tr&region=TR', {
-        crossDomain: true,
-        dataType: 'script'
-      });
-    } -->
-  <%# end %>
 <% end %>
 
 <%= form_with(model: content, local: true) do |form| %>
-  <div class="row">
-    <div class="col-12 col-lg-8 offset-lg-2">
-      <%= render 'form_errors', object: form.object %>
+  <%= render 'form_errors', object: form.object %>
 
-      <%= form.fields_for :announcement do |af| %>
-        <%= render 'announcements/title_field', form: af %>
-      <% end %>
+  <%= form.fields_for :announcement do |af| %>
+    <%= render 'announcements/title_field', form: af %>
+  <% end %>
 
-      <div class="form-row">
-        <div class="form-group col">
-          <div class="d-flex">
-            <%= form.label :pick_up_location %>
-            <div class="ml-auto">
-              <div class="form-check">
-                <%= form.check_box :different_location, class: "form-check-input" %>
-                <%= form.label :different_location, class: "from-check-label small" %>
-              </div>
-            </div>            
+  <div class="form-row">
+    <div class="form-group col">
+      <div class="d-flex">
+        <%= form.label :pick_up_location %>
+        <div class="ml-auto">
+          <div class="form-check">
+            <%= form.check_box :different_location, class: "form-check-input" %>
+            <%= form.label :different_location, class: "from-check-label small" %>
           </div>
-          <%= form.text_field :pick_up_location, class: 'form-control' %>
-        </div>
-
-        <%= form.hidden_field :latitude %>
-        <%= form.hidden_field :longitude %>
-
-        <div class="form-group col" id="dropOffField">
-          <%= form.label :drop_off_location %>
-          <%= form.text_field :drop_off_location, class: 'form-control' %>
-        </div>
+        </div>            
       </div>
+      <%= form.text_field :pick_up_location, class: 'form-control' %>
+    </div>
 
-      <div class="form-row">
-        <div class="form-group col">
-          <%= form.label :pick_up_time %>
-          <%= form.text_field :pick_up_time, class: 'form-control flatpickr' %>
-        </div>
+    <%= form.hidden_field :latitude, class: "latitude-input" %>
+    <%= form.hidden_field :longitude, class: "longitude-input" %>
 
-        <div class="form-group col">
-          <%= form.label :drop_off_time %>
-          <%= form.text_field :drop_off_time, class: 'form-control flatpickr' %>
-        </div>
-      </div>
-
-      <%= form.fields_for :announcement do |af| %>
-        <%= render 'announcements/fields_for_announcement', form: af %>
-      <% end %>
-
-      <%= form.submit nil, class: 'btn btn-success' %>
+    <div class="form-group col" id="dropOffField">
+      <%= form.label :drop_off_location %>
+      <%= form.text_field :drop_off_location, class: 'form-control' %>
     </div>
   </div>
+
+  <div class="form-row">
+    <div class="form-group col">
+      <%= form.label :pick_up_time %>
+      <%= form.text_field :pick_up_time, class: 'form-control flatpickr' %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.label :drop_off_time %>
+      <%= form.text_field :drop_off_time, class: 'form-control flatpickr' %>
+    </div>
+  </div>
+
+  <%= form.fields_for :announcement do |af| %>
+    <%= render 'announcements/fields_for_announcement', form: af %>
+  <% end %>
+
+  <%= form.submit nil, class: 'btn btn-success' %>
 <% end %>

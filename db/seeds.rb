@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.development?
   require 'faker'
+  require 'random_point'
 
   def create_user!
     user = User.create.tap do |u|
@@ -25,6 +26,10 @@ if Rails.env.development?
       s.save
     end
 
+    [user, subscriber]
+  end
+
+  def create_car_announcement_subsription subscriber
     subscription = subscriber.subscriptions.new.tap do |s|
       s.type = "CarAnnouncementSubscription"
       s.filter = {
@@ -32,9 +37,38 @@ if Rails.env.development?
       }
       s.save
     end
-
-    [user, subscriber, subscription]
   end
 
-  (CarAnnouncement::BRANDS.size * 10).times { puts create_user![2].filter[:make] }
+  istanbul_yesilkoy_airport = {
+    longitude: 28.81991740000001,
+    latitude: 40.9798657
+  }
+
+  ankara_asti = {
+    longitude: 32.814464300000054,
+    latitude: 39.9181567
+  }
+
+  def create_car_rental_announcement_subsription subscriber, center
+    random_point = RandomPoint.generate_from_center_point center: center, radius: 5000
+
+    subscription = subscriber.subscriptions.new.tap do |s|
+      s.type = "CarRentalAnnouncementSubscription"
+      s.filter = {
+        location: "Eskişehir",
+        latitude: random_point[:latitude],
+        longitude: random_point[:longitude],
+      }
+      s.save
+    end
+  end
+
+  # (CarAnnouncement::BRANDS.size * 10).times do
+  #   puts create_user![2].filter[:make]
+  # end
+
+  Subscriber.all.each do |subscriber|
+    centers = [istanbul_yesilkoy_airport, ankara_asti]
+    create_car_rental_announcement_subsription subscriber, centers[rand 0..1]
+  end
 end
