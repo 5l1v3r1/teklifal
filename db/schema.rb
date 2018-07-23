@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_19_212650) do
+ActiveRecord::Schema.define(version: 2018_07_23_154346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "announcements", force: :cascade do |t|
     t.text "desc"
@@ -55,6 +56,8 @@ ActiveRecord::Schema.define(version: 2018_07_19_212650) do
     t.datetime "drop_off_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.geography "point", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.index ["point"], name: "index_car_rental_announcements_on_point", using: :gist
   end
 
   create_table "household_appliances_announcements", force: :cascade do |t|

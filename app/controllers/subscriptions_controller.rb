@@ -2,7 +2,6 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:show, :edit, :update, :destroy]
   respond_to :js, only: :index
 
-
   def my
     authorize Subscription
     @subscriptions = current_user.subscriber.subscriptions
@@ -10,7 +9,7 @@ class SubscriptionsController < ApplicationController
 
   def index
     authorize Subscription
-    @subscriptions = CarAnnouncementSubscription.where("filter->>'make' = ?", params[:make])
+    @subscriptions = subscription_source.search(params)
     respond_with @subscriptions
   end
 
@@ -32,7 +31,6 @@ class SubscriptionsController < ApplicationController
     @subscription = subscription_source.new(subscription_params)
     @subscription.subscriber = current_user.subscriber
 
-    binding.pry
     if @subscription.save
       redirect_to subscription_path(@subscription.id), notice: 'Subscription was successfully created.'
     else

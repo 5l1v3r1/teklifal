@@ -1,9 +1,9 @@
 class CarAnnouncementSubscription < Subscription
   validate :filter_make
 
-  def filter
-    OpenStruct.new(super || {})
-  end
+  scope :search, ->(params) {
+    where("filter->>'make' = ?", params[:make])
+  }
 
   private
 

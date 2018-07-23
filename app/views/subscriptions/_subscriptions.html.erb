@@ -1,0 +1,13 @@
+<div class="sticky-top bg-white">
+  <div class="text-muted float-right">
+    <span id="subscribers-count"><%= @subscriptions.count %></span> abone
+  </div>
+  <%= page_header "Aboneler" %>
+</div>
+<div class="px-3 pt-5 position-absolute" style="left: 0; right: 0; top: 0; bottom: 0; overflow: auto;">
+  <div class="w-100">
+    <ul id="subscribers" class="list-group list-group-flush">
+      <%= render partial: "subscriptions/subscription", collection: @subscriptions %>
+    </ul>
+  </div>
+</div>

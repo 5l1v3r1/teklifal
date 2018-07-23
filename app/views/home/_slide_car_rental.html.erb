@@ -1,56 +1,65 @@
-<div class="jumbotron mb-0 position-relative" id="car-rental-slide">
-  <style type="text/css">
-    #car-rental-slide {
-      background-image: 
-        linear-gradient(
-          rgba(0, 0, 0, 0.8),
-          rgba(0, 0, 0, 0.8)
-        ),
-        url(<%= asset_path "car-rental.jpg" %>);
-    }
-  </style>
+<div class="item">
+  <div class="item-body position-relative" id="new-car-slide">
+    <div id="map" class="map"></div>
+    <div id="map-overlay" class="map"></div>
+    <div class="row" style="position:relative; z-index:2">
+      <div class="col-12 col-md-4">
+        <div class="p-3 p-md-4 p-lg-5 text-white">
+          <p class="h2 mb-0">Araba kiralarken;</p>
+          <p class="h3 mb-3">bayilerden teklif alın</p>
+          <p> Bayilerin size özel yaptıkları teklifleri değerlendirin. <br>
+              Alırken kazanın.</p>
+        </div>
+      </div>
+      <div class="col-12 offset-md-3 col-md-5" id="controls">
+        <div class="p-3 p-md-4 p-lg-5">
+          <div class="card" style="background-color:rgba(255, 255, 255, 0.6);">
+            <div class="card-body">
 
-  <div class="row">
-    <div class="col-7 text-white">
-      <h1>Araba kiralarken;</h1>
-      <h2>bayilerden teklif alın</h2>
-      <p>Size bayilerin yaptıkları teklifleri değerlendirin.</p>
-      <p>Alırken kazanın.</p>
-    </div>
+              <%= form_with model: CarRentalAnnouncement.new.tap { |ca|
+                              ca.build_announcement
+                            },
+                            url: car_rental_new_announcement_path,
+                            local: true do |f| %>
+                <div class="form-group">
+                  <div class="d-flex">
+                    <%= f.label :pick_up_location %>
 
-    <div class="col-5">
-      <div class="card" style="background-color:rgba(255, 255, 255, 0.6);">
-        <div class="card-body">
-          <div class="form-row">
-            <div class="form-group col">
-              <label>Alış yeri</label>
-              <%= text_field_tag :pick_up_location, nil, class: 'form-control' %>
-            </div>
+                    <div class="ml-auto">
+                      <div class="form-check">
+                        <%= f.check_box :different_location, class: "form-check-input" %>
+                        <%= f.label :different_location, class: "from-check-label small" %>
+                      </div>
+                    </div>
+                  </div>
 
-            <script type="text/javascript">
-              
-            </script>
+                  <%= f.text_field :pick_up_location, class: 'form-control' %>
+                  <%= f.hidden_field :latitude %>
+                  <%= f.hidden_field :longitude %>
+                </div>
+                  
+                <div class="form-group" id="dropOffField">
+                  <%= f.label :drop_off_location %>
+                  <%= f.text_field :drop_off_location, class: 'form-control' %>
+                </div>
 
-            <div class="form-group col">
-              <label>Teslim yeri</label>
-              <%= text_field_tag :drop_off_location, nil, class: 'form-control' %>
+                <div class="form-row">
+                  <div class="form-group col">
+                    <%= f.label :pick_up_time %>
+                    <%= f.text_field :pick_up_time, class: 'form-control flatpickr' %>
+                  </div>
+
+                  <div class="form-group col">
+                    <%= f.label :drop_off_time %>
+                    <%= f.text_field :drop_off_time, class: 'form-control flatpickr' %>
+                  </div>
+                </div>
+                <%= f.submit "Hemen talep gönder", class: "btn btn-success w-100" %>
+              <% end %>
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group col">
-              <label>Alış zamanı</label>
-              <%= text_field_tag :pick_up_time, nil, class: 'form-control flatpickr' %>
-            </div>
-
-            <div class="form-group col">
-              <label>Teslim zamanı</label>
-              <%= text_field_tag :drop_off_time, nil, class: 'form-control flatpickr' %>
-            </div>
-          </div>
-          <button class="btn btn-primary w-100">Teklif Al</button>
         </div>
       </div>
     </div>
   </div>
-
 </div>

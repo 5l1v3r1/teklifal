@@ -9,10 +9,16 @@
   <%= render "announcements/stepper", step: :announcement %>
 <% end %>
 
-<%= page_header t ".title" %>
+<div class="row">
+  <div class="col-8">
+    <%= page_header t(".title") %>
+    <%= render 'form', content: @content %>
+  </div>
 
-
-<%= render 'form', content: @content %>
+  <div class="col-4">
+    <%= render "subscriptions/subscriptions" %>
+  </div>
+</div>
 
 <% if ask_to_continue? %>
   <%= render "announcements/modal" %>

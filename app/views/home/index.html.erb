@@ -1,7 +1,4 @@
 <%= content_for :foot do %>
-  <%#= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initMap&language=tr&region=TR",
-        async: true,
-        defer: true %>
   <%= javascript_tag defer: true, async: true do %>
     if(window.google){
       initMap();
@@ -16,33 +13,11 @@
 
 <div class="container">
   <div class="accordion mt-5">
-    <%= render "slide_everything_1" %>
-    <%= render "slide_car_1" %>
-    <%#= render "slide_car_rental_1" %>
-    <%= render "car_rental_form_1" %>
+    <%= render "slide_everything" %>
+    <%= render "slide_car" %>
+    <%= render "slide_car_rental" %>
   </div>  
 </div>
-
-
-<!-- 
-<div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%= render 'slide_everything' %>
-    </div>
-    <div class="carousel-item">
-      <%= render 'slide_car' %>
-    </div>
-    <div class="carousel-item">
-      <%= render "car_rental_form" %>
-    </div>
-  </div>
-</div> -->
 
 <div class="container">
   

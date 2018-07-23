@@ -1,0 +1,12 @@
+<%= content_for :foot do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIxAE_my2qNSdN_s5LBH06a3oTPPbLbUo&libraries=places&callback=initAutocomplete&language=tr&region=TR",
+        async: true,
+        defer: true %>
+<% end %>
+
+<div class="form-group">
+  <%= form.label :location %>
+  <%= form.text_field :location, class: "form-control gmap-autocomplete-field" %>
+  <%= form.hidden_field :longitude, class: "longitude-input" %>
+  <%= form.hidden_field :latitude, class: "latitude-input" %>
+</div>

@@ -74,6 +74,9 @@ function initMap() {
         return;
       }
 
+      $("#car_rental_announcement_latitude").val(place.geometry.location.lat())
+      $("#car_rental_announcement_longitude").val(place.geometry.location.lng())
+
       locations[destination] = place.geometry.location
       bounds.extend(place.geometry.location)
 
