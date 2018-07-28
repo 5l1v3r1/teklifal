@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server  Rails.application.credentials.production[:ip],
+server  Rails.application.credentials.production[:domain],
         user: "deployer",
         roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
