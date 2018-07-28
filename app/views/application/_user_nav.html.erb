@@ -18,11 +18,13 @@
       </span>
     <% end %>
 
-    <%= link_to subscriptions_path, class: 'dropdown-item' do %>
-      <%= t "subscriptions.my_subscriptions" %>
-      <span class="badge badge-primary float-right ml-1">
-        <%= current_user.subscriber.subscriptions.count %>
-      </span>
+    <% if current_user.subscriber %>
+      <%= link_to subscriptions_path, class: 'dropdown-item' do %>
+        <%= t "subscriptions.my_subscriptions" %>
+        <span class="badge badge-primary float-right ml-1">
+          <%= current_user.subscriber.subscriptions.count %>
+        </span>
+      <% end %>
     <% end %>
 
 
