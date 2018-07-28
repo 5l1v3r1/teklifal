@@ -26,47 +26,13 @@
         <li class="nav-item">
           <%= link_to t('common.subscriptions'), home_pro_path, class: 'nav-link'  %>
         </li>
+
+        <% if current_user.try(:manager?) %>
+          <%= render 'administrator_nav' %>
+        <% end %>
+
         <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <%= link_to current_user.name, '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdownMenuLink', data: { toggle: "dropdown" }, "aria-haspopup" => "true", "aria-expanded" => "false" %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to announcements_user_index_path, class: 'dropdown-item' do %>
-                <%= t "announcements.my_announcements" %>
-                <span class="badge badge-primary float-right">
-                  <%= current_user.announcements.published.count %>
-                </span>
-              <% end %>
-
-              <%= link_to offers_user_index_path, class: 'dropdown-item' do %>
-                <%= t "offers.my_offers" %>
-                <span class="badge badge-primary float-right ml-1">
-                  <%= current_user.offers.joins(:announcement).where(state: 'published').where("announcements.expired_at > ?", Time.now).count %>
-                </span>
-                <span class="badge badge-warning float-right">
-                  <%= current_user.offers.joins(:announcement).where(state: 'draft').where("announcements.expired_at > ?", Time.now).count %>
-                </span>
-              <% end %>
-
-              <%= link_to subscriptions_path, class: 'dropdown-item' do %>
-                <%= t "subscriptions.my_subscriptions" %>
-                <span class="badge badge-primary float-right ml-1">
-                  <%= current_user.subscriber.subscriptions.count %>
-                </span>
-              <% end %>
-
-
-              <div class="dropdown-divider"></div>
-
-              <%= link_to t("users.my_registration"), edit_user_registration_path, class: 'dropdown-item'  %>
-
-              <% if current_user.try(:subscriber) %>
-                <%= link_to t("users.edit_my_subscription"), edit_subscriber_path, class: 'dropdown-item'  %>
-              <% end %>
-
-              <%= link_to t("users.sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item"  %>
-
-            </div>
-          </li>
+          <%= render 'user_nav' %>
         <% else %>
           <li class="nav-item">
             <%= link_to t("users.sign_in"), new_user_session_path, class: 'nav-link'  %>

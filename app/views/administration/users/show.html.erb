@@ -1,0 +1,124 @@
+<%= page_header @user.name %>
+
+<table class="table table-hover  table-sm">
+  <tr>
+    <td>Avatar</td>
+    <td><%= image_tag(@user.avatar.thumb.url) if @user.avatar.url %></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td><%= @user.try(:phone) %></td>
+  </tr>
+  <tr>
+    <td>Membership Status</td>
+    <td><%= @user.membership_status %></td>
+  </tr>
+  <tr>
+    <td>Role</td>
+    <td><%= @user.role %></td>
+  </tr>
+  <tr>
+    <td>Created At</td>
+    <td><%= time_ago_in_words(@user.created_at) %> önce</td>
+  </tr>
+  <tr>
+    <td>Sign in Count</td>
+    <td><%= @user.sign_in_count %></td>
+  </tr>
+  <tr>
+    <td>Current Sign in At</td>
+    <td><%= time_ago_in_words(@user.current_sign_in_at) if @user.current_sign_in_at %> once</td>
+  </tr>
+  <tr>
+    <td>Last Sign in at</td>
+    <td><%= time_ago_in_words(@user.last_sign_in_at) if @user.last_sign_in_at %> once</td>
+  </tr>
+  <tr>
+    <td>Current Sign in IP</td>
+    <td><%= @user.current_sign_in_ip %></td>
+  </tr>
+  <tr>
+    <td>Last Sign in IP</td>
+    <td><%= @user.last_sign_in_ip %></td>
+  </tr>
+  <tr>
+    <td>Islemler</td>
+    <td>
+      <%= link_to "Duzenle", edit_administration_user_path(@user)  %>
+    </td>
+  </tr>
+</table>
+
+<%= page_header "Abonelik Girdisi" %>
+
+<% @user.subscriber.tap do |subscriber| %>
+
+  <% if subscriber %>
+    <table class="table table-hover table-sm">
+      <tr>
+        <td>Subscriber Title</td>
+        <td><%= subscriber.title %></td>
+      </tr>
+      <tr>
+        <td>Subscriber Type</td>
+        <td><%= subscriber.subscriber_type %></td>
+      </tr>
+      <tr>
+        <td>Subscriber Created At</td>
+        <td><%= time_ago_in_words(subscriber.created_at) %> once</td>
+      </tr>
+    </table>
+
+
+
+    <%= page_header "Abonelikler" %>
+
+    <table class="table table-hover table-sm">
+      <thead>
+        <th>Sinif</th>
+        <th>Filtre</th>
+        <th>Created At</th>
+      </thead>
+
+      <tbody>
+        <% @user.subscriber.subscriptions.each do |subscription| %>
+          <tr>
+            <td><%= subscription.type %></td>
+            <td>
+              <% subscription.filter.each_pair do |key, value| %>
+                <%= key %> = <%= value %> <br>
+              <% end %>    
+            </td>
+            <td><%= time_ago_in_words(subscription.created_at) %> once</td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <td colspan="3">
+            <%= form_with url: new_administration_user_subscription_path(@user),
+                          method: :get,
+                          data: { remote: false } do |form| %>
+              <div class="form-row align-items-center">
+                <div class="col-auto">
+                  <%= form.select :type,
+                                  Subscription.subclasses.collect {|klass| [klass.to_s, klass.to_s]},
+                                  {include_blank: true},
+                                  {class: "form-control"} %>
+                </div>
+                <div class="col-auto">
+                  <%= form.submit "Ekle", class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  <% end %>
+<% end %> 
+

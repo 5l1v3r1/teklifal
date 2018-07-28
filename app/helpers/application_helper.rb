@@ -32,4 +32,8 @@ module ApplicationHelper
     object = object.class.name.underscore unless object.kind_of? Symbol
     I18n.t("activerecord.attributes.#{object}.#{attribute}")
   end
+
+  def google_map_url_for latitude:, longitude:
+    "https://www.google.com/maps/?q=#{latitude},#{longitude}"
+  end
 end

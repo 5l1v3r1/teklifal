@@ -1,3 +1,9 @@
+<div class="d-flex mb-3">
+  <%= link_to new_administration_user_path, class: "btn btn-primary d-flex" do %>
+    <i class="mi mr-2 ">add_circle</i> Create User
+  <% end %>
+</div>
+
 <div class="table-responsive">
   <table class="table table-sm">
     <thead>
@@ -11,21 +17,30 @@
         <th>İlan sayısı</th>
         <th>Teklif sayısı</th>
         <th>Role</th>
+        <th>Üyelik Durumu</th>
         <th>İşlemler</th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= "##{user.id}"  %></td>
+          <td><%= link_to "##{user.id}", [:administration, user] %></td>
           <td><%= user.first_name %></td>
           <td><%= user.last_name %></td>
           <td><%= user.email %></td>
           <td><%= user.sign_in_count %></td>
-          <td><%= time_ago_in_words(user.current_sign_in_at) %> önce</td>
+          <td>
+            &nbsp;
+            <% if user.unowned? %>
+              -
+            <% elsif user.current_sign_in_at %>
+              <%= time_ago_in_words(user.current_sign_in_at) %> önce</td>
+            <% end %>
+          </td>
           <td><%= user.announcements.count %></td>
           <td><%= user.offers.count %></td>
           <td><%= user.role %></td>
+          <td><%= user.membership_status %></td>
           <td>
             <div class="dropdown">
               <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

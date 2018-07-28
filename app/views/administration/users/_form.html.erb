@@ -1,0 +1,66 @@
+<%= form_with(model: @user,
+              local: true,
+              scope: :user) do |form| %>
+
+  <%= render 'form_errors', object: @user %>
+ 
+  <div class="form-row">
+    <div class="form-group col-6">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class: 'form-control', autofocus: true %>
+      <small id="emailHelp" class="form-text">Bilmiyorsanız boş bırakınız</small>
+    </div>
+
+    <div class="form-group col-6">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: 'form-control' %>
+      <small id="emailHelp" class="form-text">Bilmiyorsanız boş bırakınız</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email do %>
+      Email (gerekli)
+    <% end %>
+    <%= form.email_field :email, autocomplete: "email", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">+90</div>
+      </div>
+      <%= form.telephone_field :phone, class: 'form-control' %>  
+    </div>
+    <small class="form-text text-muted">Lütfen cep telefon numarasını 10 basamaklı olarak giriniz. Başında 0 kullanmayınız.</small>
+    <small class="form-text text-muted">Bilmiyorsanız boş bırakınız.</small>
+  </div>
+
+  <%= form.fields_for :subscriber, (form.object.subscriber || form.object.build_subscriber) do |sf| %>
+    <%= sf.hidden_field :id %>
+    <div class="form-group">
+      <%= sf.label :title do %>
+        Başlık (gerekli)
+      <% end %>
+      <%= sf.text_field :title, class: "form-control" %>
+      <small class="form-text text-muted">Verilen tekliflerde görünecek. Genellikle firma ismi verilir.</small>
+    </div>
+
+    <div class="form-group">
+      <%= sf.label :type do %>
+        Abone tipi (gerekli)
+      <% end %>
+      <%= sf.select :subscriber_type, 
+                      sf.object.class.subscriber_types.collect { |type|
+                        [ t("subscribers.types.#{type.first}"),
+                          type.first ]
+                      },
+                      { include_blank: true }, {class: "form-control"} %>
+    </div>
+
+  <% end %>
+
+  <%= form.submit nil, class: "btn btn-success" %>
+
+<% end %>

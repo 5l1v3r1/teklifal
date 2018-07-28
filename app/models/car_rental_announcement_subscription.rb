@@ -14,7 +14,7 @@ class CarRentalAnnouncementSubscription < Subscription
   private
 
   def filter_point
-    if !filter.langitude or !filter.longitude
+    if !filter.latitude or !filter.longitude
       errors.add(:filter)
     end
   end

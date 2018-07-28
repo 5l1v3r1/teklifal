@@ -4,7 +4,7 @@ class Subscriber < ApplicationRecord
   has_many :offers
   has_many :subscriptions, dependent: :destroy
   enum subscriber_type: [:person, :firm]
-  validates_presence_of :owner, :subscriber_type
+  validates_presence_of :title, :owner, :subscriber_type
 
   def owner? user
     self.owner == user

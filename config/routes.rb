@@ -52,6 +52,10 @@ Rails.application.routes.draw do
     get "/" => "base#show"
     resources :announcements, only: [:index]
     resources :offers, only: [:index]
-    resources :users, only: [:index]
+    resources :users do
+      resources :subscriptions, shallow: true
+    end
+    resources :unowned_users, only: [:update, :create], controller: :users
+    
   end
 end
