@@ -3,12 +3,13 @@ class CarAnnouncement < ApplicationRecord
   BRANDS = [ "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW",
     "Buick", "Cadillac", "Chery", "Chevrolet", "Chrysler",
     "Citroën", "Dacia", "Daewoo", "Daihatsu", "Dodge", "DS Automobiles",
-    "Ferrari", "Fiat", "Ford", "Geely", "Honda", "Hyundai",
-    "Infiniti", "Isuzu", "Jaguar", "Kia", "Lada", "Lamborghini",
-    "Lancia", "Lexus", "Lincoln", "Lotus", "Maserati", "Mazda",
-    "McLaren", "Mercedes - Benz", "Mini", "Mitsubishi", "Nissan",
-    "Opel", "Peugeot", "Porsche", "Renault", "Seat", "Skoda", "Smart",
-    "Subaru", "Suzuki", "Tata", "Tesla", "Toyota", "Volkswagen", "Volvo"].freeze
+    "Ferrari", "Fiat", "Ford", "Geely", "GMC", "Honda", "Hyundai",
+    "Hummer", "Infiniti", "Isuzu", "Jaguar", "Jeep", "Kia", "Lada",
+    "Lamborghini", "Lancia", "Land Rover", "Lexus", "Lincoln", "Lotus",
+    "Maserati", "Mazda", "McLaren", "Mercedes - Benz", "Mini",
+    "Mitsubishi", "Nissan", "Opel", "Peugeot", "Porsche", "Renault",
+    "Seat", "Skoda", "Smart", "Ssangyong", "Subaru", "Suzuki", "Tata",
+    "Tesla", "Toyota", "Volkswagen", "Volvo"].freeze
 
 
   has_one :announcement, as: :content, autosave: true, required: true, dependent: :destroy
