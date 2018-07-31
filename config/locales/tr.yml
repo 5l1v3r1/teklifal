@@ -82,7 +82,7 @@ tr:
     destroy: "Sil"
     delete: "Sil"
     actions: "İşlemler"
-    site_name: "Teklif"
+    site_name: "teklifal.com"
     new_announcement: "Teklif iste"
     subscriptions: "Pro Abonelik"
     destroy_are_you_sure: "Silmek istediğinize emin misiniz?"
