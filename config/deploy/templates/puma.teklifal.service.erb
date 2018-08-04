@@ -1,0 +1,39 @@
+# Bu template dosyasi sadece buraya kaybolmasin diye konuldu. Henuz
+# capistrano tarafinda nasil yuklenecegi belirlenmedi
+
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+# Uncomment for socket activation (see below)
+# Requires=puma.socket
+
+[Service]
+# Foreground process (do not use --daemon in ExecStart or config.rb)
+Type=simple
+
+# Preferably configure a non-privileged user
+User=<%= fecth :user %>
+
+# The path to the puma application root
+# Also replace the "<WD>" place holders below with this path.
+WorkingDirectory=<%= current_path %>
+
+# Helpful for debugging socket activation, etc.
+# Environment=PUMA_DEBUG=1
+
+# The command to start Puma. This variant uses a binstub generated via
+# `bundle binstubs puma --path ./sbin` in the WorkingDirectory
+# (replace "<WD>" below)
+ExecStart=<%= SSHKit.config.command_map[:bundle] %> exec pumactl -S <%= shared_path %>/tmp/pids/puma.state -F <%= shared_path %>/config/puma.rb restart
+ExecStop=<%= SSHKit.config.command_map[:bundle] %> exec pumactl -S <%= shared_path %>/tmp/pids/puma.state stop
+
+# Variant: Use config file with `bind` directives instead:
+# ExecStart=<WD>/sbin/puma -C config.rb
+# Variant: Use `bundle exec --keep-file-descriptors puma` instead of binstub
+
+TimeoutSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
