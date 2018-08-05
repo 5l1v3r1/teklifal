@@ -1,7 +1,7 @@
 class Offer < ApplicationRecord
   include AASM
   belongs_to :subscriber
-  delegate :user, to: :subscriber
+  delegate :owner, to: :subscriber
   belongs_to :announcement
   has_many :attachments, as: :attachmentable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
@@ -24,7 +24,7 @@ class Offer < ApplicationRecord
   end
 
   def validate_user_offer_count
-    if new_record? and announcement.offers.exists?(user: user)
+    if new_record? and announcement.offers.exists?(subscriber: owner.subscriber)
       errors.add(:base, :number_of_offers_exceeded, message: I18n.t('errors.number_of_offers_exceeded'))
      end
   end

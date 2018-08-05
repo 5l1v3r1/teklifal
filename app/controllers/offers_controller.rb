@@ -22,7 +22,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = @announcement.offers.build(offer_params).tap do |offer|
-      offer.user = current_user
+      offer.subscriber = current_user.subscriber
     end
     authorize @offer
 
