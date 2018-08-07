@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # after_action :verify_policy_scoped, only: :index
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  before_action :set_locale
 
   protected
 
@@ -25,9 +25,12 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 
-
   helper_method :anonymous_user?
   def anonymous_user?
     !user_signed_in?
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 end

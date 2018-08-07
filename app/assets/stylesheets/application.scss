@@ -100,3 +100,8 @@ trix-editor:focus {
 .field_with_errors label {
   @extend .text-danger;
 }
+
+.py-6 {
+  padding-top: ($spacer * 6) !important;
+  padding-bottom: ($spacer * 6) !important;
+}
