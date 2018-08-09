@@ -1,7 +1,7 @@
 class CarAnnouncementsController < ContentController
 
   def new
-    @subscriptions = Subscription.where type: "CarAnnouncementSubscription"
+    @subscriptions = Subscription.where(type: "CarAnnouncementSubscription").includes(:subscriber)
     super
   end
 

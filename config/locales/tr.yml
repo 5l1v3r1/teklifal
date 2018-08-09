@@ -207,6 +207,7 @@ tr:
 
   subscriptions:
     my_subscriptions: "Aboneliklerim"
+    select_a_make: "Form'dan marka seçimi yaparak teklif alabileceğiniz aboneleri görebilirsiniz."
     
   views:
     pagination:
