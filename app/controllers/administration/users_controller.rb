@@ -3,7 +3,7 @@ require './app/services/administration/unowned_user'
 module Administration
   class UsersController < BaseController
     def index
-      @users = User.unscoped.all
+      @users = User.unscoped.all.order(id: :desc).page(params[:page])
     end
 
     def show

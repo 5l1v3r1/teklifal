@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  paginates_per 25
 
   attr_accessor :signed_in_from_new_announcement, :creating_by_manager
 

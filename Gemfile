@@ -31,6 +31,7 @@ gem 'faraday', '~> 0.15.2'
 gem 'high_voltage', '~> 3.1'
 gem 'faker', '~> 1.9'
 gem 'activerecord-postgis-adapter', '~> 5.2'
+gem 'kaminari', '~> 1.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
