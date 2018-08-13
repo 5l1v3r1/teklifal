@@ -32,11 +32,8 @@ gem 'high_voltage', '~> 3.1'
 gem 'faker', '~> 1.9'
 gem 'activerecord-postgis-adapter', '~> 5.2'
 gem 'kaminari', '~> 1.1'
-
-group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry-rails', '~> 0.3'
-end
+gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+gem 'pry-rails', '~> 0.3'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
