@@ -57,7 +57,7 @@
   <% elsif user_signed_in? and offer = current_user.offer_for('published', @announcement) %>
     <span class="float-right text-success">
       <%= t 'offer.already_offer' %>
-      <%= link_to t('offers.edit'), [:edit, @announcement, offer] %>
+      <%= link_to t('offers.edit.title'), [:edit, @announcement, offer] %>
       <i class="material-icons text-success">done</i>
     </span>
   <% end %>
