@@ -14,6 +14,7 @@
  *= require material_icons
  *= require material_icons_unicode
  *= require airbnb
+ *= require bootstrap-msg-0.4.0
  *= require gmap
  *= require_self
  */
@@ -26,6 +27,7 @@
 @import "tick";
 @import "accordion";
 @import "subscribers";
+@import "spotlight";
 
 .field_with_errors .trix-content,
 .field_with_errors .form-control {
@@ -37,7 +39,7 @@ trix-editor {
 }
 
 trix-editor:focus {
-  @extend .form-control:focus
+  @extend .form-control, :focus
 }
 
 .dot {
@@ -104,4 +106,9 @@ trix-editor:focus {
 .py-6 {
   padding-top: ($spacer * 6) !important;
   padding-bottom: ($spacer * 6) !important;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
 }

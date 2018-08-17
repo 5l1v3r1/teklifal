@@ -1,21 +1,18 @@
 <% if notice %>
-  <div class="alert alert-success" role="alert">
-    <div class="container">
-      <%= notice %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  </div>
+  <script type="text/javascript">
+    $(function() {
+      Msg.success("<%= notice %>");
+    })
+    console.log('noticceeeee')
+  </script>
 <% end %>
 
 <% if alert %>
-  <div class="alert alert-danger" role="alert">
-    <div class="container">
-      <%= alert %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  </div>
+  <script type="text/javascript">
+    $(function() {
+      Msg.danger("<%= alert %>");
+    })
+    $('#msg').removeClass('showed');
+    console.log('aleeerrrrr')
+  </script>
 <% end %>

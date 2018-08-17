@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     # alabilmek icin get ve post eklendi
     match 'car' => "car_announcements#new", on: :new, via: [:get, :post]
     match 'car_rental' => "car_rental_announcements#new", on: :new, via: [:get, :post]
+    match 'household_appliances' => "household_appliances_announcements#new", on: :new, via: [:get, :post]
     get 'plain', on: :new, to: "plain_announcements#new"
   end
 

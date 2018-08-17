@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  layout :layout
+  layout :layout, only: [:index]
 
   def index
     authorize :home
@@ -12,6 +12,6 @@ class HomeController < ApplicationController
   private
 
   def layout
-    I18n.locale == :ar ? 'home-arabic' : 'home'
+    'home-arabic'
   end
 end

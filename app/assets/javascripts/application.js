@@ -18,7 +18,12 @@
 //= require bootstrap-sprockets
 //= require trix
 //= require flatpickr
+//= require bootstrap-msg-0.4.0
 //= require_tree .
+
+
+Msg.timeout.success = 2 * 1000;
+
 
 $(function () {
   var actionPopover = $('#actions-button').popover('show');
