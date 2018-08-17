@@ -1,7 +1,12 @@
 class CarRentalAnnouncementsController < ContentController
 
   def new
-    @subscriptions = Subscription.where type: "CarRentalAnnouncementSubscription"
+    @subscriptions = CarRentalAnnouncementSubscription.all
+    super
+  end
+
+  def create
+    @subscriptions = CarRentalAnnouncementSubscription.search(content_params)
     super
   end
 
