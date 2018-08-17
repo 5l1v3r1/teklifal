@@ -26,6 +26,7 @@
 @import "tick";
 @import "accordion";
 @import "subscribers";
+@import "spotlight";
 
 .field_with_errors .trix-content,
 .field_with_errors .form-control {
@@ -104,4 +105,9 @@ trix-editor:focus {
 .py-6 {
   padding-top: ($spacer * 6) !important;
   padding-bottom: ($spacer * 6) !important;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
 }

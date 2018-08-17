@@ -1,0 +1,60 @@
+<section class="image-section" id="car-rental">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-7 text-white d-flex flex-column justify-content-center">
+        <p class="h1 mb-0">Araba kiralarken;</p>
+        <p class="h1 mb-4">bayilerden teklif alın</p>
+        <p class="h6"> Bayilerin size özel yaptıkları teklifleri değerlendirin. <br>
+            Alırken kazanın.</p>
+      </div>
+
+      <div class="col-12 col-md-5">
+        <div class="card">
+          <div class="card-body">
+
+            <%= form_with model: CarRentalAnnouncement.new.tap { |ca|
+                              ca.build_announcement
+                            },
+                            url: car_rental_new_announcement_path,
+                            local: true do |f| %>
+              <div class="form-group">
+                <div class="d-flex">
+                  <%= f.label :pick_up_location %>
+
+                  <div class="ml-auto">
+                    <div class="form-check">
+                      <%= f.check_box :different_location, class: "form-check-input" %>
+                      <%= f.label :different_location, class: "from-check-label small" %>
+                    </div>
+                  </div>
+                </div>
+
+                <%= f.text_field :pick_up_location, class: 'form-control' %>
+                <%= f.hidden_field :latitude %>
+                <%= f.hidden_field :longitude %>
+              </div>
+                
+              <div class="form-group" id="dropOffField">
+                <%= f.label :drop_off_location %>
+                <%= f.text_field :drop_off_location, class: 'form-control' %>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <%= f.label :pick_up_time %>
+                  <%= f.text_field :pick_up_time, class: 'form-control flatpickr' %>
+                </div>
+
+                <div class="form-group col">
+                  <%= f.label :drop_off_time %>
+                  <%= f.text_field :drop_off_time, class: 'form-control flatpickr' %>
+                </div>
+              </div>
+              <%= f.submit "TEKLİF AL", class: "btn btn-success w-100" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

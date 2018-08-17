@@ -1,0 +1,41 @@
+<section class="image-section" id="car">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-7 text-white d-flex flex-column justify-content-center">
+        <p class="h1 mb-0">Sıfır otomobil alırken;</p>
+        <p class="h1 mb-4">bayilerden teklif alın</p>
+        <p class="h6"> Bayilerin size özel yaptıkları teklifleri değerlendirin. <br>
+            Alırken kazanın.</p>
+      </div>
+
+      <div class="col-12 col-md-5">
+        <div class="card">
+          <div class="card-body">
+
+            <%= form_with model: CarAnnouncement.new.tap { |ca|
+                            ca.build_announcement
+                          },
+                          url: car_new_announcement_path,
+                          local: true do |f| %>
+              <div class="form-group">
+                <label>Marka</label>
+                <%= f.select :make,
+                  CarAnnouncement::BRANDS.collect { |brand| [brand.to_s, brand.to_s] },
+                  {include_blank: true },
+                  {class: "form-control"} %>
+              </div>
+              <div class="form-group">
+                <label>Talep</label>
+                <%= f.fields_for :announcement do |ann_form| %>
+                  <%= ann_form.text_area :desc, class: 'form-control' %>
+                <% end %>
+              </div>
+
+              <%= f.submit "TEKLİF AL", class: "btn btn-success w-100" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
