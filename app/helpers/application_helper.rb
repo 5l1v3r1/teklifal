@@ -36,4 +36,9 @@ module ApplicationHelper
   def google_map_url_for latitude:, longitude:
     "https://www.google.com/maps/?q=#{latitude},#{longitude}"
   end
+
+  def new_announcement_path_for type, *args
+    options = args.extract_options!
+    send :"#{type}_new_announcement_path", options
+  end
 end

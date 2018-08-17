@@ -1,7 +1,7 @@
 require './lib/geocode_validator'
 
 class CarRentalAnnouncement < ApplicationRecord
-  attr_accessor :latitude, :longitude
+  attr_writer :latitude, :longitude
   has_one :announcement, as: :content, autosave: true, required: true, dependent: :destroy
   accepts_nested_attributes_for :announcement
 
@@ -15,6 +15,25 @@ class CarRentalAnnouncement < ApplicationRecord
   before_validation :empty_drop_off_location!, unless: :different_location?
   before_validation :make_point!
   before_save :make_point!
+
+  def longitude
+    @longitude || point.try(:longitude)
+  end
+
+  def latitude
+    @latitude || point.try(:latitude)
+  end
+
+  def [] latlng
+    case latlng
+    when :latitude
+      latitude
+    when :longitude
+      longitude
+    else
+      super
+    end
+  end
 
   private
 

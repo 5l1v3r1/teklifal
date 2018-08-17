@@ -9,11 +9,7 @@ class ContentController < ApplicationController
   end
 
   def new
-    if  !user_signed_in? and
-        session[:created_announcement] and
-        @ann = Announcement.find_by(id: session[:created_announcement]) and
-        @ann.content and
-        @ann.content_type == content_resource.to_s
+    if existing_announcement_for_current_user?
       @content = @ann.content
       if params[:reset]
         @ann.destroy
@@ -44,7 +40,7 @@ class ContentController < ApplicationController
         redirect_to @content.announcement
       else
         session[:created_announcement] = @content.announcement.id
-        redirect_to new_user_registration_path(ann_created: :true)
+        redirect_to new_user_registration_path(ann_created: :true, content_type: content_type)
       end
     else
       if @content.announcement.attachments.size < 3
@@ -65,7 +61,7 @@ class ContentController < ApplicationController
       if user_signed_in?
         redirect_to @content.announcement, notice: 'Announcement was successfully updated.'
       else
-        redirect_to new_user_registration_path(ann_created: :true)
+        redirect_to new_user_registration_path(ann_created: :true, content_type: content_type)
       end
     else
       3.times { @content.announcement.attachments.new }
@@ -90,6 +86,14 @@ class ContentController < ApplicationController
 
   def content_resource
     CarAnnouncement
+  end
+
+  helper_method :content_type
+  def content_type
+    content_resource.to_s.underscore.tap do |str|
+      str.slice!("_announcement")
+      str
+    end
   end
 
   def authorize_content
@@ -118,6 +122,14 @@ class ContentController < ApplicationController
     anonymous_user? and
     !params[:continuing_edit] and
     created_announcement.content_type == content_resource.to_s
+  end
+
+  def existing_announcement_for_current_user?
+    !user_signed_in? and
+    session[:created_announcement] and
+    @ann = Announcement.find_by(id: session[:created_announcement]) and
+    @ann.content and
+    @ann.content_type == content_resource.to_s
   end
 
 end

@@ -1,6 +1,4 @@
 class CarRentalAnnouncementSubscription < Subscription
-  GEO_FACTORY = RGeo::Geographic.spherical_factory(srid: 4326)
-
   validate :filter_point
   validate :filter_location
 

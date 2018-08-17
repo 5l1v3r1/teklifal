@@ -11,7 +11,7 @@
   <% end %>
 
   <% if step == :user %>
-    <%= link_to plain_new_announcement_path(continuing_edit: true), class: classes, &block %>
+    <%= link_to new_announcement_path_for(params[:content_type], continuing_edit: true), class: classes, &block %>
   <% else %>
     <%= content_tag :div, class: classes, &block %>
   <% end %>
