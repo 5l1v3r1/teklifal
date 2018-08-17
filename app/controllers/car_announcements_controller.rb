@@ -5,6 +5,11 @@ class CarAnnouncementsController < ContentController
     super
   end
 
+  def create
+    @subscriptions = CarAnnouncementSubscription.search(content_params)
+    super
+  end
+
   private
 
   def content_resource
