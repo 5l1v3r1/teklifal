@@ -11,16 +11,15 @@ class ContentController < ApplicationController
   def new
     if  !user_signed_in? and
         session[:created_announcement] and
-        ann = Announcement.find_by(id: session[:created_announcement]) and
-        ann.content and
-        ann.content_type == content_resource.to_s
-      @content = ann.content
+        @ann = Announcement.find_by(id: session[:created_announcement]) and
+        @ann.content and
+        @ann.content_type == content_resource.to_s
+      @content = @ann.content
       if params[:reset]
-        ann.destroy
+        @ann.destroy
         session.delete(:created_announcement)
         @content = content_resource.new
         @ann = @content.build_announcement
-        3.times { @ann.attachments.build }
       end
     else
       @content = content_resource.new
@@ -30,8 +29,9 @@ class ContentController < ApplicationController
       @content.build_announcement unless @content.announcement
       @ann = @content.announcement
       @ann.user = current_user
-      3.times { @ann.attachments.new }
     end
+
+    3.times { @content.announcement.attachments.new }
   end
 
   def create
