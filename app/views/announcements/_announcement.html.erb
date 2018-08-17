@@ -1,5 +1,11 @@
 <div class="row py-3">
-  <div class="col-3 text-right"><%= announcement.user.name %></div>
+  <div class="col-3 text-right">
+    <% if announcement.user %>
+      <%= announcement.user.name %>  
+    <% else %>
+      [ANONYMOUS]      
+    <% end %>
+  </div>
   <div class="col-8">
     <% if announcement.content %>
       <%= render announcement.content %>
