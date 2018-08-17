@@ -1,6 +1,10 @@
-<%= page_header @user.name %>
+<%= page_header "Kullanıcı" %>
 
 <table class="table table-hover  table-sm">
+  <tr>
+    <td>First Name / Last Name</td>
+    <td><%= @user.first_name %> / <%= @user.last_name %></td>
+  </tr>
   <tr>
     <td>Avatar</td>
     <td><%= image_tag(@user.avatar.thumb.url) if @user.avatar.url %></td>
@@ -82,6 +86,7 @@
         <th>Sinif</th>
         <th>Filtre</th>
         <th>Created At</th>
+        <th>Actions</th>
       </thead>
 
       <tbody>
@@ -94,6 +99,12 @@
               <% end %>    
             </td>
             <td><%= time_ago_in_words(subscription.created_at) %> once</td>
+            <td>
+              <%= link_to "Sil", 
+                          administration_subscription_path(subscription),
+                          method: :delete,
+                          data: { confirm: "Emin misiniz?" } %>
+            </td>
           </tr>
         <% end %>
 

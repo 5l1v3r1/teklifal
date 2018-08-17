@@ -36,6 +36,12 @@ module Administration
       end
     end
 
+    def destroy
+      @subscription.destroy
+      redirect_to administration_user_path(@subscription.subscriber.owner),
+        notice: 'Subscription was successfully destroyed.'
+    end
+
     private
 
     def subscription_params
