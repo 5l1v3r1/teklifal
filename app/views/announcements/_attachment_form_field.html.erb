@@ -1,18 +1,24 @@
-<div class="form-group attachment-input">
-  <%= form.label :attachments %>
-  <%= form.fields_for :attachments do |ff|  %>
-    <div class="mb-1 attachment">
-      <% if ff.object.persisted? %>
-        <div class="form-control">
-          <span><%= link_to ff.object.send(:attribute,:file), ff.object.file_url, target: '_blank' %></span>
-          <div class="form-check form-check-inline float-right">
-            <%= ff.check_box :_destroy, class: "form-check-input" %>
-            <%= ff.label :_destroy, class: "form-check-label" %>
+<details class="form-group">
+  <summary>
+    <%= t "activerecord.attributes.announcement.attachments" %>
+  </summary>
+  <div class="form-group attachment-input">
+    <%#= form.label :attachments %>
+    <%= form.fields_for :attachments do |ff|  %>
+      <div class="mb-1 attachment">
+        <% if ff.object.persisted? %>
+          <div class="form-control">
+            <span><%= link_to ff.object.send(:attribute,:file), ff.object.file_url, target: '_blank' %></span>
+            <div class="form-check form-check-inline float-right">
+              <%= ff.check_box :_destroy, class: "form-check-input" %>
+              <%= ff.label :_destroy, class: "form-check-label" %>
+            </div>
           </div>
-        </div>
-      <% else %>
-        <%= ff.file_field :file, class: 'form-control' %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+        <% else %>
+          <%= ff.file_field :file, class: 'form-control' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  
+</details>
