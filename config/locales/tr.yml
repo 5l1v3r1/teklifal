@@ -100,6 +100,10 @@ tr:
   forms:
     errors: "Gönderilemedi! Aşağıdaki hataları düzeltin:"
 
+  stepper:
+    announcement_information: "Talep ilanı bilgileri"
+    user_information: "Üyelik bilgileri"
+
   announcements:
     plain:
       title: "Yeni ilan"
