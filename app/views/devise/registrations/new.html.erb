@@ -1,4 +1,4 @@
-<%= title "Sign up" %>
+<%= title t('authentication.signup') %>
 
 <% if params[:ann_created] and
       session[:created_announcement] or
@@ -6,6 +6,6 @@
   <%= render "announcements/stepper", step: :user %>
 <% end %>
 
-<%= render "auth_nav", title: "Sign up" %>
+<%= render "auth_nav", title: t('authentication.signup') %>
 
 <%= render "form" %>

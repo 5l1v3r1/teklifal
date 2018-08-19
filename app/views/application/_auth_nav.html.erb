@@ -6,9 +6,9 @@
   <%#- if controller_name != 'sessions' %>
     <li class="nav-item">
       <% if params[:ann_created] %>
-        <%= nav_link "Log in", new_session_path(resource_name, ann_created: true) %>
+        <%= nav_link t('authentication.login'), new_session_path(resource_name, ann_created: true, content_type: params[:content_type]) %>
       <% else %>
-        <%= nav_link "Log in", new_session_path(resource_name) %>
+        <%= nav_link t('authentication.login'), new_session_path(resource_name) %>
       <% end %>
       <%#= link_to "Log in", new_session_path(resource_name), class: 'nav-link' %>
     </li>
@@ -17,9 +17,9 @@
   <%- if devise_mapping.registerable? %>
     <li class="nav-item">
       <% if params[:ann_created] or @ann %>
-        <%= nav_link "Sign up", new_registration_path(resource_name, ann_created: true) %>
+        <%= nav_link t('authentication.signup'), new_registration_path(resource_name, ann_created: true, content_type: params[:content_type]) %>
       <% else %>
-        <%= nav_link "Sign up", new_registration_path(resource_name) %>
+        <%= nav_link t('authentication.signup'), new_registration_path(resource_name) %>
       <% end %>
       <%#= link_to "Sign up", new_registration_path(resource_name), class: "nav-link" %>
     </li>

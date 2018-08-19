@@ -104,6 +104,10 @@ tr:
     announcement_information: "Talep ilanı bilgileri"
     user_information: "Üyelik bilgileri"
 
+  authentication:
+    login: "Giriş yap"
+    signup: "Kayıt ol"
+
   announcements:
     plain:
       title: "Yeni ilan"
