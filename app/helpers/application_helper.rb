@@ -17,6 +17,10 @@ module ApplicationHelper
     render 'page_header', title: title
   end
 
+  def page_header_with_info title, &block
+    render layout: 'page_header_with_info', locals: { title: title }, &block
+  end
+
   def sub_header title
     render 'sub_header', title: title
   end
