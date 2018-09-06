@@ -1,0 +1,24 @@
+<!-- Subscriptions Modal -->
+<div class="modal fade" id="subscriptionsModal" tabindex="-1" role="dialog" aria-labelledby="subscriptionsModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title d-flex" id="subscriptionsModalTitle">
+          Aboneler
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading"><span class="subscribers-count ml-auto"><%= @subscriptions.count %></span> abone!</h4>
+          <p>Talep ilanınıza muhtemel olarak aşağıdaki aboneler teklif gönderecek.</p>
+        </div>
+        <ul class="subscribers list-group list-group-flush">
+          <%= render partial: "subscriptions/subscription", collection: @subscriptions %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

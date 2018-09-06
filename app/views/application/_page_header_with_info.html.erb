@@ -1,0 +1,11 @@
+<div class="mb-4 border-bottom pb-2 d-flex align-items-end">
+  <h2 class="h3 m-0 p-0">
+    <%= title %>
+  </h2>
+
+  <% if block_given? %>
+    <div class="ml-auto">
+      <%= yield %>
+    </div>
+  <% end %>
+</div>

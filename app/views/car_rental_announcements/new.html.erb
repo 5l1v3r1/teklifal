@@ -10,16 +10,23 @@
 <% end %>
 
 <div class="row">
-  <div class="col-8">
-    <%= page_header t(".title") %>
+  <div class="col-12 col-md-8">
+    <%= page_header_with_info t(".title") do %>
+      <a href="#" data-toggle="modal" data-target="#subscriptionsModal" class="d-inline-block d-md-none">
+        <span class="subscribers-count"><%= @subscriptions.count %></span> abone
+      </a>
+    <% end %>
     <%= render 'form', content: @content %>
   </div>
 
-  <div class="col-4">
+  <div class="d-none d-md-block col-md-4">
     <%= render "subscriptions/subscriptions" %>
   </div>
+
 </div>
 
 <% if ask_to_continue? %>
   <%= render "announcements/modal" %>
 <% end %>
+
+<%= render "subscriptions/subscriptions_modal" %>
