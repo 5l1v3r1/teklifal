@@ -47,7 +47,9 @@
   </div>
 
   <%= form.fields_for :announcement do |af| %>
-    <%= render 'announcements/fields_for_announcement', form: af %>
+    <%= render 'announcements/fields_for_announcement',
+          form: af,
+          desc_placeholder: t("car_rental_announcements.desc_placeholder") %>
   <% end %>
 
   <%= form.submit nil, class: 'btn btn-success' %>

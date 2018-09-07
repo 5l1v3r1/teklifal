@@ -19,6 +19,14 @@ tr:
         submit: "Filtrele"
       offer:
         create: "Taslağı kaydet"
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "%{entry_name} bulunamadı"
+          one: "<b>1</b> %{entry_name} gösteriliyor"
+          other: "<b>%{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "%{entry_name} gösteriliyor <b>%{first}&nbsp;-&nbsp;%{last}</b> / <b>%{total}</b> toplam"
 
   time:
     today: "Bugün"
@@ -168,6 +176,7 @@ tr:
     edit_my_subscription: "Aboneliğimi düzenle"
 
   car_announcements:
+    desc_placeholder: "Örnek: 0 km Renault Megane Touch 1.5 dCi EDC otomatik vites, beyaz renk tercihimdir. Tekliflerinizi bekliyorum."
     new_car_announcement: "Sıfır araba talep ilanı oluştur"
     make: "Marka"
     edit:
@@ -197,6 +206,7 @@ tr:
       title: "Teklif al"
 
   car_rental_announcements:
+    desc_placeholder: "Örnek: Perşembe günü saat 8'de İzmir Havaalanına ucağım var. Dönüş Cuma saat 18. Otomatik vitesli Megane, Fluence ayarlarında kiralık araç tekliflerinizi bekliyorum."
     new_car_rental_announcement: "Kiralık araba talep ilanı oluştur"
     same_location: "Alış yeri ile aynı"
     edit:
@@ -226,12 +236,3 @@ tr:
       previous: "&lsaquo; Önceki"
       next: "Sonraki &rsaquo;"
       truncate: "&hellip;"
-  helpers:
-    page_entries_info:
-      one_page:
-        display_entries:
-          zero: "%{entry_name} bulunamadı"
-          one: "<b>1</b> %{entry_name} gösteriliyor"
-          other: "<b>%{count}</b> %{entry_name}"
-      more_pages:
-        display_entries: "%{entry_name} gösteriliyor <b>%{first}&nbsp;-&nbsp;%{last}</b> / <b>%{total}</b> toplam"

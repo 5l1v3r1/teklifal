@@ -1,6 +1,10 @@
 <div class="form-group">
   <%= form.label :desc %>
-  <%= form.trix_editor :desc %>
+  <% if desc_placeholder %>
+    <%= form.trix_editor :desc, placeholder: desc_placeholder %>
+  <% else %>
+    <%= form.trix_editor :desc %>
+  <% end %>
 </div>
 
 <%= render 'announcements/attachment_form_field', form: form %>
