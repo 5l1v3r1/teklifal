@@ -1,7 +1,14 @@
 class CarAnnouncementsController < ContentController
 
   def new
-    @subscriptions = Subscription.where(type: "CarAnnouncementSubscription").includes(:subscriber)
+    @subscriptions = if make = params[:car_announcement].try(:[], :make)
+      Subscription.where(type: "CarAnnouncementSubscription")
+        .where("filter->>'make' = ?", make)
+        .includes(:subscriber)
+    else
+      Subscription.where(type: "CarAnnouncementSubscription").includes(:subscriber)
+    end
+
     super
   end
 
