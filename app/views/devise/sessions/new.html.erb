@@ -2,6 +2,7 @@
 
 <% if params[:ann_created] and session[:created_announcement] %>
   <%= render "announcements/stepper", step: :user %>
+  <%= render "stepper_info" %>
 <% end %>
 
 <%= render "auth_nav", title: t('authentication.login') %>

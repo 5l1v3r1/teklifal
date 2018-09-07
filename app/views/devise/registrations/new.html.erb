@@ -4,6 +4,7 @@
       session[:created_announcement] or
       (params[:user] and params[:user][:signed_in_from_new_announcement]) %>
   <%= render "announcements/stepper", step: :user %>
+  <%= render "stepper_info" %>
 <% end %>
 
 <%= render "auth_nav", title: t('authentication.signup') %>
