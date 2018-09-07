@@ -64,7 +64,11 @@ class Announcement < ApplicationRecord
   end
 
   def content_type_name
-    content_type.underscore if content_type
+    if content_type
+      type_name = content_type.underscore
+      type_name.slice! "_announcement"
+      type_name
+    end
   end
 
   def status

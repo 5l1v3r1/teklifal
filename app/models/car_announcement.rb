@@ -17,6 +17,4 @@ class CarAnnouncement < ApplicationRecord
   validates_presence_of :make
   validates_inclusion_of :make, in: BRANDS
 
-  
-
 end

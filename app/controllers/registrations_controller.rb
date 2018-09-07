@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
           @ann
       end }
       params[:ann_created] = true
+      params[:content_type] = @ann.content_type_name
     end
 
     super

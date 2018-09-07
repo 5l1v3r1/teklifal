@@ -32,7 +32,7 @@ class AnnouncementsController < ApplicationController
 
   def edit
     if @announcement.content
-      redirect_to send(:"edit_#{@announcement.content_type_name}_path", @announcement.content)
+      redirect_to send(:"edit_#{@announcement.content_type_name}_announcement_path", @announcement.content)
     end
     authorize @announcement
     3.times { @announcement.attachments.build }
