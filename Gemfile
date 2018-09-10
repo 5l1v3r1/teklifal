@@ -47,4 +47,5 @@ group :development do
   gem 'capistrano3-puma', '~> 3.1'
   gem 'capistrano-rails-db'
   gem 'sshkit-sudo'
+  gem 'capistrano-lets-encrypt'
 end
