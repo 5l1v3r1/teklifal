@@ -25,7 +25,7 @@ server {
 <% if fetch(:nginx_ssl_certificate) -%>
   ssl_certificate <%= fetch(:nginx_ssl_certificate) %>;
 <% else -%>
-  ssl_certificate /etc/ssl/certs/<%= fetch(:nginx_config_name) %>.crt;
+  ssl_certificate_key /etc/ssl/certs/<%= fetch(:nginx_config_name) %>.crt;
 <% end -%>
 <% if fetch(:nginx_ssl_certificate_key) -%>
   ssl_certificate_key <%= fetch(:nginx_ssl_certificate_key) %>;
@@ -83,6 +83,12 @@ server {
     }
     rewrite ^(.*)$ /503.html break;
   }
+
+<% if fetch(:nginx_use_ssl) -%>
+  location ~ /.well-known {
+      allow all;
+  }
+<% end %>
 
   if ($request_method !~ ^(GET|HEAD|PUT|PATCH|POST|DELETE|OPTIONS)$ ){
     return 405;

@@ -14,7 +14,7 @@ set :migration_role, :app
 set :assets_manifests, ['app/assets/config/manifest.js']
 set :keep_assets, 2
 append :linked_files, "config/master.key"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads'
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads', "public/.well-known"
 
 # https://github.com/capistrano/chruby#usage
 set :chruby_ruby, "ruby-2.5.1"
