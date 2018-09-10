@@ -22,7 +22,7 @@ set :chruby_ruby, "ruby-2.5.1"
 # https://github.com/seuros/capistrano-puma
 set :puma_conf, "#{shared_path}/config/puma.rb"
 set :lets_encrypt_email, "cihad@teklifal.com"
-set :lets_encrypt_domains, "teklifal.com www.teklifal.com"
+set :lets_encrypt_domains, "teklifal.com"
 
 # https://github.com/platanus/capistrano3-nginx#usage
 set :app_server_socket, "#{shared_path}/tmp/sockets/#{fetch :application}.sock"
