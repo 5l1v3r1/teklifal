@@ -27,3 +27,5 @@
 /config/master.production.key
 
 /public/uploads/*
+
+.pem
