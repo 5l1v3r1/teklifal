@@ -9,7 +9,6 @@ require "capistrano/chruby"
 require 'capistrano/rails'
 require 'capistrano/rails/db'
 require 'sshkit/sudo'
-require 'capistrano/lets-encrypt'
 
 install_plugin Capistrano::Nginx
 install_plugin Capistrano::SCM::Git
