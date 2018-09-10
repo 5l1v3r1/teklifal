@@ -1,5 +1,14 @@
 <%= page_header_with_info "Aboneler" do %>
-  <span class="subscribers-count"><%= @subscriptions.count %></span> abone
+  <div><span class="subscribers-count"><%= @subscriptions.count %></span> abone</div>
+  <div>
+    <i class="mi md-18 ml-1"
+          data-toggle="popover"
+          data-trigger="hover"
+          data-content="Talep ilanınıza muhtemel olarak aşağıdaki aboneler teklif gönderecek"
+          data-placement="top">
+      help
+    </i>
+  </div>
 <% end %>
 
 <div class="px-3 mt-5 position-absolute" style="left: 0; right: 0; top: 0; bottom: 0; overflow: auto;">
