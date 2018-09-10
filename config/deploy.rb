@@ -21,9 +21,8 @@ set :chruby_ruby, "ruby-2.5.1"
 
 # https://github.com/seuros/capistrano-puma
 set :puma_conf, "#{shared_path}/config/puma.rb"
-# set :nginx_ssl_certificate, "/home/deployer/.ssh/server.crt"
-# set :nginx_ssl_certificate_key, "/home/deployer/.ssh/server.key"
-# set :nginx_use_ssl, true
+set :lets_encrypt_email, "cihad@teklifal.com"
+set :lets_encrypt_domains, "teklifal.com www.teklifal.com"
 
 # https://github.com/platanus/capistrano3-nginx#usage
 set :app_server_socket, "#{shared_path}/tmp/sockets/#{fetch :application}.sock"
