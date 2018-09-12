@@ -7,9 +7,9 @@
   <% end %>
 </div>
 
-<%= render 'announcements/attachment_form_field', form: form %>
+<%#= render 'announcements/attachment_form_field', form: form %>
 
-<div class="form-group">
+<div class="form-group" style="display: none">
   <%= form.label :duration_day %>
   <% if form.object.persisted? and form.object.published? %>
     <%= form.text_field :duration_day, class: "form-control", readonly: true  %>

@@ -16,6 +16,18 @@
         <span class="subscribers-count"><%= @subscriptions.count %></span> abone
       </a>
     <% end %>
+
+    <p class="text-muted small">
+      Aşağıdaki formu doldurduğunuz zaman yetkili satıcılardan teklifler
+      toplanacak. Toplanan en uygun teklifler süzgeçten geçirilecek.
+      Sizin için bayilerle pazarlık yapılacak.
+    </p>
+
+    <p class="d-none d-md-block text-muted small mb-5">
+      Size potansiyel teklif verebilecek aboneler sağ sütundan
+      görebilirsiniz.
+    </p>
+
     <%= render 'form', content: @content %>
   </div>
 

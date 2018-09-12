@@ -19,6 +19,8 @@ tr:
         submit: "Filtrele"
       offer:
         create: "Taslağı kaydet"
+      car_announcement:
+        create: "Talep gönder"
     page_entries_info:
       one_page:
         display_entries:
@@ -51,7 +53,7 @@ tr:
     attributes:
       announcement:
         title: "İlan Başlığı"
-        desc: "Açıklama"
+        desc: "Talebiniz"
         duration_day: "Yayında kalma süresi"
         supervisor_id: "Müşteri temsilcisi"
         attachments: "Ekleri"
