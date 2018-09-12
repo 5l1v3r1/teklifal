@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center border-bottom pb-3 mb-3">
-  <% classes = "step-link d-flex justify-content-center align-items-center p-4" %>
+  <% classes = "step-link d-flex justify-content-center align-items-center p-1" %>
   <% block = proc do %>
     <span class="rounded-circle d-inline-block <%= step == :announcement ? "bg-primary" : "bg-muted" %> text-white font-weight-bold text-center mr-3"
           style="width: 30px; height: 30px; line-height: 30px">
@@ -16,9 +16,9 @@
     <%= content_tag :div, class: classes, &block %>
   <% end %>
 
-  <div class="line border-top" style="height: 0; min-width: 32px; flex: auto; margin: 0 -10px"></div>
+  <div class="line border-top" style="height: 0; min-width: 32px; flex: auto; margin: 0 10px"></div>
 
-  <div class="d-flex justify-content-center align-items-center p-4">
+  <div class="d-flex justify-content-center align-items-center p-1">
     <span class="rounded-circle d-inline-block <%= step == :user ? "bg-primary" : "bg-muted" %>  text-white font-weight-bold text-center mr-3"
           style="width: 30px; height: 30px; line-height: 30px">
       2
