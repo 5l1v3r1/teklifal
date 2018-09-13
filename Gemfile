@@ -34,6 +34,7 @@ gem 'activerecord-postgis-adapter', '~> 5.2'
 gem 'kaminari', '~> 1.1'
 gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 gem 'pry-rails', '~> 0.3'
+gem 'pg_search', '~> 2.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

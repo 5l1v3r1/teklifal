@@ -3,7 +3,11 @@ require './app/services/administration/unowned_user'
 module Administration
   class UsersController < BaseController
     def index
-      @users = User.unscoped.all.order(id: :desc).page(params[:page])
+      @users = if params[:q].present?
+        User.unscoped.all.order(id: :desc).search(params[:q]).page(params[:page])
+      else
+        User.unscoped.all.order(id: :desc).page(params[:page])
+      end
     end
 
     def show
@@ -20,7 +24,7 @@ module Administration
       if @user.save
         redirect_to [:administration, User.find(@user.id)]
       else
-        render :new
+        render :new 
       end
     end
 

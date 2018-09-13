@@ -1,10 +1,13 @@
 class User < ApplicationRecord
   include AASM
+  include PgSearch
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   paginates_per 25
+
+  pg_search_scope :search, :against => [:first_name, :last_name, :email, :phone]
 
   attr_accessor :signed_in_from_new_announcement, :creating_by_manager
 

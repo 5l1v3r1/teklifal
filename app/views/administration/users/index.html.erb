@@ -1,7 +1,17 @@
-<div class="d-flex mb-3">
-  <%= link_to new_administration_user_path, class: "btn btn-primary d-flex" do %>
-    <i class="mi mr-2 ">add_circle</i> Create User
-  <% end %>
+<div class="form-row align-items-center mb-3">
+  <div class="col-auto">
+    <%= link_to new_administration_user_path, class: "btn btn-primary d-flex" do %>
+      <i class="mi mr-2 ">add_circle</i> Create User
+    <% end %>
+  </div>
+
+  <div class="col-auto">
+    <%= form_with url: administration_users_path,
+                  method: :get,
+                  data: { remote: false } do |form| %>
+      <%= search_field_tag :q, params[:q], class: "form-control" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="table-responsive">
