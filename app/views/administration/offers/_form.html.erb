@@ -1,0 +1,68 @@
+<%= form_with(model: [:administration, @offer],
+              local: true) do |form| %>
+
+  <%= render 'form_errors', object: @offer %>
+ 
+  <div class="form-group">
+    <%= form.label :announcement_id %>
+    <%= form.select :announcement_id,
+          Announcement.all.
+            published.
+            collect { |a| [ "#{a.title} - #{a.id} - #{a.user.name if a.user.try(:name)}", a.id ] },
+          { include_blank: true },
+          { class: "form-control" } %>
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+
+
+
+      $("#offer_announcement_id").change(function() {
+        var path = "<%= administration_subscribers_path %>"
+        var announcement_id = $("#offer_announcement_id option:selected").val()
+
+        path += "?announcement_id=" + announcement_id
+
+        $.ajax({url: path});
+      });
+    });
+  </script>
+
+  <div class="form-group">
+    <%= form.label :subscriber_id %>
+
+    <% if form.object.persisted? %>
+      <%= form.select :subscriber_id,
+            form.
+              object.
+              announcement.
+              subscribers.
+              collect { |s| [ "#{s.title} - #{s.owner.try(:first_name)}", s.id ] },
+          { include_blank: true },
+          { class: "form-control" }%>
+    <% else %>
+      <%= form.select :subscriber_id,
+          Subscriber.all.
+            collect { |s| [ "#{s.title} - #{s.owner.try(:first_name)}", s.id ] },
+          { include_blank: true },
+          { class: "form-control" }%>
+    <% end %>
+  </div>
+
+  <div class="form-group  ">
+    <%= form.label :desc %>
+    <%= form.trix_editor :desc %>
+
+    <% 3.times { form.object.attachments.build } %>
+    <%= render "announcements/attachment_form_field", form: form %>
+  </div>
+
+  <div class="form-group">
+      <% unless @offer.published? %>
+        <%= form.submit nil, class: 'btn btn-secondary', data: { toggle: "tooltip", placement: "top", title: t('offers.draft_message') } %>
+      <% end %>
+      <%= form.submit t("offers.publish"), class: 'btn btn-success', name: 'publish' %>
+  </div>
+
+<% end %>

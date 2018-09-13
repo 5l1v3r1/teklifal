@@ -1,0 +1,34 @@
+<%= page_header "Teklif" %>
+
+
+<h5>Talep ilanı</h5>
+<%= render 'announcements/announcement_card', announcement: (@announcement = @offer.announcement) %>
+
+<table class="table table-hover  table-sm">
+  <tr>
+    <td>Teklif</td>
+    <td><%= desc @offer.desc %></td>
+  </tr>
+  <tr>
+    <td>State</td>
+    <td><%= @offer.state %></td>
+  </tr>
+  <tr>
+    <td>Subscriber</td>
+    <td><%= @offer.subscriber.owner.name %></td>
+  </tr>
+  <tr>
+    <td>Created At</td>
+    <td><%= time_ago_in_words(@offer.created_at) %> önce</td>
+  </tr>
+  <tr>
+    <td>Updated At</td>
+    <td><%= time_ago_in_words(@offer.updated_at) %> önce</td>
+  </tr>
+  <tr>
+    <td>Islemler</td>
+    <td>
+      <%= link_to "Duzenle", edit_administration_offer_path(@offer)  %>
+    </td>
+  </tr>
+</table>

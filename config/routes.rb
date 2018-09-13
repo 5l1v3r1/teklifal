@@ -52,11 +52,11 @@ Rails.application.routes.draw do
   namespace :administration do
     get "/" => "base#show"
     resources :announcements, only: [:index]
-    resources :offers, only: [:index]
+    resources :offers
     resources :users do
       resources :subscriptions, shallow: true
     end
     resources :unowned_users, only: [:update, :create], controller: :users
-    
+    resources :subscribers, only: [:index]
   end
 end

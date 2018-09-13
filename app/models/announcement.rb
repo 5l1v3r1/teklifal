@@ -81,6 +81,15 @@ class Announcement < ApplicationRecord
     end
   end
 
+  def subscribers
+    "#{content_type}Subscription".
+      safe_constantize.
+      all.
+      includes(:subscriber).
+      where("filter->>'make' = ?", content.make).
+      map(&:subscriber)
+  end
+
   private
 
   def set_supervisor

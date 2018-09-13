@@ -19,6 +19,7 @@
 //= require trix
 //= require flatpickr
 //= require bootstrap-msg-0.4.0
+//= require select2-full
 //= require_tree .
 
 $(function () {
