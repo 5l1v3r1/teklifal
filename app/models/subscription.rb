@@ -8,7 +8,7 @@ class Subscription < ApplicationRecord
 
 
   def owner? user
-    owner == user
+    self.user == user
   end
 
   def filter

@@ -2,7 +2,7 @@ module Administration
   class UnownedUser < ActiveRecord::Base
     self.table_name = "users"
 
-    has_one :subscriber, foreign_key: :owner_id, inverse_of: :owner, autosave: true, required: true
+    has_one :subscriber, autosave: true, required: true
     accepts_nested_attributes_for :subscriber
     validates_associated :subscriber
 
