@@ -57,7 +57,9 @@ Rails.application.routes.draw do
       resources :subscriptions, shallow: true
     end
     resources :unowned_users, only: [:update, :create], controller: :users
-    resources :subscribers, only: [:index]
+    resources :subscribers, only: [:index] do
+      get :ann_subscribers, on: :collection
+    end
     resources :subscriptions, only: [:index]
     resources :car_announcement_subscriptions, only: [:index]
   end

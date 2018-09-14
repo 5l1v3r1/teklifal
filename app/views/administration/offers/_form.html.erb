@@ -19,7 +19,7 @@
 
 
       $("#offer_announcement_id").change(function() {
-        var path = "<%= administration_subscribers_path %>"
+        var path = "<%= ann_subscribers_administration_subscribers_path %>"
         var announcement_id = $("#offer_announcement_id option:selected").val()
 
         path += "?announcement_id=" + announcement_id

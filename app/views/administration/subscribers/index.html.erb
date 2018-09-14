@@ -1,0 +1,62 @@
+<%= page_header "Aboneler" %>
+
+<table class="table table-hover table-sm">
+  <thead>
+    <%= form_with url: administration_subscribers_path,
+                  method: :get, local: true do |form| %>
+      <th>
+        Title
+        <%= text_field_tag "title", params[:title], class: "form-control form-control-sm" %>
+      </th>
+      <th>
+        Type
+      </th>
+      <th>
+        User
+      </th>
+      <th>
+        Abonelikler
+      </th>
+      <th>Created At</th>
+      <th>
+        Actions
+        <%= form.submit nil, class: "btn btn-primary btn-sm" %>
+      </th>
+    <% end %>
+  </thead>
+
+  <tbody>
+    <% @subscribers.each do |subscriber| %>
+      <tr>
+        <td>
+          <%= link_to subscriber.title, [:administration, subscriber.user] %>
+        </td>
+        <td><%= subscriber.subscriber_type %></td>
+        <td><%= link_to subscriber.user.name,
+                        [:administration, subscriber.user] %></td>
+        <td>  
+          <% subscriber.subscriptions.each do |s| %>
+            <%= s.type %> <br>
+            <% s.filter.each_pair do |key, value| %>
+              <%= key %> = <%= value %> <br>
+            <% end %>
+            <hr>
+          <% end %>    
+        </td>
+        <td><%= time_ago_in_words(subscriber.created_at) %> once</td>
+        <td>
+          <%= link_to "Sil", 
+                      administration_subscribers_path(subscriber),
+                      method: :delete,
+                      data: { confirm: "Emin misiniz?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="alert alert-secondary" role="alert">
+  <%= @subscribers.count %> adet
+</div>
+
+<%= paginate @subscribers %>
