@@ -23,7 +23,7 @@
         <tr>
           <td><%= link_to "##{offer.id}", [offer.announcement, offer]  %></td>
           <td><%= link_to offer.announcement.title, offer.announcement %></td>
-          <td><%= offer.owner.name %></td>
+          <td><%= offer.user.name %></td>
 
           <% css = if offer.announcement.expired?
             "table-secondary"

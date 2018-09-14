@@ -1,1 +1,1 @@
-$('#offer_subscriber_id').html("<%=j options_for_select(@subscribers.map { |s| ["#{s.title} #{s.subscriber_type} - #{s.owner.try(:first_name)} #{s.owner.try(:last_name)}", s.id] }) %>");
+$('#offer_subscriber_id').html("<%=j options_for_select(@subscribers.map { |s| ["#{s.title} #{s.subscriber_type} - #{s.user.try(:first_name)} #{s.user.try(:last_name)}", s.id] }) %>");

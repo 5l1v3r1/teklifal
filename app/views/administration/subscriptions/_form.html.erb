@@ -1,6 +1,6 @@
 <%= form_with(model: @subscription,
               scope: :subscription,
-              url: administration_user_subscriptions_path(@subscription.owner, @subscription),
+              url: administration_user_subscriptions_path(@subscription.user, @subscription),
               local: true) do |form| %>
   <div class="row">
     <div class="col-12 col-lg-8 offset-lg-2">

@@ -1,7 +1,7 @@
 class Offer < ApplicationRecord
   include AASM
   belongs_to :subscriber
-  delegate :owner, to: :subscriber
+  delegate :user, to: :subscriber
   belongs_to :announcement
   has_many :attachments, as: :attachmentable, dependent: :destroy
   accepts_nested_attributes_for :attachments, allow_destroy: true
@@ -20,7 +20,7 @@ class Offer < ApplicationRecord
   end
 
   def owner? user
-    self.subscriber.user? user if self.subscriber
+    subscriber.user == user
   end
 
   def validate_user_offer_count

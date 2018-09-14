@@ -38,13 +38,13 @@
               object.
               announcement.
               subscribers.
-              collect { |s| [ "#{s.title} - #{s.owner.try(:first_name)}", s.id ] },
+              collect { |s| [ "#{s.title} - #{s.user.try(:first_name)}", s.id ] },
           { include_blank: true },
           { class: "form-control" }%>
     <% else %>
       <%= form.select :subscriber_id,
           Subscriber.all.
-            collect { |s| [ "#{s.title} - #{s.owner.try(:first_name)}", s.id ] },
+            collect { |s| [ "#{s.title} - #{s.user.try(:first_name)}", s.id ] },
           { include_blank: true },
           { class: "form-control" }%>
     <% end %>

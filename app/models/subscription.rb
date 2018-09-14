@@ -1,6 +1,7 @@
 class Subscription < ApplicationRecord
   paginates_per 25
   belongs_to :subscriber
+  delegate :user, to: :subscriber
   has_one :user, through: :subscriber
 
 
