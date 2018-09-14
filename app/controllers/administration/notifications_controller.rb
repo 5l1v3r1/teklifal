@@ -32,7 +32,7 @@ module Administration
       mailer.
         safe_constantize.
         with(params).
-        send(:"#{type").
+        send(:"#{type}")
         send(:"deliver_#{vvhen}")
     end
   end
