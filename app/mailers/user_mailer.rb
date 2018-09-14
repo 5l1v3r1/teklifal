@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
   def new_offer
-    @offer = params[:offer]
+    @offer = Offer.find params[:offer_id]
     @ann = @offer.announcement
     mail from: "admin@example.com",
          to: @ann.user.email,

@@ -31,4 +31,31 @@
       <%= link_to "Duzenle", edit_administration_offer_path(@offer)  %>
     </td>
   </tr>
+  <tr>
+    <td>İlan sahibine gönderim yap</td>
+    <td>
+      <%= form_with model: OpenStruct.new({ 
+                            mailer: "UserMailer",
+                            type: "new_offer",
+                            params: { offer_id: @offer.id },
+                            redirect_url: current_path,
+                            vvhen: "now"}),
+                    scope: :mail, 
+                    url: send_email_to_user_administration_offers_path do |f| %>
+        <%= f.hidden_field :mailer %>
+        <%= f.hidden_field :type %>
+        <%= f.hidden_field :vvhen %>
+        <%= f.fields_for :params do |ff| %>
+          <%= ff.hidden_field :offer_id %>
+        <% end %>
+        <%= f.hidden_field :redirect_url %>
+        <%= f.submit "Mail gönder", class: "btn btn-sm btn-success" %>
+      <% end %>
+
+      <%= link_to "Email gönder", send_email_to_user_administration_offers_path(
+                                    params[],
+                                    offer_id: @offer.id) %>
+      <%= link_to "SMS gönder", send_sms_to_user_administration_offers_path(offer_id: @offer.id) %>
+    </td>
+  </tr>
 </table>

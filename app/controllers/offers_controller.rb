@@ -29,7 +29,7 @@ class OffersController < ApplicationController
     if @offer.save
       if params[:publish]
         @offer.publish!
-        UserMailer.with(offer: @offer).new_offer.deliver_later
+        UserMailer.with(offer_id: @offer.id).new_offer.deliver_later
         Sms.send_sms to: @announcement.user.phone, message: "Yeni teklifiniz var."
       end
 
@@ -45,7 +45,7 @@ class OffersController < ApplicationController
     if @offer.update(offer_params)
       if params[:publish] && @offer.draft?
         @offer.publish!
-        UserMailer.with(offer: @offer).new_offer.deliver_later
+        UserMailer.with(offer_id: @offer.id).new_offer.deliver_later
         Sms.send_sms to: @announcement.user.phone, message: "Yeni teklifiniz var."
       end
 

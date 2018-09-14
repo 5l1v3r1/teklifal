@@ -62,5 +62,11 @@ Rails.application.routes.draw do
     end
     resources :subscriptions, only: [:index]
     resources :car_announcement_subscriptions, only: [:index]
+    resource :notification, only: [] do
+      collection do
+        post :sms
+        post :email
+      end
+    end
   end
 end
