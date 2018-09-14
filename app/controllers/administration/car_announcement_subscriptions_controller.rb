@@ -1,5 +1,5 @@
 module Administration
-  class CarAnnouncementSubscriptionsController < SubscriptionsController
+  class CarAnnouncementSubscriptionsController < BaseController
     def index
       CarAnnouncementSubscription.all.tap do |s|
         if params[:subscriber_title].present?
@@ -12,12 +12,5 @@ module Administration
         @subscriptions = s
       end
     end
-
-    private
-
-    def content_type
-      "CarAnnouncementSubscription"
-    end
-
   end
 end
