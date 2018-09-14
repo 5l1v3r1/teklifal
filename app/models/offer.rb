@@ -24,7 +24,7 @@ class Offer < ApplicationRecord
   end
 
   def validate_user_offer_count
-    if new_record? and announcement.offers.exists?(subscriber: owner.subscriber)
+    if new_record? and announcement.offers.exists?(subscriber: subscriber)
       errors.add(:base, :number_of_offers_exceeded, message: I18n.t('errors.number_of_offers_exceeded'))
      end
   end
