@@ -20,7 +20,7 @@ class Offer < ApplicationRecord
   end
 
   def owner? user
-    self.subscriber.owner? user if self.subscriber
+    self.subscriber.user? user if self.subscriber
   end
 
   def validate_user_offer_count

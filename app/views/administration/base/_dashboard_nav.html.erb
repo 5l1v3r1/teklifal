@@ -20,4 +20,10 @@
       <%= User.count %>
     </span>
   <% end %>
+  <%= dashboard_nav_link administration_car_announcement_subscriptions_path do %>
+    Araba Abonelikleri
+    <span class="badge badge-primary badge-pill">
+      <%= CarAnnouncementSubscription.count %>
+    </span>
+  <% end %>
 </div>

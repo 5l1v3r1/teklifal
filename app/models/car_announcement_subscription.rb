@@ -1,4 +1,5 @@
 class CarAnnouncementSubscription < Subscription
+
   validate :filter_make
 
   scope :search, ->(params) {

@@ -1,8 +1,8 @@
 class Subscription < ApplicationRecord
-  @@subclasses = []
-
+  paginates_per 25
   belongs_to :subscriber
-  delegate :owner, to: :subscriber
+  has_one :user, through: :subscriber
+
 
   validate :exists_same_filter
 

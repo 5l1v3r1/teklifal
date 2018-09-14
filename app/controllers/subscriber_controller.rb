@@ -26,7 +26,7 @@ class SubscriberController < ApplicationController
   def create
     authorize Subscriber
     @subscriber = Subscriber.new(subscriber_params)
-    @subscriber.owner = current_user
+    @subscriber.user = current_user
 
     if @subscriber.save
       redirect_to edit_subscriber_path, notice: 'Subscriber was successfully created.'

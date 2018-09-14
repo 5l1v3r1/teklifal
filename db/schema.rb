@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_124035) do
+ActiveRecord::Schema.define(version: 2018_09_13_172242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(version: 2018_07_24_124035) do
   create_table "subscribers", force: :cascade do |t|
     t.string "title"
     t.integer "subscriber_type"
-    t.integer "owner_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_subscribers_on_owner_id"
+    t.index ["user_id"], name: "index_subscribers_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|

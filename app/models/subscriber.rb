@@ -1,13 +1,13 @@
 class Subscriber < ApplicationRecord
 
-  belongs_to :owner, class_name: "User"
+  belongs_to :user
   has_many :offers
   has_many :subscriptions, dependent: :destroy
   enum subscriber_type: [:person, :firm]
-  validates_presence_of :title, :owner, :subscriber_type
+  validates_presence_of :title, :user, :subscriber_type
 
   def owner? user
-    self.owner == user
+    self.user == user
   end
 
   def screen_name

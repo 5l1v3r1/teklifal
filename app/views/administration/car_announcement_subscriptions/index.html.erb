@@ -1,0 +1,62 @@
+<%= page_header "Araba Abonelikleri" %>
+
+<table class="table table-hover table-sm">
+  <thead>
+    <%= form_with url: administration_car_announcement_subscriptions_path,
+                  method: :get, local: true do |form| %>
+      <th>
+        Sınıf
+      </th>
+      <th>
+        Abone Başlık
+        <%= text_field_tag "subscriber_title", params[:subscriber_title], class: "form-control form-control-sm" %>
+      </th>
+      <th>
+        Abone İsim
+        <%#= text_field_tag "subscriber_user_first_name", params[:subscriber_user_first_name], class: "form-control form-control-sm" %>
+      </th>
+      <th>
+        Filtre
+        <%= select_tag "make", options_for_select(CarAnnouncement::BRANDS, params[:make]),
+              include_blank: true,
+              class: "form-control form-control-sm" %>
+      </th>
+      <th>Created At</th>
+      <th>
+        Actions
+        <%= form.submit nil, class: "btn btn-primary btn-sm" %>
+      </th>
+    <% end %>
+  </thead>
+
+  <tbody>
+    <% @subscriptions.each do |subscription| %>
+      <tr>
+        <td>
+          <%= subscription.type %>
+        </td>
+        <td><%= subscription.subscriber.title %></td>
+        <td><%= link_to   subscription.subscriber.user.tap { |u| break "#{u.try(:first_name)} #{u.try(:first_name)}" },
+                          administration_user_path(subscription.subscriber.user) %></td>
+        <td>
+          <% subscription.filter.each_pair do |key, value| %>
+            <%= key %> = <%= value %> <br>
+          <% end %>    
+        </td>
+        <td><%= time_ago_in_words(subscription.created_at) %> once</td>
+        <td>
+          <%= link_to "Sil", 
+                      administration_subscriptions_path(subscription),
+                      method: :delete,
+                      data: { confirm: "Emin misiniz?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="alert alert-secondary" role="alert">
+  <%= @subscriptions.count %> adet
+</div>
+
+<%#= paginate @subscriptions %>

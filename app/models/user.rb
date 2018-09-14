@@ -14,7 +14,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :announcements, dependent: :destroy
-  has_one :subscriber, foreign_key: :owner_id, inverse_of: :owner
+  has_one :subscriber
   accepts_nested_attributes_for :subscriber
   has_many :offers, through: :subscriber, dependent: :destroy
   has_many :supervised_announcements,

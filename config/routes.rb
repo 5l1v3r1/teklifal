@@ -58,5 +58,7 @@ Rails.application.routes.draw do
     end
     resources :unowned_users, only: [:update, :create], controller: :users
     resources :subscribers, only: [:index]
+    resources :subscriptions, only: [:index]
+    resources :car_announcement_subscriptions, only: [:index]
   end
 end
