@@ -13,8 +13,12 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-
-console.log($)
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require trix
+//= require flatpickr
+//= require bootstrap-msg-0.4.0
 
 $(function () {
   var actionPopover = $('#actions-button').popover('show');
