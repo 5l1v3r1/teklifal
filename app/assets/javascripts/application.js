@@ -11,15 +11,10 @@
 // about supported directives.
 //
 //= require jquery3
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
 //= require popper
 //= require bootstrap-sprockets
-//= require trix
-//= require flatpickr
-//= require bootstrap-msg-0.4.0
-//= require_tree .
+
+console.log($)
 
 $(function () {
   var actionPopover = $('#actions-button').popover('show');
