@@ -35,11 +35,13 @@
 }
 
 trix-editor {
-  @extend .form-control
+  @extend .form-control;
+  height: auto;
 }
 
 trix-editor:focus {
-  @extend .form-control, :focus
+  @extend .form-control, :focus;
+  height: auto;
 }
 
 .dot {
