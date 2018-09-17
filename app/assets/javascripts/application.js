@@ -19,6 +19,12 @@
 //= require trix
 //= require flatpickr
 //= require bootstrap-msg-0.4.0
+//= require add_more_attachment
+//= require add_popover
+//= require add_tooltip
+//= require cable
+//= require car_rental_subscriptions
+//= require date_time_picker
 
 $(function () {
   var actionPopover = $('#actions-button').popover('show');
