@@ -65,7 +65,7 @@ class User < ApplicationRecord
 
   def name
     (first_name || '') + ' ' + (last_name || '')
-  end
+  end 
 
   def offer_for state, announcement
     announcement.offers.find_by state: state, subscriber: subscriber
