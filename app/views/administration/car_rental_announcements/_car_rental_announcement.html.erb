@@ -1,0 +1,25 @@
+<tr>
+  <td><%= humanize_attribute car_rental_announcement, :pick_up_location %></td>
+  <td><%= car_rental_announcement.pick_up_location %></td>
+</tr>
+
+<tr>
+  <td><%= humanize_attribute car_rental_announcement, :drop_off_location %></td>
+  <td>
+    <% if car_rental_announcement.different_location? %>
+      <%= car_rental_announcement.drop_off_location %>
+    <% else %>
+      <%= t "car_rental_announcements.same_location" %>
+    <% end %>
+  </td>
+</tr>
+
+<tr>
+  <td><%= humanize_attribute car_rental_announcement, :pick_up_time %></td>
+  <td><%= l car_rental_announcement.pick_up_time, format: :long %></td>
+</tr>
+
+<tr>
+  <td><%= humanize_attribute car_rental_announcement, :drop_off_time %></td>
+  <td><%= l car_rental_announcement.drop_off_time, format: :long %></td>
+</tr>

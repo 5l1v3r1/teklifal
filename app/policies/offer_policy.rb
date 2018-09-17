@@ -1,7 +1,7 @@
 class OfferPolicy < ApplicationPolicy
 
   def show?
-    (signed_user and signed_user.manager?) or 
+    signed_user.try(:manager?) or 
     record.owner?(signed_user) or
     (record.announcement.user == signed_user)
   end

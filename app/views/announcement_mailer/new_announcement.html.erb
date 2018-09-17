@@ -1,0 +1,27 @@
+<%= render 'head' %>
+
+<p>
+  <% if @subscriber.user.first_name %>
+  Merhaba <%= @subscriber.user.first_name %>,
+  <% else %>
+  Merhaba,  
+  <% end %>
+</p>
+
+<p>
+  <b>teklifal.com</b>'daki aboneliğiniz sebebiyle bu maili almaktasınız. Aşağıda
+  detayı verilen talep ilanına teklif yapabilirsiniz. Hesabınıza giriş
+  yapmak için: <%= link_to "Giriş yap", new_user_session_url %>
+</p>
+
+
+<br />
+<hr />
+<h4>TALEP İLANI</h4>
+<p><b>Başlık:</b> <%= @announcement.title %></p>
+<p><b>Talep:</b> <%= strip_tags @announcement.desc %></p>
+<p><b>Talep sahibi:</b> <%= @announcement.user.name %></p>
+<p><%= link_to "Talebi gör", announcement_url(@announcement) %></p>
+<hr />
+
+<%= render "sign" %>

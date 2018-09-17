@@ -51,7 +51,10 @@ Rails.application.routes.draw do
 
   namespace :administration do
     get "/" => "base#show"
-    resources :announcements, only: [:index]
+    resources :announcements, only: [:index, :show, :destroy, :edit] do
+      get :email, on: :member
+      resources :emails, only: [:new, :create]
+    end
     resources :offers
     resources :users do
       resources :subscriptions, shallow: true

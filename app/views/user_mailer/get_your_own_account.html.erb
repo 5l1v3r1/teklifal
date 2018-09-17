@@ -1,0 +1,52 @@
+<%= render "head" %>
+
+<p>
+  <% if @subscriber.user.first_name %>
+  Merhaba <%= @subscriber.user.first_name %>,
+  <% else %>
+  Merhaba,  
+  <% end %>
+</p>
+
+<p>
+  teklifal.com'da sizinle alakalı olduğunu düşündüğümüz yeni talep
+  ilanı eklendi. Bu ilana ücretsiz teklif gönderebilirsiniz.
+</p>
+
+<hr />
+<h3>TALEP İLANI</h3>
+<p><b>Başlık:</b> <%= @announcement.title %></p>
+<p><b>Talep:</b> <%= strip_tags @announcement.desc %></p>
+<p><b>Talep sahibi:</b> <%= @announcement.user.name %></p>
+<hr />
+
+<br />
+
+<p><b>Bu ilana talep gönderebilmek için,</b></p>
+<ol>
+  <li>
+    <p>
+      Öncelikle daha önce sizin için otomatik olarak oluşturulmuş hesabınızı
+      sahiplenin. <a href="">Sahiplenmek için tıklayın</a>
+    </p>
+  </li>
+
+  <li>
+    <p>
+      <%= link_to "Buradan", announcement_url(@announcement) %></a>
+      Talep İlanı sayfasına giderek teklifinizi oluşturup gönderin
+    </p>
+  </li>
+</ol>
+
+<br />
+<p>
+  <b>Not:</b> Eğer sizin için oluşturulan bu hesabı kullanmak
+  istemiyorsanız hesabı aşağıdaki <%= link_to "bu bağlantıya", root_url %> 
+  tıklayarak silebilirsiniz.
+</p>
+
+<br />
+<%= render "sign" %>
+
+<%= render "foot" %>

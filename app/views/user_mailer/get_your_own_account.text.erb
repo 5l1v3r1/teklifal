@@ -1,0 +1,34 @@
+<% if @subscriber.user.first_name %>
+Merhaba <%= @subscriber.user.first_name %>,
+<% else %>
+Merhaba,  
+<% end %>
+
+teklifal.com'da sizinle alakalı olduğunu düşündüğümüz yeni talep ilanı eklendi.
+Bu ilana ücretsiz teklif gönderebilirsiniz.
+
+
+TALEP İLANI
+---
+Başlık: <%= @announcement.title %>
+
+Talep: <%= strip_tags @announcement.desc %>
+
+Talep sahibi: <%= @announcement.user.name %>
+----
+
+
+Bu ilana talep gönderebilmek için,
+
+1.) Öncelikle daha önce sizin için otomatik olarak oluşturulmuş hesabınızı
+sahiplenin. Sahiplenmek için: <%= root_url %>
+
+2.) <%= announcement_url @announcement %> adresinden Talep İlanı sayfasına giderek teklifinizi
+oluşturup gönderin.
+
+Not: Eğer sizin için oluşturulan bu hesabı kullanmak istemiyorsanız
+hesabı aşağıdaki bağlantıya tıklayarak silebilirsiniz.
+<%= root_url %>
+
+
+<%= render 'sign' %>

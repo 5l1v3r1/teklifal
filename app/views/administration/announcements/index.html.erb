@@ -18,7 +18,7 @@
       <% @announcements.each do |ann| %>
         <tr>
           <td><%= ann.id %></td>      
-          <td><%= link_to ann.title, ann %></td>
+          <td><%= link_to ann.title, administration_announcement_path(ann) %></td>
           <td>
             <% if ann.user %>
               <%= ann.user.name %>

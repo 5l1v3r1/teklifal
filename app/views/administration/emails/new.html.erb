@@ -1,0 +1,75 @@
+<%= page_header_with_info "Abonelere Mail Gönder" do %>
+  <%= link_to [:administration, @announcement] do %>
+    &larr; İlana dön
+  <% end %>
+<% end %>
+
+<%= form_with scope: :email, url: administration_announcement_emails_path do |f| %>
+  <table class="table table-sm">
+    
+
+      <tr>
+        <td>
+          <%= check_box_tag "who", nil %>
+        </td>
+        <td colspan="3"><label for="who">Select All</label></td>
+      </tr>
+
+
+      <% @subscriptions.each do |s| %>
+        <tr>
+          <td>
+            <%= check_box_tag "email[subscriptions_ids][]", s.id %>
+          </td>
+
+          <td>
+            <%= s.subscriber.title %>
+          </td>
+
+          <td>
+            <%= s.subscriber.user.name %>
+          </td>
+
+          <td>
+            <%= s.subscriber.user.email %>
+          </td>
+        </tr>
+      <% end %>
+
+
+  </table>
+
+  <%= f.submit nil, class: "btn btn-success" %>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    var selectorCheckbox =  "input[name='email[subscriptions_ids][]']";
+    var idsCheckboxes = $(selectorCheckbox);
+
+    $("input[name=who]").change(function() {
+      idsCheckboxes.prop('checked', this.checked).change();
+    })
+
+
+    idsCheckboxes.change(function(e) {
+      var tr = $(this).closest("tr");
+      var klass = "table-primary";
+
+      if (this.checked) {
+        tr.addClass(klass)
+      } else {
+        tr.removeClass(klass)
+      }
+    })
+
+    idsCheckboxes.click(function(e) {
+      e.stopPropagation();
+    });
+
+    idsCheckboxes.closest("tr").click(function() {
+      var childCheckbox = $(this).find(selectorCheckbox);
+      childCheckbox.prop('checked', !childCheckbox.is(":checked")).change()
+    })
+  })
+</script>

@@ -1,0 +1,21 @@
+<%= page_header "Announcement" %>
+
+
+<h5>Talep ilanı</h5>
+
+<table class="table table-hover  table-sm">
+  <%= render @announcement %>
+</table>
+
+<h5>Ekstra İşlemler</h5>
+
+<table class="table table-hover  table-sm">
+  <tr>
+    <td>Abonelere mail gönder</td>
+    <td>
+      <%= link_to new_administration_announcement_email_path(@announcement), class: 'btn btn-success d-inline-flex' do %>
+        <i class="mi">mail</i> Mail gönderme sayfasına git
+      <% end %>
+    </td>
+  </tr>
+</table>

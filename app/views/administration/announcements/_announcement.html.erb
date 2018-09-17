@@ -1,1 +1,47 @@
-<%= render "announcements/announcement", announcement: @announcement %>
+<tr>
+  <td>Başlık</td>
+  <td><%= announcement.title %></td>
+</tr>
+
+<tr>
+  <td>Talep</td>
+  <td><%= desc announcement.desc %></td>
+</tr>
+
+<tr>
+  <td>User</td>
+  <td><%= announcement.user.name %></td>
+</tr>
+
+<%= render announcement.content %>
+
+<tr>
+  <td>Created At</td>
+  <td><%= time_ago_in_words(@announcement.created_at) %> önce</td>
+</tr>
+
+<tr>
+  <td>Updated At</td>
+  <td><%= time_ago_in_words(@announcement.updated_at) %> önce</td>
+</tr>
+
+<tr>
+  <td>Expired At</td>
+  <td>
+    <%= time_ago_in_words(@announcement.expired_at) %>
+
+    <% if @announcement.expired? %>
+      <span class="dot bg-secondary" data-toggle="tooltip" title="<%= t "announcements.duration_day.expired" %>"></span>
+    <% else %>
+      <span class="dot bg-success" data-toggle="tooltip" title="<%= t "announcements.statuses.waiting_for_offers" %>"></span>      
+    <% end %>
+  </td>
+</tr>
+
+<tr>
+  <td>Islemler</td>
+  <td>
+    <%= link_to "Duzenle", edit_administration_announcement_path(@announcement)  %>
+    <%= link_to "Sil", administration_announcement_path(@announcement), method: :delete  %>
+  </td>
+</tr>

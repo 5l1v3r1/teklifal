@@ -149,6 +149,7 @@ tr:
     get_help: "Yardım al"
 
   offers:
+    new_offer_sms: "'%{title}' başlıklı ilanınıza yeni teklif yapıldı. %{url} adresinden ilanınıza erişebilirsiniz."
     make_an_offer: "Teklif yap"
     draft: "Taslak"
     draft_message: "Taslak olarak kaydettiğiniz teklife daha sonra devam edebilirsiniz. Ancak teklifi yayınlamadan ilan sahibi teklifinizi göremeyecek."

@@ -22,6 +22,7 @@ module Administration
       @user = UnownedUser.new(user_params)
 
       if @user.save
+        @user.send :set_reset_password_token
         redirect_to [:administration, User.find(@user.id)]
       else
         render :new 

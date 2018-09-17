@@ -1,0 +1,26 @@
+<% if @subscriber.user.first_name %>
+Merhaba <%= @subscriber.user.first_name %>,
+<% else %>
+Merhaba,  
+<% end %>
+
+teklifal.com'daki aboneliğiniz sebebiyle bu maili almaktasınız. Aşağıda
+detayı verilen talep ilanına teklif yapabilirsiniz. Hesabınıza giriş
+yapmak için:
+<%= new_user_session_url %>
+
+
+TALEP İLANI
+---
+Başlık: <%= @announcement.title %>
+
+Talep: <%= strip_tags @announcement.desc %>
+
+Talep sahibi: <%= @announcement.user.name %>
+
+Talebi gör: <%= announcement_url @announcement %>
+----
+
+
+
+<%= render 'sign' %>

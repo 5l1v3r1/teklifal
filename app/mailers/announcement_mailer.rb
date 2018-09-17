@@ -1,13 +1,5 @@
-class UserMailer < ApplicationMailer
-  def new_offer
-    @offer = Offer.find params[:offer_id]
-    @ann = @offer.announcement
-    mail from: "admin@example.com",
-         to: @ann.user.email,
-         subject: "'#{@ann.title}' ilanınıza yeni teklif var"
-  end
-
-  def get_your_own_account
+class AnnouncementMailer < ApplicationMailer
+  def new_announcement
     @announcement = Announcement.find params[:announcement_id]
     @subscriber = Subscriber.find params[:subscriber_id]
 
