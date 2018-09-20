@@ -1,6 +1,8 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  match '(*any)', to: redirect(subdomain: ''), via: :all, constraints: {subdomain: 'www'}
+
   authenticate :user, lambda { |u| u.manager? } do
     mount Logster::Web => "/logs"
     mount Sidekiq::Web => 'administration/sidekiq'
