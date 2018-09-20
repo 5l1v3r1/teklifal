@@ -10,6 +10,7 @@ class UserMailer < ApplicationMailer
   def get_your_own_account
     @announcement = Announcement.find params[:announcement_id]
     @subscriber = Subscriber.find params[:subscriber_id]
+    @token = params[:token]
 
     mail from: Rails.application.credentials[Rails.env.to_sym][:emails][:info],
          to: @subscriber.user.email,

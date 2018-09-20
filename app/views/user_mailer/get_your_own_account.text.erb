@@ -21,14 +21,14 @@ Talep sahibi: <%= @announcement.user.name %>
 Bu ilana talep gönderebilmek için,
 
 1.) Öncelikle daha önce sizin için otomatik olarak oluşturulmuş hesabınızı
-sahiplenin. Sahiplenmek için: <%= root_url %>
+sahiplenin. Sahiplenmek için: <%= get_your_account_account_url @subscriber.user, token: @token %>
 
 2.) <%= announcement_url @announcement %> adresinden Talep İlanı sayfasına giderek teklifinizi
 oluşturup gönderin.
 
 Not: Eğer sizin için oluşturulan bu hesabı kullanmak istemiyorsanız
 hesabı aşağıdaki bağlantıya tıklayarak silebilirsiniz.
-<%= root_url %>
+<%= cancel_account_account_url @subscriber.user %>
 
 
 <%= render 'sign' %>

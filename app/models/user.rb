@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   pg_search_scope :search, :against => [:first_name, :last_name, :email, :phone]
 
-  attr_accessor :signed_in_from_new_announcement, :creating_by_manager
+  attr_accessor :signed_in_from_new_announcement, :creating_by_manager, :request_own_account
 
   mount_uploader :avatar, AvatarUploader
 
@@ -26,6 +26,10 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name, :phone
   validates_format_of :phone, with: /\A5[0-9]{9}\z/
   validates_uniqueness_of :phone
+
+  validates_presence_of :password, :password_confirmation, if: :request_own_account?
+  validates_confirmation_of :password, if: :request_own_account?
+
 
   aasm column: 'membership_status' do
     # kullanici kayit formunu doldurdu
@@ -85,6 +89,14 @@ class User < ApplicationRecord
     supervisor_ids = supervisor_group.keys
     user_id = ((moderator_ids-supervisor_ids).try(:first) or supervisor_ids.first)
     find user_id
+  end
+
+  def request_own_account?
+    @request_own_account
+  end
+
+  def valid_token?(token)
+    self.reset_password_token == Devise.token_generator.digest(User, :reset_password_token, token)
   end
 
 end

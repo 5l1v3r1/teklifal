@@ -27,7 +27,7 @@
   <li>
     <p>
       Öncelikle daha önce sizin için otomatik olarak oluşturulmuş hesabınızı
-      sahiplenin. <a href="">Sahiplenmek için tıklayın</a>
+      sahiplenin. <%= link_to "Sahiplenmek için tıklayın", get_your_account_account_url(@subscriber.user, token: @token) %>
     </p>
   </li>
 
@@ -42,7 +42,7 @@
 <br />
 <p>
   <b>Not:</b> Eğer sizin için oluşturulan bu hesabı kullanmak
-  istemiyorsanız hesabı aşağıdaki <%= link_to "bu bağlantıya", root_url %> 
+  istemiyorsanız hesabı aşağıdaki <%= link_to "bu bağlantıya", cancel_account_account_url(@subscriber.user, token: @token) %> 
   tıklayarak silebilirsiniz.
 </p>
 

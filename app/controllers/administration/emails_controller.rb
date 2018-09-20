@@ -12,7 +12,10 @@ module Administration
         subscription = Subscription.find id
 
         if subscription.subscriber.user.unowned?
+          token = user.send(:set_reset_password_token)
+
           UserMailer.with(
+            token: token,
             announcement_id: @announcement.id,
             subscriber_id: subscription.subscriber.id
           ).get_your_own_account.deliver_later
@@ -22,7 +25,6 @@ module Administration
             subscriber_id: subscription.subscriber.id
           ).new_announcement.deliver_later
         end
-
       end
     end
   end

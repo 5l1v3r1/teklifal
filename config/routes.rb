@@ -3,6 +3,12 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   get "/pages/*id" => 'pages#show', as: :page, format: false
 
+  resources :account, only: [] do
+    get :get_your_account, on: :member
+    get :cancel_account, on: :member
+    put :update_account, on: :member
+  end
+
   resources :user, path: "my", only: [] do
     collection do
       get 'offers'
