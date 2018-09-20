@@ -37,6 +37,8 @@ gem 'pry-rails', '~> 0.3'
 gem 'pg_search', '~> 2.1'
 gem 'redis', '~> 4'
 gem 'logster', '~> 1.2'
+gem 'letter_opener_web', '~> 1.3'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
