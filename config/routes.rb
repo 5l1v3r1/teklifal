@@ -1,6 +1,11 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  authenticate :user, lambda { |u| u.manager? } do
+    mount Logster::Web => "/logs"
+    mount Sidekiq::Web => 'administration/sidekiq'
+  end
+
   get "/pages/*id" => 'pages#show', as: :page, format: false
 
   resources :account, only: [] do
@@ -24,9 +29,6 @@ Rails.application.routes.draw do
   get "subscriptions" => "subscriptions#index"
   resources :subscribers, only: [:index], controller: :subscriber
   
-  authenticate :user, lambda { |u| u.manager? } do
-    mount Sidekiq::Web => 'administration/sidekiq'
-  end
 
   resources :car_announcements, except: [:show]
   resources :plain_announcements, except: [:show]
