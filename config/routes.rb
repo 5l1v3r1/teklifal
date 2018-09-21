@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :notes
   # https://medium.com/@mikekitson/redirecting-to-a-bare-domain-in-rails-5-7fe533df225f
   match '(*any)', to: redirect(subdomain: ''), via: :all, constraints: {subdomain: 'www'}
 
@@ -10,6 +11,10 @@ Rails.application.routes.draw do
   end
 
   get "/pages/*id" => 'pages#show', as: :page, format: false
+
+  concern :noteable do
+    resources :notes
+  end
 
   resources :account, only: [] do
     get :get_your_account, on: :member
@@ -67,7 +72,7 @@ Rails.application.routes.draw do
       resources :emails, only: [:new, :create]
     end
     resources :offers
-    resources :users do
+    resources :users, concerns: :noteable do
       resources :subscriptions, shallow: true
     end
     resources :unowned_users, only: [:update, :create], controller: :users
