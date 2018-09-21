@@ -24,4 +24,17 @@
   </tbody>
 </table>
 
-<%= link_to 'New Subscription', new_subscription_path %>
+
+<%= form_with url: new_subscription_path, method: :get, local: true do |form| %>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <%= form.select :type,
+                      Subscription.subclasses.collect {|klass| [klass.to_s, klass.to_s]},
+                      {include_blank: true},
+                      {class: "form-control"} %>
+    </div>
+    <div class="col-auto">
+      <%= form.submit "Ekle", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

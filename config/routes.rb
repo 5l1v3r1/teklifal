@@ -28,13 +28,12 @@ Rails.application.routes.draw do
       get 'announcements'
       resource :subscriber, only: [:new, :create, :edit, :update, :destroy], controller: :subscriber
       resources :subscriptions, except: :index do
-        get :index, on: :collection, as: :my
+        get :my, on: :collection, as: :my, path: ''
       end
     end
   end
 
-
-  get "subscriptions" => "subscriptions#index"
+  resources :subscriptions, only: :index
   resources :subscribers, only: [:index], controller: :subscriber
   
 

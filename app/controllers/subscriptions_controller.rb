@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
   def index
     authorize Subscription
     @subscriptions = subscription_source.search(params)
-    respond_with @subscriptions
+    # respond_with @subscriptions
   end
 
   def show
@@ -39,14 +39,17 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
+    authorize subscription_source
+
     if @subscription.update(subscription_params)
-      redirect_to @subscription, notice: 'Subscription was successfully updated.'
+      redirect_to my_subscriptions_path, notice: 'Subscription was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
+    authorize @subscription
     @subscription.destroy
     redirect_to subscriptions_url, notice: 'Subscription was successfully destroyed.'
   end

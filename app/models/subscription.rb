@@ -4,7 +4,6 @@ class Subscription < ApplicationRecord
   delegate :user, to: :subscriber
   has_one :user, through: :subscriber
 
-
   validate :exists_same_filter
 
 
@@ -21,6 +20,10 @@ class Subscription < ApplicationRecord
       CarAnnouncementSubscription,
       CarRentalAnnouncementSubscription
     ]
+  end
+
+  def self.search params
+    all
   end
 
   private

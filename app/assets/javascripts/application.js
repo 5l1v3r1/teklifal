@@ -24,6 +24,7 @@
 //= require add_tooltip
 //= require cable
 //= require car_rental_subscriptions
+//= require car_subscriptions
 //= require date_time_picker
 //= require hide_drop_off_location_if_empty
 //= require phone_input
