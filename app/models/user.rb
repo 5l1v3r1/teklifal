@@ -22,6 +22,7 @@ class User < ApplicationRecord
             inverse_of: :supervisor,
             class_name: "Announcement"
   delegate :subscriptions, to: :subscriber
+  has_many :notes, as: :noteable 
 
   validates_presence_of :first_name, :last_name, :phone
   validates_format_of :phone, with: /\A5[0-9]{9}\z/

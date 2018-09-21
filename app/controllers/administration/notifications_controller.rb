@@ -10,7 +10,6 @@ module Administration
       unless @offer.announcement.user.phone
         redirect_to params[:redirect_url], alert: "İlan sahibi telefona sahip değil"
       end
-      binding.pry
 
       message = I18n.t(
                   "offers.new_offer_sms",

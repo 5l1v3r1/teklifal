@@ -1,6 +1,8 @@
+<% path = subscription.new_record? ? subscriptions_path : subscription_path(subscription) %>
+
 <%= form_with(model: subscription,
+              url: path,
               scope: :subscription,
-              url: subscriptions_path,
               local: true) do |form| %>
   <div class="row">
     <div class="col-12 col-lg-8 offset-lg-2">

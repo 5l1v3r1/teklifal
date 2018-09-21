@@ -9,7 +9,7 @@ module Administration
       @announcement = Announcement.find params[:announcement_id]
 
       params[:email][:subscriptions_ids].each do |id|
-        subscription = Subscription.find id
+        subscription = Subscription.find id 
 
         if subscription.subscriber.user.unowned?
           token = user.send(:set_reset_password_token)
@@ -26,6 +26,8 @@ module Administration
           ).new_announcement.deliver_later
         end
       end
+
+      redirect_to [:administration, @announcement], notice: "Basarili bir sekilde mail(ler) gonderildi!"
     end
   end
 end

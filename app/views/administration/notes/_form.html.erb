@@ -1,0 +1,17 @@
+<table class="table">
+  <tr>
+    <%= form_with model: @note,
+                  url: [:administration, @parent, @note],
+                  local: true do |f| %>
+      <td>
+        <%= f.text_field :body, class: "form-control form-control-sm" %>
+      </td>
+
+      <td>
+        <%= f.submit nil, class: "btn btn-primary btn-sm" %>
+      </td>
+      
+    <% end %>
+  </tr>
+  
+</table>
