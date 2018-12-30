@@ -8,7 +8,6 @@ default: &default
 development:
   <<: *default
   database: teklifal_development
-  host: <%= ENV.fetch("DB_HOST") %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
